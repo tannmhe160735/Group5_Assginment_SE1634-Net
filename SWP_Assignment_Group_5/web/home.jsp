@@ -1,6 +1,14 @@
+<%-- 
+    Document   : home
+    Created on : Oct 1, 2022, 11:58:34 AM
+    Author     : Admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
-    
+
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -18,23 +26,20 @@
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/footer.css" rel="stylesheet" />
     </head>
-   
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="index.html">Tùy Store</a>
+                <a class="navbar-brand" href="home.jsp">Tùy Store</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <span class="fas fa-bars ms-1"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="category.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="home.jsp">Home</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="category.html">All Products</a></li>
+                                <li><a class="dropdown-item" href="shop.jsp">All Products</a></li>
                                 <li>
                                     <hr class="dropdown-divider" />
                                 </li>
@@ -43,20 +48,22 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex my-2">
+
+                    <a href="cart.jsp">
                         <button class="btn btn-outline-light" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
-                    </form>
+                    </a>
+
                     <button class="btn btn-outline-primary ms-lg-2">
-                        <a href="login.html"> Login</a>
+                        <a href="login.jsp"> Login</a>
                     </button>
                 </div>
             </div>
         </nav>
-        <!-- Masthead-->
+            <!-- Masthead-->
         <header class="masthead">
             <div class="container">
                 <div class="masthead-subheading">Welcome To Tùy Store!</div>
@@ -64,7 +71,7 @@
                 <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
             </div>
         </header>
-        <!-- Portfolio Grid-->
+    <body id="page-top">
         <section class="page-section bg-dark" id="portfolio">
             <div class="container">
                 <div class="text-center text-white">
@@ -285,42 +292,7 @@
         </section>
 
         <!-- Footer-->
-        <footer class="footer py-4 text-white"style="background-color: #181A1B;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-5">
-                        <div class="footer-box pages">
-                            <h2 class="widget-title">Tùy Store</h2>
-                            <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="category.html">All Product</a></li>
-                                <li><a href="cart.html">Cart</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="footer-box get-in-touch">
-                            <h2 class="widget-title">Thông Tin</h2>
-                            <ul>
-                                <li>Đại học fpt, Thạch Thất, Hà Nội.</li>
-                                <li>support@fpt.edu.vn</li>
-                                <li>+00 111 222 3333</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="footer-box subscribe">
-                            <h2 class="widget-title">Subscribe</h2>
-                            <form action="index.html">
-                                <input type="email" placeholder="Email">
-                                <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <jsp:include page ="footer.jsp"></jsp:include>
         <!-- Portfolio Modals-->
         <!-- Portfolio item 1 modal popup-->
         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
@@ -542,3 +514,4 @@
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>
+

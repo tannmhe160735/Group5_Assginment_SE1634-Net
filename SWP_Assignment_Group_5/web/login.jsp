@@ -1,3 +1,10 @@
+<%-- 
+    Document   : login
+    Created on : Oct 1, 2022, 12:04:32 PM
+    Author     : Admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -47,7 +54,7 @@
                                 </div>
 
                                 <div>
-                                    <p class="mb-0">Don't have an account? <a href="register.html" class="text-white-50 fw-bold">Sign Up</a>
+                                    <p class="mb-0">Don't have an account? <a href="register.jsp" class="text-white-50 fw-bold">Sign Up</a>
                                     </p>
                                 </div>
 

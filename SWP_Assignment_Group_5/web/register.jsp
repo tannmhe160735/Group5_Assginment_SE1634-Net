@@ -1,3 +1,10 @@
+<%-- 
+    Document   : register
+    Created on : Oct 1, 2022, 12:04:57 PM
+    Author     : Admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -57,3 +64,4 @@
         </section>
     </body>
 </html>
+

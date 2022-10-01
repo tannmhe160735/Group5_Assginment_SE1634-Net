@@ -22,12 +22,13 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/footer.css" rel="stylesheet" />
     </head>
     <jsp:include page="header.jsp"></jsp:include>
     <body id="page-top">
         <!-- Navigation-->
         
-        <section class="h-100 h-custom"style="background-color: #181A1B;">
+        <section class="h-100 h-custom" style="background-color: #181A1B">
             <div class="container py h-50">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col-12">

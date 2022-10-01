@@ -1,6 +1,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-        <footer class="footer py-4 text-white"style="background-color: #181A1B;">
+        <footer class="footer py-4 text-white bg-dark py-5" style="background-color: #181A1B;">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-5">

@@ -179,7 +179,7 @@
                     <h2 class="section-heading text-uppercase">Amazing Team</h2>
                     <h3 class="section-subheading text-muted">Trùm đường dây buôn bán giày fake.</h3>
                 </div>
-                <div class="row">
+                <div class="row text-white" >
                     <div class="col-lg-4">
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="..." />

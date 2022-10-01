@@ -29,10 +29,7 @@
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
                     </a>
-
-                    <button class="btn btn-outline-primary ms-lg-2">
-                        <a href="login.jsp"> Login</a>
-                    </button>
+                        <a href="login.jsp">  <button class="btn btn-outline-primary ms-lg-2">Login</button></a>                    
                 </div>
             </div>
         </nav>

@@ -29,7 +29,7 @@
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
                     </a>
-                        <a href="login.jsp">  <button class="btn btn-outline-primary ms-lg-2">Login</button></a>                    
+                        <a href="${sessionScope.log}"><button class="btn btn-outline-primary ms-lg-2">${sessionScope.value_log}</button></a>               
                 </div>
             </div>
         </nav>
@@ -37,7 +37,7 @@
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
                 <h1 class="display-4 fw-bolder">Tùy Store</h1>
-                <p class="lead fw-normal text-white-50 mb-0">With this shop</p>
+                <p class="lead fw-normal text-white-50 mb-0"><h4 class="masthead-subheading">${sessionScope.acc.acc_name}</h4></p>
             </div>
         </div>
     </header>

@@ -4,25 +4,9 @@
         <servlet-name>HomeController</servlet-name>
         <servlet-class>Controller.HomeController</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>LoginController</servlet-name>
-        <servlet-class>Controller.LoginController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>LogoutController</servlet-name>
-        <servlet-class>Controller.LogoutController</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>LoginController</servlet-name>
-        <url-pattern>/login</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>LogoutController</servlet-name>
-        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

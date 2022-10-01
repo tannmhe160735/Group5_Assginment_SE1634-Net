@@ -26,52 +26,50 @@
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/footer.css" rel="stylesheet" />
     </head>
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="home.jsp">Tùy Store</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <span class="fas fa-bars ms-1"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="home.jsp">Home</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="shop.jsp">All Products</a></li>
-                                <li>
-                                    <hr class="dropdown-divider" />
-                                </li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="home.jsp">Tùy Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <span class="fas fa-bars ms-1"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="home.jsp">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="shop.jsp">All Products</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                        </ul>
+                    </li>
+                </ul>
 
-                    <a href="cart.jsp">
-                        <button class="btn btn-outline-light" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </a>
-
-                    <button class="btn btn-outline-primary ms-lg-2">
-                        <a href="login.jsp"> Login</a>
+                <a href="cart.jsp">
+                    <button class="btn btn-outline-light" type="submit">
+                        <i class="bi-cart-fill me-1"></i>
+                        Cart
+                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                     </button>
-                </div>
+                </a>
+                <a href="${sessionScope.log}"><button class="btn btn-outline-primary ms-lg-2">${sessionScope.value_log}  </button></a>
+
             </div>
-        </nav>
-            <!-- Masthead-->
-        <header class="masthead">
-            <div class="container">
-                <div class="masthead-subheading">Welcome To Tùy Store!</div>
-                <h4 class="masthead-subheading">${sessionScope.acc.acc_name}</h4>
-                <div class="masthead-heading text-uppercase">Giày gì cũng bán</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
-            </div>
-        </header>
+        </div>
+    </nav>
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container">
+            <div class="masthead-subheading">Welcome To Tùy Store!</div>
+            <h4 class="masthead-subheading">${sessionScope.acc.acc_name}</h4>
+            <div class="masthead-heading text-uppercase">Giày gì cũng bán</div>
+            <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
+        </div>
+    </header>
     <body id="page-top">
         <section class="page-section bg-dark" id="portfolio">
             <div class="container">
@@ -173,7 +171,7 @@
                 </div>
             </div>
         </section>
-                <!-- Team-->
+        <!-- Team-->
         <section class="page-section " id="team" style="background-color: #181A1B">
             <div class="container">
                 <div class="text-center text-white">

@@ -4,9 +4,6 @@
  */
 package Controller;
 
-import DAO.AccountDAO;
-import Entity.Account;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,10 +13,23 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "Login", urlPatterns = {"/login"})
-public class LoginController extends HttpServlet {
 
+/**
+ *
+ * @author Admin
+ */
+@WebServlet(name = "LogoutController", urlPatterns = {"/logout"})
+public class LogoutController extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -28,10 +38,10 @@ public class LoginController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Login</title>");            
+            out.println("<title>Servlet LogoutController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Login at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet LogoutController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -40,37 +50,15 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        session.removeAttribute("acc");
+        response.sendRedirect("home");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String email = request.getParameter("email");
-            String pass = request.getParameter("password");
-            AccountDAO dao = new AccountDAO();
-            Account acc = dao.getAccountByLogin(email, pass);
-            request.setAttribute("account", acc);
-            HttpSession session = request.getSession();
-            session.setAttribute("acc", acc);
-            if(acc==null){
-                request.setAttribute("msg", "Invalid email or password ! ");
-                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-                 rd.forward(request, response);
-            }
-            if(acc.getRole_id()==3){
-                 RequestDispatcher rd = request.getRequestDispatcher("home");
-                 rd.forward(request, response);
-            }
-            if(acc.getRole_id()==2){
-                 RequestDispatcher rd = request.getRequestDispatcher("staff.jsp");
-                 rd.forward(request, response);
-            }
-            if(acc.getRole_id()==1){
-                 RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
-                 rd.forward(request, response);
-            }
-           
+        processRequest(request, response);
     }
 
     @Override

@@ -29,7 +29,7 @@
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
                     </a>
-                        <a href="login.jsp">  <button class="btn btn-outline-primary ms-lg-2">Login</button></a>                    
+                        <a href="${sessionScope.log}"><button class="btn btn-outline-primary ms-lg-2">${sessionScope.value_log}</button></a>               
                 </div>
             </div>
         </nav>

@@ -36,19 +36,19 @@ public class AccountDAO {
                 acc.setAddress(rs.getString("address"));
                 acc.setRole_id(rs.getInt("role_id"));
                 acc.setAvatar(rs.getString("avatar"));
-                
+                return acc;
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return acc;
+        return null;
     }
     
     public static void main(String[] args) {
         AccountDAO dao = new AccountDAO();
-        Account acc = dao.getAccountByLogin("ngocchubedan@gmail.com", "ngocngungo");
+        Account acc = dao.getAccountByLogin("ngocchubedan@gmai", "ngocngungo");
         System.out.println(acc);
     }
 }

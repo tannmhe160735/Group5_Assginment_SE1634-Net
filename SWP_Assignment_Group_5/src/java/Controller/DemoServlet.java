@@ -53,7 +53,7 @@ public class DemoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        response.sendRedirect("home.jsp");
+        response.sendRedirect("detail.jsp");
     } 
 
     /** 

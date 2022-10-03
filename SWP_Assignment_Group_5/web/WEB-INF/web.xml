@@ -4,10 +4,12 @@
         <servlet-name>DemoServlet</servlet-name>
         <servlet-class>Controller.DemoServlet</servlet-class>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>DemoServlet</servlet-name>
         <url-pattern>/DemoServlet</url-pattern>
     </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30

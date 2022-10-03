@@ -24,15 +24,15 @@
               <!-- User Account -->
               <li class="dropdown user-menu">
                 <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                  <img src="img/user/user.png" class="user-image" alt="User Image" />
-                  <span class="d-none d-lg-inline-block">Abdus Salam</span>
+                    <img src="img/team/1.jpg" class="user-image" alt="User Image" />
+                  <span class="d-none d-lg-inline-block">Staff</span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right">
                   <!-- User image -->
                   <li class="dropdown-header">
-                      <img src="img/user/user.png" class="img-circle" alt="User Image" />
+                      <img src="img/team/1.jpg" class="img-circle" alt="User Image" />
                     <div class="d-inline-block">
-                      Abdus Salam <small class="pt-1">iamabdus@gmail.com</small>
+                      ${sessionScope.acc.acc_name} <small class="pt-1">${sessionScope.acc.email}</small>
                     </div>
                   </li>
 
@@ -41,11 +41,8 @@
                       <i class="mdi mdi-account"></i> My Profile
                     </a>
                   </li>
-                  <li class="right-sidebar-in">
-                    <a href="javascript:0"> <i class="mdi mdi-settings"></i> Setting </a>
-                  </li>
                   <li class="dropdown-footer">
-                    <a href="admin.html"> <i class="mdi mdi-logout"></i> Log Out </a>
+                    <a href="logout"> <i class="mdi mdi-logout"></i> Log Out </a>
                   </li>
                 </ul>
               </li>

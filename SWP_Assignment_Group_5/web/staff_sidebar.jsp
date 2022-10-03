@@ -38,7 +38,7 @@
                       <span class="nav-text">Post</span>
                     </a>
                     <a class="sidenav-item-link" href="feedback.jsp">
-                      <span class="nav-text">feedback</span>
+                      <span class="nav-text">Feedback</span>
                     </a>
                     <a class="sidenav-item-link" href="voucher.jsp">
                       <span class="nav-text">Voucher</span>

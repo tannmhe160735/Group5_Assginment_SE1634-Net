@@ -30,7 +30,8 @@ public class MyStarFormat extends SimpleTagSupport{
     }
     @Override
     public void doTag() throws IOException{
-        formatStar+="<em style=\"font-style: normal;font-size: 13px;margin-bottom: 1px;margin-top: 1px;margin-right: 5px\">";
+        formatStar+="<em style=\"font-style: normal;font-size: "
+                + "13px;margin-bottom: 1px;margin-top: 1px;margin-right: 5px\">";
         for(int i=0;i<numberOfStarOfComment;i++){
             formatStar+="&#11088";
         }

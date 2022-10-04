@@ -63,8 +63,16 @@
                     <table class="b" style="width: 65vw; margin-right:  1vw">
                         <th>Feedback</th>
                             <dava:if test="${param.tenGiay == 'adidat2'}">
-                            <tr><td><myCustomTag:Star_Format numberOfStarOfComment="${5}"/>Ổn áp lắm nha mng<a class="a" href="editFeedBack.jsp" style="float:right;text-align:right;"><button>Edit</button></a></td></tr>
-                            <tr><td><myCustomTag:Star_Format numberOfStarOfComment="${5}"/>Chất lượng sản phẩm tốt.<a class="a" href="editFeedBack.jsp" style="float:right;text-align:right;"><button>Edit</button></a></td></tr>
+                            <tr>
+                                <td><myCustomTag:Star_Format numberOfStarOfComment="${5}"/>Ổn áp lắm nha mng
+                                    <a class="a" href="editFeedBack.jsp" style="float:right;text-align:right;"><button>Edit</button></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><myCustomTag:Star_Format numberOfStarOfComment="${5}"/>Chất lượng sản phẩm tốt.
+                                    <a class="a" href="editFeedBack.jsp" style="float:right;text-align:right;"><button>Edit</button></a>
+                                </td>
+                            </tr>
                             <tr><td><myCustomTag:Star_Format numberOfStarOfComment="${3}"/>Hàng hơi bị lỗi, bị đứt chỉ, tôi phải khâu lại<a class="a" href="editFeedBack.jsp" style="float:right;text-align:right;"><button>Edit</button></a></td></tr>
                             <tr><td><myCustomTag:Star_Format numberOfStarOfComment="${1}"/>Sản phẩm quá tệ, đi được 1 tuần mà bị rách rồi<a class="a" href="editFeedBack.jsp" style="float:right;text-align:right;"><button>Edit</button></a></td></tr>
                             <tr><td><myCustomTag:Star_Format numberOfStarOfComment="${2}"/>Shop đóng hàng gửi hàng chậm, 1 tháng mới tới nơi<a class="a" href="editFeedBack.jsp" style="float:right;text-align:right;"><button>Edit</button></a></td></tr>

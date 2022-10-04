@@ -1,7 +1,9 @@
 <%-- 
     Document   : editFeedBack
     Created on : Oct 2, 2022, 7:03:29 PM
-    Author     : Thinkpad
+    Author     : Tong Sy Nhat
+    Description: this page allow staff(user) edit an existing feedback: 
+                 view feedback detail, view product detail, edit feedback text.
 --%>
 
 <%@ taglib prefix="dava" uri="http://java.sun.com/jsp/jstl/core" %>

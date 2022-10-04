@@ -1,7 +1,9 @@
 <%-- 
     Document   : quanlyfeedback
     Created on : Sep 25, 2022, 4:54:37 PM
-    Author     : Thinkpad
+    Author     : Tong Sy Nhat
+    Description: staff can view list of product. when choose one product then 
+                 display all comment of this product
 --%>
 <%@ taglib uri='/WEB-INF/tlds/nhatCustomTag' prefix='myCustomTag' %>
 <%@ taglib prefix="dava" uri="http://java.sun.com/jsp/jstl/core" %>

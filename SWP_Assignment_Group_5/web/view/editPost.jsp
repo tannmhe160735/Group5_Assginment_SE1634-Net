@@ -1,7 +1,9 @@
 <%-- 
     Document   : editPost
     Created on : Oct 2, 2022, 11:15:25 PM
-    Author     : Thinkpad
+    Author     : Tong Sy Nhat
+    Description: this page allow staff(user) edit an existing post: 
+                 change image, edit text, change product.
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -1,7 +1,9 @@
 <%-- 
     Document   : addNewPost
     Created on : Oct 2, 2022, 10:57:08 PM
-    Author     : Thinkpad
+    Author     : Tong Sy Nhat
+    Description: display a page that allow staff(user) add new post, include: 
+                 upload image, type text, choose product
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

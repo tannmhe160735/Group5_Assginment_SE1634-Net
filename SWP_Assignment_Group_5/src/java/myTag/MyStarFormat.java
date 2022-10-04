@@ -2,6 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+/*
+    Description: create a tag for jsp page: input is number of star you want to output
+*/
 package myTag;
 
 import jakarta.servlet.jsp.tagext.SimpleTagSupport;
@@ -9,7 +12,7 @@ import java.io.IOException;
 
 /**
  *
- * @author Thinkpad
+ * @author Tong Sy Nhat
  */
 public class MyStarFormat extends SimpleTagSupport{
     private int numberOfStarOfComment;

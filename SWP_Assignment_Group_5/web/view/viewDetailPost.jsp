@@ -1,7 +1,8 @@
 <%-- 
     Document   : viewDetailPost
     Created on : Oct 2, 2022, 11:21:51 PM
-    Author     : Thinkpad
+    Author     : Tong Sy Nhat
+    Description: Staff can view all detail infor of a post.
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

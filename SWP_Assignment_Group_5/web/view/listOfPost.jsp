@@ -1,7 +1,9 @@
 <%-- 
     Document   : listOfPost
     Created on : Oct 2, 2022, 9:37:17 PM
-    Author     : Thinkpad
+    Author     : Tong Sy Nhat
+    Description: staff can view posts paginaged.
+                 5 post each page. sort by day add or edit
 --%>
 <%@ taglib prefix="dava" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

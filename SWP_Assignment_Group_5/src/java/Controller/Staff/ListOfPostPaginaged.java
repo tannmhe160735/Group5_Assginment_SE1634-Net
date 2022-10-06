@@ -2,10 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package Controller;
+package Controller.Staff;
 
 import DB.Nhat_PostDBContext;
-import Entity.Post;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,9 +14,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author: Tong Sy Nhat description: communicate with viewDetailPost.jsp
+ * @author Thinkpad
  */
-public class ViewDetailPost extends HttpServlet {
+public class ListOfPostPaginaged extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +35,10 @@ public class ViewDetailPost extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ViewDetailPost</title>");
+            out.println("<title>Servlet ListOfPostPaginaged</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ViewDetailPost at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ListOfPostPaginaged at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -57,20 +56,17 @@ public class ViewDetailPost extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String raw_post_id = (String) request.getParameter("post_id");
-        System.out.println(raw_post_id);
-        // verification
-        int post_id = verificationPostID(raw_post_id);
-        //get post from DBContext
-        Nhat_PostDBContext pdbc = new Nhat_PostDBContext();
-        Post thisPost = pdbc.getAPostByID(post_id);
-        if (thisPost == null) {
-
-        } else {
-            //return output a post
-            request.setAttribute("thisPost", thisPost);
-            request.getRequestDispatcher("view/viewDetailPost.jsp").forward(request, response);
+        //take number of page
+        int noPage = 1;
+        try {
+            noPage = Integer.parseInt(request.getParameter("noPage"));
+        } catch (Exception e) {
+            System.out.println("khong nhan dc noPage hoac khong parse ra int duoc");
         }
+        Nhat_PostDBContext npdbc = new Nhat_PostDBContext();
+        //return output list of posts
+        request.setAttribute("list5PostInThisPage", npdbc.listAllPostPaginaged(noPage));
+        request.getRequestDispatcher("view/listOfPost.jsp").forward(request, response);
     }
 
     /**
@@ -84,7 +80,7 @@ public class ViewDetailPost extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        processRequest(request, response);
     }
 
     /**
@@ -96,9 +92,5 @@ public class ViewDetailPost extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private int verificationPostID(String raw_post_id) {
-        return Integer.parseInt(raw_post_id);
-    }
 
 }

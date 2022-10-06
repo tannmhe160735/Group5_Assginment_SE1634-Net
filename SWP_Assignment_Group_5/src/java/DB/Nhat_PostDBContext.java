@@ -16,7 +16,8 @@ import Entity.Post;
  *
  * @author Thinkpad
  */
-public class Nhat_PostDBContext extends Nhat_DBContext<Post>{
+public class Nhat_PostDBContext extends Nhat_DBContext<Post> {
+
     public ArrayList<Post> listAllPost() {
         try {
             ArrayList<Post> listOfPost = new ArrayList<Post>();
@@ -24,7 +25,27 @@ public class Nhat_PostDBContext extends Nhat_DBContext<Post>{
             PreparedStatement prstm = connection.prepareStatement(sql);
             ResultSet rs = prstm.executeQuery();
             while (rs.next()) {
-                Post a = new Post(rs.getInt("ID"), rs.getString("post_title"), rs.getString("content1"),rs.getString("content2"), rs.getString("img"), rs.getDate("post_date"));
+                Post a = new Post(rs.getInt("ID"), rs.getString("post_title"), rs.getString("content1"), rs.getString("content2"), rs.getString("img"), rs.getDate("post_date"));
+                listOfPost.add(a);
+            }
+            return listOfPost;
+        } catch (SQLException ex) {
+            Logger.getLogger(Nhat_PostDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public ArrayList<Post> listAllPostPaginaged(int noPage) {
+        try {
+            ArrayList<Post> listOfPost = new ArrayList<Post>();
+            String sql = "SELECT post_id,post_title,content1,img,post_date FROM post ORDER BY post_date desc\n"
+                    + "OFFSET (?-1)*5 ROWS \n"
+                    + "FETCH NEXT 5 ROWS ONLY;";
+            PreparedStatement prstm = connection.prepareStatement(sql);
+            prstm.setInt(1, noPage);
+            ResultSet rs = prstm.executeQuery();
+            while (rs.next()) {
+                Post a = new Post(rs.getInt("post_id"), rs.getString("post_title"), rs.getString("content1"),"", rs.getString("img"), rs.getDate("post_date"));
                 listOfPost.add(a);
             }
             return listOfPost;
@@ -41,7 +62,7 @@ public class Nhat_PostDBContext extends Nhat_DBContext<Post>{
             prstm.setInt(1, post_id);
             ResultSet rs = prstm.executeQuery();
             if (rs.next()) {
-                Post a = new Post(rs.getInt("post_id"), rs.getString("post_title"), rs.getString("content1"),rs.getString("content2"), rs.getString("img"), rs.getDate("post_date"));
+                Post a = new Post(rs.getInt("post_id"), rs.getString("post_title"), rs.getString("content1"), rs.getString("content2"), rs.getString("img"), rs.getDate("post_date"));
                 return a;
             }
             return null;

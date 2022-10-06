@@ -39,7 +39,7 @@
                         </tr>
                         <tr>
                             <td style="width: 10vw"></td>
-                            <td><img src="${requestScope.thisPost.image_path}" alt="sda"/></td>
+                            <td><img src="${requestScope.thisPost.image_path}" alt="sda" width="500"/></td>
                         </tr>
                         <tr>
                             <td style="width: 10vw"></td>

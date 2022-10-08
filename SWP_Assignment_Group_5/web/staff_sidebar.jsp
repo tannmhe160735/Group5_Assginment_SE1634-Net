@@ -2,7 +2,7 @@
       <div id="sidebar" class="sidebar sidebar-with-footer">
         <!-- Aplication Brand -->
         <div class="app-brand" style="background-color: #012738">
-          <a href="admin.html" title="Sleek Dashboard">
+          <a href="staff.jsp" title="Sleek Dashboard">
             <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="30"
               height="33" viewBox="0 0 30 33">
               <g fill="none" fill-rule="evenodd">
@@ -18,9 +18,9 @@
           <!-- sidebar menu -->
           <ul class="nav sidebar-inner" id="sidebar-menu">
             <li class="has-sub ">
-              <a href="admin.html">
-                <i class="mdi mdi-view-dashboard-outline"></i>
-                <span class="nav-text">Dashboard</span>
+              <a href="staff_profile.jsp">
+                <i class="mdi mdi-account"></i>
+                <span class="nav-text">Profile</span>
               </a>
             </li>
 

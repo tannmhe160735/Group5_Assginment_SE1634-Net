@@ -4,7 +4,9 @@
  */
 package DAO;
 
+import DB.Binh_DBContext;
 import DB.Linh_DBContext;
+import Entity.Category;
 import Entity.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,9 +19,9 @@ import java.util.List;
  *
  * @author DELL
  */
-public class ProductDAO extends Linh_DBContext {
+public class ProductDAO extends Binh_DBContext {
 
-    Connection connection = DB.Linh_DBContext.CreateConnection();
+    Connection connection = DB.Binh_DBContext.CreateConnection();
 
     public List<Product> getAllProducts() {
         List<Product> list = new ArrayList<>();
@@ -45,4 +47,12 @@ public class ProductDAO extends Linh_DBContext {
         }
         return list;
     }
+    
+    public static void main(String[] args) {
+          ProductDAO dao = new ProductDAO();
+            List<Product> list = dao.getAllProducts();
+            for (Product prod : list) {
+                System.out.println(prod.toString());
+    }
+}
 }

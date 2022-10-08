@@ -40,12 +40,15 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="shop.jsp">All Products</a></li>
+                            <li><a class="dropdown-item" href="shop">All Products</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                              <c:forEach items="${listCategories}" var="C">
+                                <li><a class="dropdown-item" href="#!">${C.cate_name}</a></li>
+                            </c:forEach>
+                            
+                            
                         </ul>
                     </li>
                 </ul>

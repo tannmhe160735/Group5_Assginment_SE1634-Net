@@ -4,9 +4,17 @@
         <servlet-name>DemoServlet</servlet-name>
         <servlet-class>Controller.DemoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShopController</servlet-name>
+        <servlet-class>Controller.ShopController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DemoServlet</servlet-name>
         <url-pattern>/DemoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShopController</servlet-name>
+        <url-pattern>/shop</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

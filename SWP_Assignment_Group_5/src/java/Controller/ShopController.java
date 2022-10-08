@@ -38,7 +38,6 @@ public class ShopController extends HttpServlet {
         List<Category> listCategories = new CategoryDAO().getAllCategories();
         request.setAttribute("listCategories", listCategories);
         request.getRequestDispatcher("shop.jsp").forward(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

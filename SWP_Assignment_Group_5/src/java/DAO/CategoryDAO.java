@@ -37,4 +37,12 @@ public class CategoryDAO extends Linh_DBContext {
         }
         return list;
     }
+    
+    public static void main(String[] args) {
+            CategoryDAO dao = new CategoryDAO();
+            List<Category> category = dao.getAllCategories();
+            for (Category cate : category) {
+                System.out.println(cate);
+        }
+    }
 }

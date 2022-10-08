@@ -38,7 +38,7 @@
                             <ul class="list-group">
                             <c:forEach items="${listCategories}" var="C">
                                 <a href="#"><li class="list-group-item">${C.cate_name}</li></a>
-                            </c:forEach>
+                                    </c:forEach>
                             <style>
                                 .list-group-item:hover{
                                     background-color: yellow;
@@ -53,19 +53,27 @@
                             <c:forEach  items="${listProducts}" var="p">
                                 <div class="col mb-5 ">
                                     <div class="card h-100">
+                                        <div class="card-body p-4">
+                                            <img class="card-img-top" src="${p.img}" alt="..." />
+                                        </div>
                                         <!-- Product image-->
-                                        <img class="card-img-top" src="${p.img}" alt="..." />
+
                                         <!-- Product details-->
                                         <div class="card-body p-4">
                                             <div class="text-center">
                                                 <!-- Product name-->
                                                 <h5 class="fw-bolder">${p.title}}</h5>
                                                 <!-- Product price-->
-                                                
+
                                             </div>
-                                            <div class="card-columns">${p.price}</div>
                                         </div>
-                                        
+                                        <div class="card-body p-4">
+                                            <div class="text-center">
+                                                  <span class="text"> $${p.price}</span>
+                                            </div>
+                                          
+                                        </div>
+
                                         <!-- Product actions-->
                                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                             <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="detail.jsp">View options</a></div>

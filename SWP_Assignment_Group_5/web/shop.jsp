@@ -28,7 +28,6 @@
     <jsp:include page="header.jsp"></jsp:include>
         <body id="page-top">
             <!-- Navigation-->
-
             <!-- Section-->
             <section on class="py-5" style="background-color: #181A1B">
                 <div class="container px-4 px-lg-5 my-5 text-light">
@@ -36,11 +35,11 @@
                         <div class="col-md-3 mb-5 ">
                             <h3>List Categories</h3>
                             <ul class="list-group">
-                            <c:forEach items="${listCategories}" var="C">
-                                <li class="list-group-item">${C.cate_name}</li>
+                                <c:forEach items="${listCategories}" var="C">
+                                    <li class="list-group-item">${C.cate_name}</li>
                                 </c:forEach>
-                        </ul>
-                    </div>
+                            </ul>
+                </div>
                     <div class="col-md-9">
                         <h3>List Products</h3>
                         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 justify-content-center text-dark">
@@ -239,7 +238,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
         <!-- Footer-->
@@ -248,7 +246,5 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-
     </body>
-
 </html>

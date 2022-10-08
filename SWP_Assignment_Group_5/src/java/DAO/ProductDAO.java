@@ -24,7 +24,7 @@ public class ProductDAO extends Linh_DBContext {
     public List<Product> getAllProducts() {
         List<Product> list = new ArrayList<>();
         try {
-            String sql = "select * from Product";
+            String sql = "select * from product";
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -44,5 +44,12 @@ public class ProductDAO extends Linh_DBContext {
         } catch (SQLException e) {
         }
         return list;
+    }
+    public static void main(String[] args) {
+            ProductDAO dao = new ProductDAO();
+            List<Product> product = dao.getAllProducts();
+            for (Product prd : product) {
+                System.out.println(prd);
+        }
     }
 }

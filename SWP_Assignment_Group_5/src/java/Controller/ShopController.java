@@ -9,12 +9,10 @@ import DAO.ProductDAO;
 import Entity.Category;
 import Entity.Product;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -36,7 +34,9 @@ public class ShopController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         List<Category> listCategories = new CategoryDAO().getAllCategories();
+        List<Product> listProducts = new ProductDAO().getAllProducts();
         request.setAttribute("listCategories", listCategories);
+        request.setAttribute("listProducts", listProducts);
         request.getRequestDispatcher("shop.jsp").forward(request, response);
     }
 

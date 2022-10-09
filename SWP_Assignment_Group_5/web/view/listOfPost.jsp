@@ -65,7 +65,7 @@
                         <td><h1>List of post</h1></td>
                         <td></td>
                         <td></td>
-                        <td><a href="addNewPost.jsp"><button>Add new Post</button></a></td>
+                        <td><a href="view/addNewPost.jsp"><button>Add new Post</button></a></td>
                     </table><td>
             </tr>
             <dava:forEach items="${requestScope.list5PostInThisPage}" var="aPost">

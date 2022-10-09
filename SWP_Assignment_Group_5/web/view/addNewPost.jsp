@@ -16,9 +16,9 @@
     <body>
         <h1>Add new post</h1>
         <table>
-            <tr><td><table class="b"><tr><td style="width: 10vw">Image:</td> <td><form action="">
-                                    <label for="img">Select image:</label>
-                                    <input type="file" id="img" name="img" accept="image/*">
+            <tr><td><table class="b"><tr><td style="width: 10vw">Image:</td> <td><form method="post" action="../AddNewPost" enctype="multipart/form-data">
+                                    <label for="file">Select image:</label>
+                                    <input type="file" id="file" name="file" accept="image/*">
                                     <input type="submit">
                                 </form></td></tr></table></td></tr>
             <tr><td><table class="b"><tr><td style="width: 10vw">Text:</td> <td><form action="">

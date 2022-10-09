@@ -12,6 +12,10 @@
         <servlet-name>ListOfPostPaginaged</servlet-name>
         <servlet-class>Controller.Staff.ListOfPostPaginaged</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddNewPost</servlet-name>
+        <servlet-class>Controller.Staff.AddNewPost</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DemoServlet</servlet-name>
         <url-pattern>/DemoServlet</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>ListOfPostPaginaged</servlet-name>
         <url-pattern>/ListOfPostPaginaged</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddNewPost</servlet-name>
+        <url-pattern>/AddNewPost</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

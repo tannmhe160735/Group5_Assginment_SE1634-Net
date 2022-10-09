@@ -32,4 +32,14 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+    <tag>
+        <name>Content1_Format</name>
+        <tag-class>myTag.MyContentShorter</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>content1</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
 </taglib>

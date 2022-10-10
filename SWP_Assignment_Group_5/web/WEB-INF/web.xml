@@ -15,8 +15,14 @@
     <servlet>
         <servlet-name>ActionAccountController</servlet-name>
         <servlet-class>Controller.ActionAccountController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ShopController</servlet-name>
         <servlet-class>Controller.ShopController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductManageController</servlet-name>
+        <servlet-class>Controller.ProductManageController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DemoServlet</servlet-name>
@@ -33,13 +39,17 @@
     <servlet-mapping>
         <servlet-name>ActionAccountController</servlet-name>
         <url-pattern>/action</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ShopController</servlet-name>
         <url-pattern>/shop</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductManageController</servlet-name>
+        <url-pattern>/product</url-pattern>
+    </servlet-mapping>
     <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
     <welcome-file-list>
         <welcome-file>home</welcome-file>

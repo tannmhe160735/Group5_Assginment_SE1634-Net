@@ -97,22 +97,43 @@
                     <th>Image</th>
                     <th>Category</th>
                     <th>Created_Date</th>
-                    <th>Actions</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                   </tr>
                 </thead>
                 <tbody>
-                <%--<c:forEach items="${listP}" var="o">--%>
+                <c:forEach items="${listProducts}" var="p">
                   <tr>
                       <th></th>
-                      <th>1</th>
-                      <th>Vans Unisex UA Authentic Trainers</th>
-                      <th>91</th>
-                      <th>NULL</th>
-                      <th>17</th>
-                      <th>Displaced fracture of glenoid cavity of scapula, left shoulder, initial encounter for closed fracture</th>
-                      <th><img src="https://m.media-amazon.com/images/I/611qjqHZu2L._AC_UL320_.jpg" style="width:150px; height:100px;" class="user-image" alt="User Image" /></th>                      
+                      <th>${p.product_id}</th>
+                      <th>${p.title}</th>
+                      <th>$${p.price}</th>
+                      <th>${p.sale_price}</th>
+                      <th>${p.quantity}</th>
+                      <th>${p.description}</th>
+                      <th><img src="${p.img}" style="width:150px; height:100px;" class="user-image" alt="User Image" /></th>                      
+                      <c:if test="${p.category_id eq 0}">
+                      <th>Vans Auth</th>
+                      </c:if>
+                      <c:if test="${p.category_id eq 1}">
                       <th>Vans Authentic</th>
-                      <th>2022-09-30</th>
+                      </c:if>
+                      <c:if test="${p.category_id eq 2}">
+                      <th>Vans Old skool</th>
+                      </c:if>
+                      <c:if test="${p.category_id eq 3}">
+                      <th>Vans Slip-on</th>
+                      </c:if>
+                      <c:if test="${p.category_id eq 4}">
+                      <th>Vans SK8 - Hi</th>
+                      </c:if>
+                      <c:if test="${p.category_id eq 5}">
+                      <th>Vans Vault</th>
+                      </c:if>
+                      <c:if test="${p.category_id eq 6}">
+                      <th>Vans Auth</th>
+                      </c:if>
+                      <th>${p.create_date}</th>
                       <td>
                           <a href="editProduct.html" class="edit"><i class="material-icons"
                                                                      data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -122,7 +143,7 @@
                                                                                                data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                       </td>
                   </tr>
-              <%--</c:forEach>--%>
+              </c:forEach>
                 
                  
                  

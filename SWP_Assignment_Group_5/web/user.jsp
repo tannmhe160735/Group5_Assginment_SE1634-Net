@@ -95,7 +95,8 @@
                                         <th>Phone</th>
                                         <th>Address</th>
                                         <th>Role_ID</th>
-                                        <th>Actions</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -125,6 +126,8 @@
                                         <td>
                                             <a href="action?action=edit&id=${a.acc_id}"><i class="material-icons"
                                                                                            data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                        </td>
+                                        <td>
                                             <a href="action?action=delete&id=${a.acc_id}"><i class="material-icons"
                                                                                              data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                         </td>

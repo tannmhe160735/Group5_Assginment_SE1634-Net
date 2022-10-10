@@ -37,7 +37,7 @@
                     <a class="sidenav-item-link" href="user">
                       <span class="nav-text">User</span>
                     </a>
-                      <a class="sidenav-item-link" href="product.jsp">
+                      <a class="sidenav-item-link" href="product">
                       <span class="nav-text">Product</span>
                     </a>
                   </li>

@@ -4,9 +4,33 @@
         <servlet-name>DemoServlet</servlet-name>
         <servlet-class>Controller.DemoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HomeController</servlet-name>
+        <servlet-class>Controller.HomeController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AccountController</servlet-name>
+        <servlet-class>Controller.AccountController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ActionAccountController</servlet-name>
+        <servlet-class>Controller.ActionAccountController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DemoServlet</servlet-name>
         <url-pattern>/DemoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeController</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccountController</servlet-name>
+        <url-pattern>/user</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActionAccountController</servlet-name>
+        <url-pattern>/action</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -67,7 +67,7 @@ public class LoginController extends HttpServlet {
                  rd.forward(request, response);
             }
             if(acc.getRole_id()==1){
-                 RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
+                 RequestDispatcher rd = request.getRequestDispatcher("home");
                  rd.forward(request, response);
             }
            

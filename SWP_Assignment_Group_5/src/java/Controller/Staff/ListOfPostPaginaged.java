@@ -66,7 +66,7 @@ public class ListOfPostPaginaged extends HttpServlet {
         Nhat_PostDBContext npdbc = new Nhat_PostDBContext();
         //return output list of posts
         request.setAttribute("noPage", noPage);
-                request.setAttribute("totalpage", 100);
+                request.setAttribute("totalpage", npdbc.getTotalNumberOfPost()/5);
         request.setAttribute("list5PostInThisPage", npdbc.listAllPostPaginaged(noPage));
         request.getRequestDispatcher("view/listOfPost.jsp").forward(request, response);
     }

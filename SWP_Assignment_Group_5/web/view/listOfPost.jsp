@@ -40,10 +40,10 @@
                 text-decoration: none;
                 color: black;
             }
-            .pagger span
-            {
+            em{
+                font-style:normal;
                 font-weight: bold;
-                padding: 2px;
+                font-size: 25px;
             }
             .pagger a
             {

@@ -15,7 +15,7 @@ function render(id, pageindex, totalpage, gap)
             content += "<a href='ListOfPostPaginaged?noPage=" + i + "'>" + i + "</a>";
     }
 
-    content += "<span>" + pageindex + "</span>";
+    content += "<span><em class='a'>" + pageindex + "</em></span>";
 
     for (var i = pageindex + 1; i <= pageindex + gap; i++)
     {

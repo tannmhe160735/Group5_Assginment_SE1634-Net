@@ -71,4 +71,17 @@ public class Nhat_PostDBContext extends Nhat_DBContext<Post> {
         }
         return null;
     }
+    public int getTotalNumberOfPost() {
+        try {
+            String sql = "select count(post.post_id) as count from post ";
+            PreparedStatement prstm = connection.prepareStatement(sql);
+            ResultSet rs = prstm.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("count");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Nhat_PostDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
 }

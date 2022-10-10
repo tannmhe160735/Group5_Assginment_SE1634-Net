@@ -19,9 +19,9 @@ import java.util.List;
  *
  * @author DELL
  */
-public class ProductDAO extends Binh_DBContext {
+public class ProductDAO extends Linh_DBContext {
 
-    Connection connection = DB.Binh_DBContext.CreateConnection();
+    Connection connection = DB.Linh_DBContext.CreateConnection();
 
     public List<Product> getAllProducts() {
         List<Product> list = new ArrayList<>();

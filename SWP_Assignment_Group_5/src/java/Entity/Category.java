@@ -22,4 +22,6 @@ import lombok.ToString;
 public class Category {
     private int cate_id;
     private String cate_name;
+    
+    
 }

@@ -127,9 +127,34 @@
                                             <a href="action?action=edit&id=${a.acc_id}"><i class="material-icons"
                                                                                            data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                         </td>
+                                        <td>                                                   
+                                            <button type="button" data-toggle="modal" data-target="#modal${a.acc_id}">
+                                                <i class="material-icons" title="Delete">&#xE872;</i>
+                                            </button>                                                                                                                                                                                      
+                                        </td>
                                         <td>
-                                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                                                                                             data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                            <div id="modal${a.acc_id}" class="modal fade">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <form action="action_acc?id=${a.acc_id}&action=delete" method="POST">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Delete Account</h4>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>Are you sure you want to delete these Account?</p>
+                                                                <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                                                <input type="submit" class="btn btn-danger" value="Delete">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>    
                                         </td>
                                     </tr>
                                 </c:forEach>

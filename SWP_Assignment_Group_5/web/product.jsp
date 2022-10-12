@@ -85,7 +85,7 @@
                         <div class="content">
                             <div class="card card-default">
                                 <div class="card-header">
-                                    <a href="addProduct.html" class="btn btn-success"><span>Add New <b>Product</b></span></a>
+                                    <a href="action_pro?action=add" class="btn btn-success"><span>Add New <b>Product</b></span></a>
                                 </div>
                                 <div>
                                     <table class="table">

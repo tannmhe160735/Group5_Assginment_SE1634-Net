@@ -48,8 +48,8 @@ public class ProductDAO extends Linh_DBContext {
         }
         return list;
     }
-    
-    public Product getProductById(int pro_id) {      
+
+    public Product getProductById(int pro_id) {
         try {
             String sql = "select * from product where [product_id] = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -70,11 +70,11 @@ public class ProductDAO extends Linh_DBContext {
                 return product;
             }
         } catch (SQLException ex) {
-             ex.printStackTrace();
+            ex.printStackTrace();
         }
         return null;
     }
-    
+
     public void EditProduct(int pro_id, String title, String price, String sale_price, String quantity, String description, String img, String category_id, String create_date) {
         String sql = "UPDATE [product]\n"
                 + "                SET [title] = ?\n"
@@ -87,7 +87,7 @@ public class ProductDAO extends Linh_DBContext {
                 + "                    ,[create_date] = ?\n"
                 + "                WHERE product_id = ?";
 
-         try {
+        try {
             PreparedStatement ptmt = connection.prepareStatement(sql);
             ptmt.setString(1, title);
             ptmt.setString(2, price);
@@ -95,7 +95,7 @@ public class ProductDAO extends Linh_DBContext {
             ptmt.setString(4, quantity);
             ptmt.setString(5, description);
             ptmt.setString(6, img);
-            ptmt.setString(7, category_id);          
+            ptmt.setString(7, category_id);
             ptmt.setString(8, create_date);
             ptmt.setInt(9, pro_id);
             ptmt.executeUpdate();
@@ -103,11 +103,47 @@ public class ProductDAO extends Linh_DBContext {
             ex.printStackTrace();
         }
     }
-    
+
+    public void AddProduct(String title, String price, String sale_price, String quantity, String description, String img, String category_id, String create_date) {
+        String sql = "INSERT INTO [product]\n"
+                + "           ([title]\n"
+                + "           ,[price]\n"
+                + "           ,[sale_price]\n"
+                + "           ,[quantity]\n"
+                + "           ,[description]\n"
+                + "           ,[img]\n"
+                + "           ,[category_id]\n"
+                + "           ,[create_date])\n"
+                + "     VALUES\n"
+                + "           (?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?)";
+
+        try {
+            PreparedStatement ptmt = connection.prepareStatement(sql);
+            ptmt.setString(1, title);
+            ptmt.setString(2, price);
+            ptmt.setString(3, sale_price);
+            ptmt.setString(4, quantity);
+            ptmt.setString(5, description);
+            ptmt.setString(6, img);
+            ptmt.setString(7, category_id);
+            ptmt.setString(8, create_date);
+            ptmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public void DeleteProductById(int pro_id) {
         try {
-            String sql = "DELETE FROM [product]\n" +
-                         "WHERE product_id =?";          
+            String sql = "DELETE FROM [product]\n"
+                    + "WHERE product_id =?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, pro_id);
             stm.executeUpdate();
@@ -115,12 +151,12 @@ public class ProductDAO extends Linh_DBContext {
             e.printStackTrace();
         }
     }
-    
+
     public static void main(String[] args) {
-            ProductDAO dao = new ProductDAO();
-            dao.EditProduct(6, "giay sieu dep", "100", "0", "6", "White, Disorders of visual pathways in (due to) inflammatory disorders, left side", "https://images.vans.com/is/image/Vans/VN000D3HW00-ALT1?hei=392&wid=390&qlt=85", "2", "2022-10-12");
-            Product  product = dao.getProductById(6);
-                System.out.println(product);
-        
+        ProductDAO dao = new ProductDAO();
+        dao.EditProduct(6, "giay sieu dep", "100", "0", "6", "White, Disorders of visual pathways in (due to) inflammatory disorders, left side", "https://images.vans.com/is/image/Vans/VN000D3HW00-ALT1?hei=392&wid=390&qlt=85", "2", "2022-10-12");
+        Product product = dao.getProductById(6);
+        System.out.println(product);
+
     }
 }

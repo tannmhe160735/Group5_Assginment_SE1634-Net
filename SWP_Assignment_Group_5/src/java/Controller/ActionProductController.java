@@ -60,15 +60,20 @@ public class ActionProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        int pro_id = Integer.parseInt(request.getParameter("pro_id"));
         String action = request.getParameter("action");
         if (action.equals("edit")) {
+            int pro_id = Integer.parseInt(request.getParameter("pro_id"));
             ProductDAO dao = new ProductDAO();
             Product product = dao.getProductById(pro_id);
             List<Category> listCategories = new CategoryDAO().getAllCategories();
             request.setAttribute("listCategories", listCategories);
             request.setAttribute("product", product);
             request.getRequestDispatcher("editProduct.jsp").forward(request, response);
+        }
+        if(action.equals("add")){
+            List<Category> listCategories = new CategoryDAO().getAllCategories();
+            request.setAttribute("listCategories", listCategories);
+            request.getRequestDispatcher("addProduct.jsp").forward(request, response);
         }
     } 
 
@@ -82,9 +87,9 @@ public class ActionProductController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String action = request.getParameter("action");
-        int pro_id = Integer.parseInt(request.getParameter("pro_id"));
+        String action = request.getParameter("action");       
         if (action.equals("edit")) {
+            int pro_id = Integer.parseInt(request.getParameter("pro_id"));
             String title = request.getParameter("title");
             String price = request.getParameter("price");
             String sale_price = request.getParameter("sale_price");
@@ -102,11 +107,30 @@ public class ActionProductController extends HttpServlet {
             request.getRequestDispatcher("product.jsp").forward(request, response);
         }
         if (action.equals("delete")) {
+            int pro_id = Integer.parseInt(request.getParameter("pro_id"));
             ProductDAO dao = new ProductDAO();
             dao.DeleteProductById(pro_id);
             List<Product> listProducts = dao.getAllProducts();
             request.setAttribute("listProducts", listProducts);
             request.getRequestDispatcher("product.jsp").forward(request, response);
+        }
+        if (action.equals("add")){
+           String title = request.getParameter("title");
+            String price = request.getParameter("price");
+            String sale_price = request.getParameter("sale_price");
+            String quantity = request.getParameter("quantity");
+            String description = request.getParameter("description");
+            String img = request.getParameter("image");
+            String category_id = request.getParameter("category");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+            Date date = new Date();
+            String today = formatter.format(date);
+            ProductDAO dao = new ProductDAO();
+            dao.AddProduct(title, price, sale_price, quantity, description, img, category_id, today);
+            List<Category> listCategories = new CategoryDAO().getAllCategories();
+            request.setAttribute("listCategories", listCategories);
+            request.setAttribute("msg", "Finally SOME GOOD PRODUCT");
+            request.getRequestDispatcher("addProduct.jsp").forward(request, response); 
         }
     }
 

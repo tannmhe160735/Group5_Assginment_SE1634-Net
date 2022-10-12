@@ -5,7 +5,9 @@
 
 package Controller;
 
+import DAO.CategoryDAO;
 import DAO.ProductDAO;
+import Entity.Category;
 import Entity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,13 +15,15 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.util.Date;  
 import java.util.List;
 
 /**
  *
  * @author minht
  */
-public class DeleteProductController extends HttpServlet {
+public class ActionProductController extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -56,8 +60,16 @@ public class DeleteProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-//        request.getRequestDispatcher("#deleteEmployeeModal").forward(request, response);
-//        response.sendRedirect("#deleteEmployeeModal");
+        int pro_id = Integer.parseInt(request.getParameter("pro_id"));
+        String action = request.getParameter("action");
+        if (action.equals("edit")) {
+            ProductDAO dao = new ProductDAO();
+            Product product = dao.getProductById(pro_id);
+            List<Category> listCategories = new CategoryDAO().getAllCategories();
+            request.setAttribute("listCategories", listCategories);
+            request.setAttribute("product", product);
+            request.getRequestDispatcher("editProduct.jsp").forward(request, response);
+        }
     } 
 
     /** 
@@ -70,12 +82,32 @@ public class DeleteProductController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        String action = request.getParameter("action");
         int pro_id = Integer.parseInt(request.getParameter("pro_id"));
-        ProductDAO dao = new ProductDAO();
-        dao.DeleteProductById(pro_id);
-        List<Product> listProducts = dao.getAllProducts();
-        request.setAttribute("listProducts", listProducts);
-        request.getRequestDispatcher("product.jsp").forward(request, response);
+        if (action.equals("edit")) {
+            String title = request.getParameter("title");
+            String price = request.getParameter("price");
+            String sale_price = request.getParameter("sale_price");
+            String quantity = request.getParameter("quantity");
+            String description = request.getParameter("description");
+            String img = request.getParameter("image");
+            String category_id = request.getParameter("category");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+            Date date = new Date();
+            String today = formatter.format(date);
+            ProductDAO dao = new ProductDAO();
+            dao.EditProduct(pro_id, title, price, sale_price, quantity, description, img, category_id, today);
+            List<Product> listProducts = dao.getAllProducts();
+            request.setAttribute("listProducts", listProducts);
+            request.getRequestDispatcher("product.jsp").forward(request, response);
+        }
+        if (action.equals("delete")) {
+            ProductDAO dao = new ProductDAO();
+            dao.DeleteProductById(pro_id);
+            List<Product> listProducts = dao.getAllProducts();
+            request.setAttribute("listProducts", listProducts);
+            request.getRequestDispatcher("product.jsp").forward(request, response);
+        }
     }
 
     /** 

@@ -37,6 +37,9 @@
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+
 
         <!--
             HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
@@ -53,13 +56,6 @@
         <script>
             NProgress.configure({showSpinner: false});
             NProgress.start();
-            $(document).ready(function () {
-                        $("#delete").click(function () {
-                            var id =  $(this).closest("tr").find("#pro_id").text();
-                            $('#deleteEmployeeModal').modal('show');//load modal
-                            $("#id").value(id);
-                        });
-                    });
         </script>
 
 
@@ -107,49 +103,76 @@
                                                 <th>Created_Date</th>
                                                 <th>Edit</th>
                                                 <th>Delete</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <c:forEach items="${listProducts}" var="p">
                                             <tr>
-                                                <th></th>
-                                                <th>${p.product_id}<input type="hidden" name="pro_id" id="pro_id" value="${p.product_id}"></th>
-                                                <th>${p.title}</th>
-                                                <th>$${p.price}</th>
-                                                <th>${p.sale_price}</th>
-                                                <th>${p.quantity}</th>
-                                                <th>${p.description}</th>
-                                                <th><img src="${p.img}" style="width:150px; height:100px;" class="user-image" alt="User Image" /></th>                      
-                                                    <c:if test="${p.category_id eq 0}">
-                                                    <th>Vans Auth</th>
-                                                    </c:if>
-                                                    <c:if test="${p.category_id eq 1}">
-                                                    <th>Vans Authentic</th>
-                                                    </c:if>
-                                                    <c:if test="${p.category_id eq 2}">
-                                                    <th>Vans Old skool</th>
-                                                    </c:if>
-                                                    <c:if test="${p.category_id eq 3}">
-                                                    <th>Vans Slip-on</th>
-                                                    </c:if>
-                                                    <c:if test="${p.category_id eq 4}">
-                                                    <th>Vans SK8 - Hi</th>
-                                                    </c:if>
-                                                    <c:if test="${p.category_id eq 5}">
-                                                    <th>Vans Vault</th>
-                                                    </c:if>
-                                                    <c:if test="${p.category_id eq 6}">
-                                                    <th>Vans Auth</th>
-                                                    </c:if>
-                                                <th>${p.create_date}</th>
+                                                <td></td>
+                                                <td>${p.product_id}</td>
+                                                <td>${p.title}</td>
+                                                <td>$${p.price}</td>
+                                                <td>${p.sale_price}</td>
+                                                <td>${p.quantity}</td>
+                                                <td>${p.description}</td>
+                                                <td><img src="${p.img}" style="width:150px; height:100px;" class="user-image" alt="User Image" /></td>                      
+                                                <c:if test="${p.category_id eq 0}">
+                                                    <td>Vans Auth</td>
+                                                </c:if>
+                                                <c:if test="${p.category_id eq 1}">
+                                                    <td>Vans Authentic</td>
+                                                </c:if>
+                                                <c:if test="${p.category_id eq 2}">
+                                                    <td>Vans Old skool</td>
+                                                </c:if>
+                                                <c:if test="${p.category_id eq 3}">
+                                                    <td>Vans Slip-on</td>
+                                                </c:if>
+                                                <c:if test="${p.category_id eq 4}">
+                                                    <td>Vans SK8 - Hitdth</td>
+                                                </c:if>
+                                                <c:if test="${p.category_id eq 5}">
+                                                    <td>Vans Vault</td>
+                                                </c:if>
+                                                <c:if test="${p.category_id eq 6}">
+                                                    <td>Vans Auth</td>
+                                                </c:if>
+                                                <td>${p.create_date}</td>
                                                 <td>
-                                                    <a href="editProduct.html" class="edit" data-toggle="modal"><i class="material-icons"
-                                                                                                                   data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                                    <a href="action_pro?pro_id=${p.product_id}&action=edit" style="color: black;" ><i class="material-icons"
+                                                                                                    data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                                </td>
+                                                <td>                                                   
+                                                    <button type="button" data-toggle="modal" data-target="#modal${p.product_id}">
+                                                        <i class="material-icons" title="Delete">&#xE872;</i>
+                                                    </button>                                                                                                                                                                                      
                                                 </td>
                                                 <td>
-                                                    <button type="button" id="delete" data-toggle="modal" data-target="#deleteEmployeeModal"><input type="hidden" name="pro_id" id="pro_id" value="${p.product_id}"><span class="material-icons"
-                                                                                                     data-toggle="tooltip" title="Delete">&#xE872;</span></button>                                               
+                                                    <div id="modal${p.product_id}" class="modal fade">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <form action="action_pro?pro_id=${p.product_id}&action=delete" method="POST">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title">Delete Product</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <p>Are you sure you want to delete these Products?</p>
+                                                                        <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                                                        <input type="submit" class="btn btn-danger" value="Delete">
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>    
                                                 </td>
+                                                
                                             </tr>
                                         </c:forEach>
                                     </tbody>
@@ -158,28 +181,6 @@
                         </div>
                     </div>
                 </div>               
-                <!-- Delete Modal HTML -->
-                <div id="deleteEmployeeModal" class="modal fade">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <form action="deletep" method="POST">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Delete Product</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Are you sure you want to delete these Records?</p>
-                                    <p class="text-warning"><small>This action cannot be undone.</small></p>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="text" name="id_to_delete" id="id">
-                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                    <input type="submit" class="btn btn-danger" value="Delete">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -203,6 +204,7 @@
         <script src="js/sleek.js"></script>
         <link href="options/optionswitch.css" rel="stylesheet">
         <script src="options/optionswitcher.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 
 

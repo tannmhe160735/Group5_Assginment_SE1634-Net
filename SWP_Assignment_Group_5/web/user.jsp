@@ -128,7 +128,7 @@
                                                                                            data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                         </td>
                                         <td>
-                                            <a href="action?action=delete&id=${a.acc_id}"><i class="material-icons"
+                                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
                                                                                              data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                         </td>
                                     </tr>

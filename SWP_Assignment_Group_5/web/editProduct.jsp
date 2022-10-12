@@ -64,7 +64,7 @@
             <!-- ====================================
                   ??? LEFT SIDEBAR WITH OUT FOOTER
                 ===================================== -->
-            <jsp:include page="staff_sidebar.jsp"></jsp:include>
+            <jsp:include page="admin_sidebar.jsp"></jsp:include>
 
 
                 <!-- ====================================
@@ -73,7 +73,7 @@
                 <div class="page-wrapper">
 
                     <!-- Header -->
-                <jsp:include page="staff_header.jsp"></jsp:include>
+                <jsp:include page="admin_header.jsp"></jsp:include>
 
                 <!-- ====================================
                     ??? CONTENT WRAPPER
@@ -83,26 +83,52 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title">Edit Product</h4>
-                                <a href="listVoucher"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></a>
+                                <a href="product"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></a>
                             </div>
-                            <form action="editProduct?code=${requestScope.voucher.voucher_code}" method="post">
-                                <div class="modal-body">
+                            <form action="action_pro?action=edit" method="post">
+                                <div class="modal-body">                    
                                     <div class="form-group">
-                                        <label>Voucher Code</label>
-                                        <input name="new_code" type="text" class="form-control" required value="${requestScope.voucher.voucher_code}" >
+                                        <label>ID</label>
+                                        <input name="pro_id" type="text" class="form-control" readonly  value="${requestScope.product.product_id}" >
                                     </div>
                                     <div class="form-group">
-                                        <label>Experience Date - ${requestScope.voucher.voucher_experience}</label>
-                                        <input name="date" type="date" class="form-control" required >
+                                        <label>Title</label>
+                                        <input name="title" type="text" class="form-control"  value="${requestScope.product.title}" >
                                     </div>
                                     <div class="form-group">
-                                        <label>Discount(%)</label>
-                                        <input name="discount" type="text" class="form-control" required value="${requestScope.voucher.voucher_discount}">
+                                        <label>Price ($)</label>
+                                        <input name="price" type="text" class="form-control"  value="${requestScope.product.price}" >
                                     </div>
+                                    <div class="form-group">
+                                        <label>Sale_price</label>
+                                        <input name="sale_price" type="text" class="form-control" value="${requestScope.product.sale_price}" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Quantity</label>
+                                        <input name="quantity" type="text" class="form-control" value="${requestScope.product.quantity}" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Description</label><br>                                     
+                                        <textarea name="description" style="width: 100%; height: 100px;">${requestScope.product.description}</textarea>     
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Image</label>
+                                        <input name="image" type="text" class="form-control" value="${requestScope.product.img}" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Category</label>
+                                            <select name="category">
+                                        <c:forEach items="${requestScope.listCategories}" var="c">
+                                            <option value="${c.cate_id}">${c.cate_name}</option>
+                                        </c:forEach>
+                                            </select>               
+                                    </div>
+                                    
+                                    
 
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="listVoucher"><button type="button" class="btn btn-close" data-dismiss="modal" aria-hidden="true">Cancel</button></a>
+                                    <a href="product"><button type="button" class="btn btn-close" data-dismiss="modal" aria-hidden="true">Cancel</button></a>
                                     <input type="submit" class="btn btn-success" value="Save">
                                 </div>
                             </form>

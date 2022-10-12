@@ -4,6 +4,7 @@
  */
 package DAO;
 
+import DB.Nhat_DBContext;
 import Entity.Voucher;
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -16,16 +17,16 @@ import java.util.logging.Logger;
  *
  * @author Admin
  */
-public class VoucherDAO {
+public class VoucherDAO extends Nhat_DBContext<Voucher> {
 
-    Connection conn = DB.Binh_DBContext.CreateConnection();
+    //Connection conn = DB.Binh_DBContext.CreateConnection();
 
     public List<Voucher> GetAllVoucher() {
         List<Voucher> voucher = new ArrayList<Voucher>();
         String sql = "select * from voucher_new";
         SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            PreparedStatement ptmt = conn.prepareStatement(sql);
+            PreparedStatement ptmt = connection.prepareStatement(sql);
             ResultSet rs = ptmt.executeQuery();
 
             while (rs.next()) {
@@ -49,7 +50,7 @@ public class VoucherDAO {
 
         PreparedStatement ptmt;
         try {
-            ptmt = conn.prepareStatement(sql);
+            ptmt = connection.prepareStatement(sql);
             ptmt.setString(1, code);
             ptmt.setString(2, create);
             ptmt.setString(3, experience);
@@ -67,7 +68,7 @@ public class VoucherDAO {
         String sql = "select * from voucher_new where voucher_code = ? ";
 
         try {
-            PreparedStatement ptmt = conn.prepareStatement(sql);
+            PreparedStatement ptmt = connection.prepareStatement(sql);
             ptmt.setString(1, code);
             ResultSet rss = ptmt.executeQuery();
 
@@ -84,7 +85,7 @@ public class VoucherDAO {
     public void DeleteVoucher(String code) {
         String sql = "DELETE FROM [dbo].[voucher_new] WHERE voucher_code = ?";
         try {
-            PreparedStatement ptmt = conn.prepareStatement(sql);
+            PreparedStatement ptmt = connection.prepareStatement(sql);
             ptmt.setString(1, code);
             ptmt.executeUpdate();
 
@@ -101,7 +102,7 @@ public class VoucherDAO {
              + "[voucher_discount] = ? WHERE voucher_code =? ";
 
          try {
-            PreparedStatement ptmt = conn.prepareStatement(sql);
+            PreparedStatement ptmt = connection.prepareStatement(sql);
             ptmt.setString(1, new_code);
             ptmt.setString(2, create);
             ptmt.setString(3, experience);

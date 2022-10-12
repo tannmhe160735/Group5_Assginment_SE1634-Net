@@ -45,6 +45,19 @@ public class ProductDAO extends Linh_DBContext {
         }
         return list;
     }
+    
+    public void DeleteProductById(int pro_id) {
+        try {
+            String sql = "DELETE FROM [product]\n" +
+                         "WHERE product_id =?";          
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, pro_id);
+            stm.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public static void main(String[] args) {
             ProductDAO dao = new ProductDAO();
             List<Product> product = dao.getAllProducts();

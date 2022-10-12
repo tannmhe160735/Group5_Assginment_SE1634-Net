@@ -6,7 +6,6 @@ package DAO;
 
 import DB.Binh_DBContext;
 import DB.Linh_DBContext;
-import DB.Nhat_DBContext;
 import Entity.Category;
 import Entity.Product;
 import java.sql.Connection;
@@ -20,9 +19,9 @@ import java.util.List;
  *
  * @author DELL
  */
-public class ProductDAO extends Nhat_DBContext<Product> {
+public class ProductDAO extends Linh_DBContext {
 
-    //Connection c/onnection = DB.Nhat_DBContext.CreateConnection();
+    Connection connection = DB.Linh_DBContext.CreateConnection();
 
     public List<Product> getAllProducts() {
         List<Product> list = new ArrayList<>();
@@ -43,7 +42,6 @@ public class ProductDAO extends Nhat_DBContext<Product> {
                         .create_date(rs.getDate(9))
                         .build();
                 list.add(product);
-                System.out.println("1");
             }
         } catch (SQLException e) {
         }

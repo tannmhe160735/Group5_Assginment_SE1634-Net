@@ -5,6 +5,7 @@
 package DAO;
 
 import DB.Linh_DBContext;
+import Entity.Category;
 import Entity.Product;
 import java.sql.Connection;
 import java.sql.Date;

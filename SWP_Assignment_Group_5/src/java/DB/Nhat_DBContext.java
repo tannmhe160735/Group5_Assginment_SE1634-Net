@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  */
 public abstract class Nhat_DBContext<T> {
 
-    public Connection connection;
+    Connection connection;
 
     public Nhat_DBContext() {
         try {

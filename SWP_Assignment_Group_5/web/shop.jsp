@@ -28,6 +28,7 @@
     <jsp:include page="header.jsp"></jsp:include>
         <body id="page-top">
             <!-- Navigation-->
+
             <!-- Section-->
             <section on class="py-5" style="background-color: #181A1B">
                 <div class="container px-4 px-lg-5 my-5 text-light">
@@ -36,47 +37,58 @@
                             <h3>List Categories</h3>
                             <ul class="list-group">
                             <c:forEach items="${listCategories}" var="C">
-                                <li class="list-group-item">${C.cate_name}</li>
-                                </c:forEach>
+                                <a href="#"><li class="list-group-item">${C.cate_name}</li></a>
+                                    </c:forEach>
+                            <style>
+                                .list-group-item:hover{
+                                    background-color: yellow;
+                                }
+                            </style>
+
                         </ul>
                     </div>
                     <div class="col-md-9">
                         <h3>List Products</h3>
                         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 justify-content-center text-dark">
-                        <c:forEach items="${listProducts}" var="P">
-                                <div class="col mb-5">
+                            <c:forEach  items="${listProducts}" var="p">
+                                <div class="col mb-5 ">
                                     <div class="card h-100">
-                                        <!-- Sale badge-->
-                                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+                                        <div class="card-body p-4">
+                                            <img class="card-img-top" src="${p.img}" alt="..." />
+                                        </div>
                                         <!-- Product image-->
-                                        <img class="card-img-top" src="${P.img}" alt="..." />
+
                                         <!-- Product details-->
                                         <div class="card-body p-4">
                                             <div class="text-center">
                                                 <!-- Product name-->
-                                                <h5 class="fw-bolder">${P.title}</h5>
-                                                <!-- Product reviews-->
-                                                <div class="d-flex justify-content-center small text-warning mb-2">
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                </div>
+                                                <h5 class="fw-bolder">${p.title}</h5>
                                                 <!-- Product price-->
-                                                <span class="text-muted text-decoration-line-through">$20.00</span> $${P.price}
+
                                             </div>
                                         </div>
+                                        <div class="card-body p-4">
+                                            <div class="text-center">
+                                                  <span class="text"> $${p.price}</span>
+                                            </div>
+                                          
+                                        </div>
+
                                         <!-- Product actions-->
                                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="detail.jsp">View options</a></div>
                                         </div>
                                     </div>
                                 </div>
                             </c:forEach>
+
+
+
+
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
         <!-- Footer-->
@@ -85,5 +97,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+
     </body>
+
 </html>

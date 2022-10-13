@@ -55,9 +55,17 @@ public class ActionAccountController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        
-        processRequest(request, response);
+    throws ServletException, IOException {       
+        String action = request.getParameter("action");
+        if(action.equals("edit")){
+            AccountDAO dao = new AccountDAO();
+            ArrayList<Account> roles = dao.ListRoleId();
+            ArrayList<Account> accounts = dao.list();
+            request.setAttribute("roles", roles);
+            request.setAttribute("accounts", accounts);
+            request.setAttribute("action", "edit");
+            request.getRequestDispatcher("user.jsp").forward(request, response);
+        }
     } 
 
     /** 
@@ -71,17 +79,24 @@ public class ActionAccountController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         String action = request.getParameter("action");
-        int id = Integer.parseInt(request.getParameter("id"));  
         AccountDAO dao = new AccountDAO();
-        if(action.equals("delete")){           
+        if(action.equals("delete")){  
+            int id = Integer.parseInt(request.getParameter("id"));  
             dao.DeleteAccountById(id);
             ArrayList<Account> accounts = dao.list();
             request.setAttribute("accounts", accounts);
             request.getRequestDispatcher("user.jsp").forward(request, response);
         }
-        if(action.equals("edit")){
+        if(action.equals("promote")){
+            String[] indexs = request.getParameterValues("index");
+            for (String index : indexs) {
+                String acc_id = request.getParameter("acc_id"+index);
+                String role = request.getParameter("role"+index);
+                dao.UpdateRoleAccountById(acc_id, role);
+            }
             ArrayList<Account> accounts = dao.list();
             request.setAttribute("accounts", accounts);
+            request.setAttribute("action", null);
             request.getRequestDispatcher("user.jsp").forward(request, response);
         }
     }

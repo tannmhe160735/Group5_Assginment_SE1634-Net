@@ -70,6 +70,11 @@ public class LoginController extends HttpServlet {
                  RequestDispatcher rd = request.getRequestDispatcher("home");
                  rd.forward(request, response);
             }
+            if(acc.getRole_id()==0){
+                 request.setAttribute("msg", "You have been BANNED from server please contact us to retrieve  your account ");
+                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+                 rd.forward(request, response);
+            }
            
     }
 

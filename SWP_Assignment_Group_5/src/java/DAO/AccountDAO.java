@@ -26,7 +26,7 @@ public class AccountDAO {
             ptmt.setString(1, email);
             ptmt.setString(2, pass);
             ResultSet rs = ptmt.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 acc.setAcc_id(rs.getInt("acc_id"));
                 acc.setAcc_name(rs.getString("fullname"));
                 acc.setEmail(rs.getString("email"));
@@ -45,7 +45,7 @@ public class AccountDAO {
 
         return null;
     }
-    
+
     public ArrayList<Account> list() {
         ArrayList<Account> accounts = new ArrayList<>();
         try {
@@ -68,11 +68,11 @@ public class AccountDAO {
         }
         return accounts;
     }
-    
+
     public void DeleteAccountById(int acc_id) {
         try {
-            String sql = "DELETE FROM [account]\n" +
-                         "WHERE acc_id =?";          
+            String sql = "DELETE FROM [account]\n"
+                    + "WHERE acc_id =?";
             PreparedStatement stm = conn.prepareStatement(sql);
             stm.setInt(1, acc_id);
             stm.executeUpdate();
@@ -80,10 +80,41 @@ public class AccountDAO {
             e.printStackTrace();
         }
     }
-    
+
+    public void UpdateRoleAccountById(String acc_id, String role) {
+        try {
+            String sql = "UPDATE [account] \n"
+                    + "   SET [role_id] = ?\n"
+                    + " WHERE acc_id = ?";
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setString(1, role);
+            stm.setString(2, acc_id);
+            stm.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<Account> ListRoleId() {
+        ArrayList<Account> accounts = new ArrayList<>();
+        try {
+            String sql = "select distinct [role_id] from account";
+            PreparedStatement stm = conn.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Account acc = new Account();
+                acc.setRole_id(rs.getInt("role_id"));
+                accounts.add(acc);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return accounts;
+    }
+
     public static void main(String[] args) {
         AccountDAO dao = new AccountDAO();
-        dao.DeleteAccountById(18);
+        dao.UpdateRoleAccountById("3", "3");
         ArrayList<Account> accounts = dao.list();
         for (Account account : accounts) {
             System.out.println(account);

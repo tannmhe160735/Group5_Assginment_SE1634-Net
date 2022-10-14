@@ -5,8 +5,16 @@
         <servlet-class>Controller.DemoServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ShopController</servlet-name>
-        <servlet-class>Controller.ShopController</servlet-class>
+        <servlet-name>ViewDetailPost</servlet-name>
+        <servlet-class>Controller.Staff.ViewDetailPost</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListOfPostPaginaged</servlet-name>
+        <servlet-class>Controller.Staff.ListOfPostPaginaged</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddNewPost</servlet-name>
+        <servlet-class>Controller.Staff.AddNewPost</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>FilterCategoryController</servlet-name>
@@ -17,8 +25,16 @@
         <url-pattern>/DemoServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ShopController</servlet-name>
-        <url-pattern>/shop</url-pattern>
+        <servlet-name>ViewDetailPost</servlet-name>
+        <url-pattern>/ViewDetailPost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListOfPostPaginaged</servlet-name>
+        <url-pattern>/ListOfPostPaginaged</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddNewPost</servlet-name>
+        <url-pattern>/AddNewPost</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FilterCategoryController</servlet-name>

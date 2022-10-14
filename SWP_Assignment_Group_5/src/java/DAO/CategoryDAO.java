@@ -4,6 +4,7 @@
  */
 package DAO;
 
+import DB.Binh_DBContext;
 import DB.Linh_DBContext;
 import Entity.Category;
 import java.sql.Connection;
@@ -40,9 +41,9 @@ public class CategoryDAO extends Linh_DBContext {
     
     public static void main(String[] args) {
             CategoryDAO dao = new CategoryDAO();
-            List<Category> category = dao.getAllCategories();
-            for (Category cate : category) {
-                System.out.println(cate);
+            List<Category> list = dao.getAllCategories();
+            for (Category category : list) {
+                System.out.println(category.toString());
         }
     }
 }

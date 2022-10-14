@@ -25,7 +25,6 @@
         <link href='plugins/jvectormap/jquery-jvectormap-2.0.3.css' rel='stylesheet'>
         <link href='plugins/daterangepicker/daterangepicker.css' rel='stylesheet'>
 
-
         <link href='plugins/toastr/toastr.min.css' rel='stylesheet'>
 
         <!-- SLEEK CSS -->
@@ -33,12 +32,9 @@
         <!-- FAVICON -->
         <link href="img/favicon.png" rel="shortcut icon" />
 
-
-
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
 
 
         <!--

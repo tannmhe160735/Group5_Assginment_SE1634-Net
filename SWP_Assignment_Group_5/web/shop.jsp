@@ -36,14 +36,13 @@
                         <div class="col-md-3 mb-5 ">
                             <h3>List Categories</h3>
                             <ul class="list-group">
-                            <c:forEach items="${listCategories}" var="C">
-                                <li class="list-group-item"><a href="filter-category?categoryId=${C.cate_id}">${C.cate_name}</a></li>
+                            <c:forEach items="${listCategories}" var="c">
+                                <li class="list-group-item"><a href="filter-category?categoryId=${c.cate_id}">${c.cate_name}</a></li>
                                 </c:forEach>
-                                <a href="#"><li class="list-group-item">${C.cate_name}</li></a>
-                                    </c:forEach>
+                            <a href="#"><li class="list-group-item">${c.cate_name}</li></a>
                             <style>
                                 .list-group-item:hover{
-                                    background-color: yellow;
+                                    background-color: gray;
                                 }
                             </style>
                         </ul>
@@ -65,16 +64,13 @@
                                                 <!-- Product name-->
                                                 <h5 class="fw-bolder">${p.title}</h5>
                                                 <!-- Product price-->
-
                                             </div>
                                         </div>
                                         <div class="card-body p-4">
                                             <div class="text-center">
-                                                  <span class="text"> $${p.price}</span>
-                                            </div>
-                                          
+                                                <span class="text"> $${p.price}</span>
+                                            </div>                                         
                                         </div>
-
                                         <!-- Product actions-->
                                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                             <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="detail.jsp">View options</a></div>
@@ -82,14 +78,9 @@
                                     </div>
                                 </div>
                             </c:forEach>
-
-
-
-
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
         <!-- Footer-->

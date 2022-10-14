@@ -47,12 +47,13 @@ public class ProductDAO extends Linh_DBContext {
         }
         return list;
     }
-    
+
     public static void main(String[] args) {
-          ProductDAO dao = new ProductDAO();
-            List<Product> list = dao.getAllProducts();
-            for (Product prod : list) {
-                System.out.println(prod.toString());
+        ProductDAO dao = new ProductDAO();
+        List<Product> list = dao.getAllProducts();
+        for (Product prod : list) {
+            System.out.println(prod.toString());
+        }
     }
 
     public List<Product> getProductsByCategoryId(int categoryId) {
@@ -80,5 +81,4 @@ public class ProductDAO extends Linh_DBContext {
         }
         return list;
     }
-}
 }

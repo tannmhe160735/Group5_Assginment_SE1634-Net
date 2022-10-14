@@ -50,35 +50,25 @@
                     <%pageContext.setAttribute("a", "adidat2");%>
                     <table class="b" style="width: 27vw; margin-left: 1vw">
                         <th>Tên giày</th>
-                        <tr><td><a href="?tenGiay=adidat1">giày adidat 1</a></td></tr>
-                        <tr><td><a href="?tenGiay=supromo1">giày supromo 1</a></td></tr>
-                        <tr
-                            <dava:if test="${param.tenGiay==a}" >
-                                style="background-color: cornflowerblue"
-                            </dava:if>><td><a href="?tenGiay=adidat2">giày adidat 2</a></td></tr>
-                        <tr><td><a href="?tenGiay=supromo8">giày supromo 8</a></td></tr>
+                        <dava:forEach items="${requestScope.listAllIdAndTitleOfProduct}" var="aIdAndTitleOfProduct">
+                            <tr
+                                <dava:if test="${param.product_id==aIdAndTitleOfProduct.product_id}" >
+                                    style="background-color: cornflowerblue"
+                                </dava:if>><td><a href="?product_id=${aIdAndTitleOfProduct.product_id}">${aIdAndTitleOfProduct.title}</a></td></tr>
+                                    </dava:forEach>
                     </table>
                 </td>
                 <td valign='top'>
                     <table class="b" style="width: 65vw; margin-right:  1vw">
                         <th>Feedback</th>
-                            <dava:if test="${param.tenGiay == 'adidat2'}">
+                            <dava:forEach items="${requestScope.listAllFeedbackStarAndContentByProductID}" var="FeedbackStarAndContent">
                             <tr>
-                                <td><myCustomTag:Star_Format numberOfStarOfComment="${5}"/>Ổn áp lắm nha mng
+                                <td><myCustomTag:Star_Format numberOfStarOfComment="${FeedbackStarAndContent.numberOfStar}"/>${FeedbackStarAndContent.feedbackContent}
                                     <a class="a" href="editFeedBack.jsp" style="float:right;text-align:right;"><button>Edit</button></a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td><myCustomTag:Star_Format numberOfStarOfComment="${5}"/>Chất lượng sản phẩm tốt.
-                                    <a class="a" href="editFeedBack.jsp" style="float:right;text-align:right;"><button>Edit</button></a>
-                                </td>
-                            </tr>
-                            <tr><td><myCustomTag:Star_Format numberOfStarOfComment="${3}"/>Hàng hơi bị lỗi, bị đứt chỉ, tôi phải khâu lại<a class="a" href="editFeedBack.jsp" style="float:right;text-align:right;"><button>Edit</button></a></td></tr>
-                            <tr><td><myCustomTag:Star_Format numberOfStarOfComment="${1}"/>Sản phẩm quá tệ, đi được 1 tuần mà bị rách rồi<a class="a" href="editFeedBack.jsp" style="float:right;text-align:right;"><button>Edit</button></a></td></tr>
-                            <tr><td><myCustomTag:Star_Format numberOfStarOfComment="${2}"/>Shop đóng hàng gửi hàng chậm, 1 tháng mới tới nơi<a class="a" href="editFeedBack.jsp" style="float:right;text-align:right;"><button>Edit</button></a></td></tr>
-                            <tr><td><myCustomTag:Star_Format numberOfStarOfComment="${4}"/>Hàng Việt Nam chất lượng tốt quá<a class="a" href="editFeedBack.jsp" style="float:right;text-align:right;"><button>Edit</button></a></td></tr>
+                        </dava:forEach>
 
-                        </dava:if>
                     </table>
                 </td>
             </tr>

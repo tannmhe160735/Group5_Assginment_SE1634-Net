@@ -16,13 +16,13 @@ import java.util.logging.Logger;
  */
 public abstract class Nhat_DBContext<T> {
 
-    Connection connection;
+    public Connection connection;
 
     public Nhat_DBContext() {
         try {
-            String user = "tan";
-            String pass = "12345";
-            String url = "jdbc:sqlserver://localhost\\MSSQLSERVER:1433;databaseName=data";
+            String user = "tsn2";
+            String pass = "99999";
+            String url = "jdbc:sqlserver://DESKTOP-5853TS3\\MSSQLSERVER:1433;databaseName=swp";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             try {
                 connection = DriverManager.getConnection(url, user, pass);

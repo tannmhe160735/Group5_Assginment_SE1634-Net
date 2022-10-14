@@ -36,7 +36,7 @@
                             <h3>List Categories</h3>
                             <ul class="list-group">
                             <c:forEach items="${listCategories}" var="C">
-                                <li class="list-group-item">${C.cate_name}</li>
+                                <li class="list-group-item"><a href="filter-category?categoryId=${C.cate_id}">${C.cate_name}</a></li>
                                 </c:forEach>
                         </ul>
                     </div>

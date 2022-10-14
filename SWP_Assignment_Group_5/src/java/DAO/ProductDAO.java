@@ -52,4 +52,30 @@ public class ProductDAO extends Linh_DBContext {
                 System.out.println(prd);
         }
     }
+
+    public List<Product> getProductsByCategoryId(int categoryId) {
+        List<Product> list = new ArrayList<>();
+        try {
+            String sql = "select * from product where product.category_id = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, categoryId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Product product = Product.builder()
+                        .product_id(rs.getInt(1))
+                        .title(rs.getString(2))
+                        .price(rs.getFloat(3))
+                        .sale_price(rs.getFloat(4))
+                        .quantity(rs.getInt(5))
+                        .description(rs.getString(6))
+                        .img(rs.getString(7))
+                        .category_id(rs.getInt(8))
+                        .create_date(rs.getDate(9))
+                        .build();
+                list.add(product);
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
 }

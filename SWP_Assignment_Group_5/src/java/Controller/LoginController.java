@@ -67,12 +67,7 @@ public class LoginController extends HttpServlet {
                  rd.forward(request, response);
             }
             if(acc.getRole_id()==1){
-                 RequestDispatcher rd = request.getRequestDispatcher("home");
-                 rd.forward(request, response);
-            }
-            if(acc.getRole_id()==0){
-                 request.setAttribute("msg", "You have been BANNED from server please contact us to retrieve  your account ");
-                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+                 RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
                  rd.forward(request, response);
             }
            

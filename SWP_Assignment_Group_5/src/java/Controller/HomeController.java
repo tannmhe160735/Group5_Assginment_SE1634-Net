@@ -28,16 +28,16 @@ public class HomeController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        if(session.getAttribute("acc")==null){
-            session.setAttribute("log","login.jsp");
-            session.setAttribute("value_log","Login");
-        }else{
-             session.setAttribute("value_log","Logout");
-             session.setAttribute("log","logout");
+        if (session.getAttribute("acc") == null) {
+            session.setAttribute("log", "login.jsp");
+            session.setAttribute("value_log", "Login");
+        } else {
+            session.setAttribute("value_log", "Logout");
+            session.setAttribute("log", "logout");
         }
         RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
         rd.forward(request, response);
-        
+
     }
 
     @Override

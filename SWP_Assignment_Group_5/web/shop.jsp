@@ -34,7 +34,7 @@
                 <div class="container px-4 px-lg-5 my-5 text-light">
                     <div class="row">
                         <div class="col-md-3 mb-5 ">
-                            <h3>List Categories</h3>
+                            <h3>Danh Mục</h3>
                             <ul class="list-group">
                             <c:forEach items="${listCategories}" var="C">
                                 <a href="#"><li class="list-group-item">${C.cate_name}</li></a>
@@ -48,7 +48,7 @@
                         </ul>
                     </div>
                     <div class="col-md-9">
-                        <h3>List Products</h3>
+                        <h3>Sản Phẩm</h3>
                         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 justify-content-center text-dark">
                             <c:forEach  items="${listProducts}" var="p">
                                 <div class="col mb-5 ">

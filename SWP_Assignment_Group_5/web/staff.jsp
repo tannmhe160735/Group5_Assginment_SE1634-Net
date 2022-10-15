@@ -51,7 +51,6 @@
         ===================================== -->
     <jsp:include page="staff_sidebar.jsp"></jsp:include>
 
-
     <!-- ====================================
         ??? PAGE WRAPPER
         ===================================== -->
@@ -59,7 +58,6 @@
 
       <!-- Header -->
     <jsp:include page ="staff_header.jsp"></jsp:include>
-
 
       <!-- ====================================
           ??? CONTENT WRAPPER
@@ -115,7 +113,6 @@
             </div>
           </div>
         </div>
-
 
         <div class="content">
           <!-- Sales Graph -->

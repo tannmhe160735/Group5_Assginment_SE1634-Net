@@ -33,12 +33,12 @@ public class DetailController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            int productId = Integer.parseInt(request.getParameter("product_id"));
+            int productId = Integer.parseInt(request.getParameter("productId"));
             Product product = new ProductDAO().getProductById(productId);
             List<Product> listRelatedProducts = new ProductDAO().getRelatedProductById(productId);
             request.setAttribute("listRelatedProducts", listRelatedProducts);
             request.setAttribute("product", product);
-            request.getSession().setAttribute("urlHistory", "detail?product_id="+productId);
+            request.getSession().setAttribute("urlHistory", "detail?productId="+productId);
             request.getRequestDispatcher("detail.jsp").forward(request, response);
         }
     } 

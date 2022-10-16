@@ -57,9 +57,7 @@
                                             <img class="card-img-top" src="${p.img}" alt="..." />
                                         </div>
                                         <!-- Product image-->
-                                        <a href="detail?productId=${P.product_id}">
-                                            <img class="card-img-top" src="${P.img}" alt="..." />
-                                        </a>
+                                   
                                         <!-- Product details-->
                                         <div class="card-body p-4">
                                             <div class="text-center">
@@ -75,7 +73,7 @@
                                         </div>
                                         <!-- Product actions-->
                                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="detail">View options</a></div>
+                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="detail?productId=${p.product_id}">View options</a></div>
                                         </div>
                                     </div>
                                 </div>

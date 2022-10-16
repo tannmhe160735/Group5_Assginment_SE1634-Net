@@ -47,6 +47,7 @@
                         </tr>
                     </table></td>
             </tr>
+            <dava:if test="${requestScope.thisProduct != null}">
             <tr>
                 <td><table>
                         <tr>
@@ -55,10 +56,10 @@
                             <td style="width: 40vw">
                                 <table style="background-color: cadetblue;width: 40vw">
                                     <tr>
-                                        <td style="width: 10vw;"><img src="../assets/img/img_for_posts/Screenshot 2022-10-02 220116.png" alt=""/></td>
+                                        <td style="width: 10vw;"><img src="${requestScope.thisProduct.img}" alt=""/></td>
                                         <td><table>
-                                                <tr><td><h6 style="font-size: 18px;margin-bottom: 15px">Giày Nika Air “Track Red”</h6></td></tr>
-                                                <tr><td><p>3.090.000 đ</p></td></tr>
+                                                <tr><td><h6 style="font-size: 18px;margin-bottom: 15px">${requestScope.thisProduct.title}</h6></td></tr>
+                                                <tr><td><p>${requestScope.thisProduct.price}đ</p></td></tr>
                                             </table></td>
                                     </tr>
                                 </table>
@@ -66,6 +67,7 @@
                         </tr>
                     </table></td>
             </tr>
+            </dava:if>
         </table>
 
     </body>

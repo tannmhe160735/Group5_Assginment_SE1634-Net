@@ -5,7 +5,9 @@
 package Controller.Staff;
 
 import DB.Nhat_PostDBContext;
+import DB.Nhat_ProductDBContext;
 import Entity.Post;
+import Entity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -61,28 +63,35 @@ public class ViewDetailPost extends HttpServlet {
         System.out.println(raw_post_id);
         // verification
         int post_id = verificationPostID(raw_post_id);
-        //get post from DBContext
+        //get post from DBContext to send
         Nhat_PostDBContext pdbc = new Nhat_PostDBContext();
         Post thisPost = pdbc.getAPostByID(post_id);
-        if (thisPost == null) {
-
-        } else {
-            //return output a post
+        //get product to send
+        Nhat_ProductDBContext npdbc = new Nhat_ProductDBContext();
+        Product thisProduct = npdbc.getIdAndTitleAndPriceAndImgOfProduct(thisPost.getProduct_id());
+        //return output a post
+        if (thisPost != null) {
             request.setAttribute("thisPost", thisPost);
-            request.getRequestDispatcher("view/viewDetailPost.jsp").forward(request, response);
         }
+        //return output a product
+        if (thisPost != null && thisProduct != null) {
+            request.setAttribute("thisProduct", thisProduct);
+        }
+
+        request.getRequestDispatcher("view/viewDetailPost.jsp").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+
+/**
+ * Handles the HTTP <code>POST</code> method.
+ *
+ * @param request servlet request
+ * @param response servlet response
+ * @throws ServletException if a servlet-specific error occurs
+ * @throws IOException if an I/O error occurs
+ */
+@Override
+protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
     }
@@ -93,7 +102,7 @@ public class ViewDetailPost extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-    public String getServletInfo() {
+public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 

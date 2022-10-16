@@ -35,4 +35,21 @@ public class Nhat_ProductDBContext extends Nhat_DBContext<Product>{
         }
         return null;
     }
+    
+    public Product getIdAndTitleAndPriceAndImgOfProduct(int productID){
+        try {
+            String sql = "select product_id,title,price,img from product where product_id=?";
+            PreparedStatement prstm = connection.prepareStatement(sql);
+            prstm.setInt(1, productID);
+            ResultSet rs = prstm.executeQuery();
+            if (rs.next()) {
+                Product a = new Product(rs.getInt("product_id"), rs.getString("title"), rs.getFloat("price"), 0, 1, null,rs.getString("img"),1,null);
+                return a;
+            }
+            return null;
+        } catch (SQLException ex) {
+            Logger.getLogger(Nhat_ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

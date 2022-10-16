@@ -4,6 +4,9 @@
  */
 package Controller.Staff;
 
+import DB.Nhat_PostDBContext;
+import DB.Nhat_ProductDBContext;
+import Entity.Post;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,6 +15,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
+import java.sql.Date;
+import java.time.LocalDate;
 
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
@@ -62,7 +67,9 @@ public class AddNewPost extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        Nhat_ProductDBContext npdbc = new Nhat_ProductDBContext();
+        request.setAttribute("listAllIdAndTitleOfProduct", npdbc.listAllIdAndTitleOfProduct());
+        request.getRequestDispatcher("view/addNewPost.jsp").forward(request, response);
     }
 
     /**
@@ -76,12 +83,23 @@ public class AddNewPost extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //save img file to "path"
         Part filePart = request.getPart("file");
         String fileName = filePart.getSubmittedFileName();
-        for (Part part : request.getParts()) {
-            part.write("D:\\SWP391\\Group5_Assginment_SE1634-Net\\SWP_Assignment_Group_5\\web\\assets\\img\\img_for_posts\\" + fileName);
-        }
-        response.getWriter().print("The file uploaded sucessfully.");
+        Part[] parts = request.getParts().toArray(new Part[5]);
+        parts[1].write("D:\\SWP391\\Group5_Assginment_SE1634-Net\\SWP_Assignment_Group_5\\web\\assets\\img\\img_for_posts\\" + fileName);
+        //create img path to save in DB
+        String pathOfIMGofThisPost = "assets/img/img_for_posts/"+fileName;
+        //take title and content1 and content2 and productID of this Post
+        String content1 = request.getParameter("content1");
+        String content2 = request.getParameter("content2");
+        int productID = Integer.parseInt(request.getParameter("productID"));
+        Date today = Date.valueOf(LocalDate.now());
+        String title = request.getParameter("title");
+        //then enough attributes to create this object Post
+        Post thisPostMustAddToDB = new Post(-1,productID,title,content1,content2,pathOfIMGofThisPost,today);
+        Nhat_PostDBContext nbpdbc= new Nhat_PostDBContext();
+        nbpdbc.addThisPost(thisPostMustAddToDB);
     }
 
     /**

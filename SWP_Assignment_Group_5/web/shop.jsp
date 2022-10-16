@@ -35,15 +35,17 @@
                     <div class="row">
                         <div class="col-md-3 mb-5 ">
                             <h3>Danh Mục</h3>
+                            <ul class="list-group">
                             <c:forEach items="${listCategories}" var="c">
                                 <li class="list-group-item"><a href="filter-category?categoryId=${c.cate_id}">${c.cate_name}</a></li>
-                            </c:forEach>
+                                </c:forEach>
+                            <a href="#"><li class="list-group-item">${c.cate_name}</li></a>
                             <style>
                                 .list-group-item:hover{
-                                    background-color: yellow;
-                                    
+                                    background-color: gray;
                                 }
                             </style>
+                        </ul>
                     </div>
                     <div class="col-md-9">
                         <h3>Sản Phẩm</h3>
@@ -52,12 +54,10 @@
                                 <div class="col mb-5 ">
                                     <div class="card h-100">
                                         <div class="card-body p-4">
-                                            <a href="detail?productId=${p.product_id}">
                                             <img class="card-img-top" src="${p.img}" alt="..." />
-                                        </a>
                                         </div>
                                         <!-- Product image-->
-                                        
+                                   
                                         <!-- Product details-->
                                         <div class="card-body p-4">
                                             <div class="text-center">

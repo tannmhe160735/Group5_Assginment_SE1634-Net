@@ -22,12 +22,7 @@
                     </ul>
                 </li>
             </ul>
-            
-            <form class="d-flex mx-auto">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-            
+
             <a href="cart.jsp">
                 <button class="btn btn-outline-light" type="submit">
                     <i class="bi-cart-fill me-1"></i>

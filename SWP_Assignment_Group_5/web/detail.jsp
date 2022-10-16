@@ -188,6 +188,7 @@
               </div>
       
               <div class="card mb-3">
+                  
                 <div class="card-body">
                   <div class="d-flex flex-start">
                     <img class="rounded-circle shadow-1-strong me-3"

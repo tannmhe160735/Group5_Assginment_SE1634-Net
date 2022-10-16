@@ -14,6 +14,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -35,11 +36,13 @@ public class ShopController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
         List<Category> listCategories = new CategoryDAO().getAllCategories();
         ProductDAO dao = new ProductDAO();
         List<Product> listProducts = dao.getAllProducts();
         request.setAttribute("listCategories", listCategories);
         request.setAttribute("listProducts", listProducts);
+
         request.getRequestDispatcher("shop.jsp").forward(request, response);
 
     }

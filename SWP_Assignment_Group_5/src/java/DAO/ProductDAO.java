@@ -51,7 +51,7 @@ public class ProductDAO extends Linh_DBContext {
 
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();
-        List<Product> list = dao.getAllProducts();
+        List<Product> list = dao.getRelatedProductById(2);
         for (Product prod : list) {
             System.out.println(prod.toString());
         }
@@ -80,8 +80,9 @@ public class ProductDAO extends Linh_DBContext {
             }
         } catch (SQLException e) {
         }
-                return list;
+        return list;
     }
+
     public Product getProductById(int pro_id) {
         try {
             String sql = "select * from product where [product_id] = ?";
@@ -185,5 +186,44 @@ public class ProductDAO extends Linh_DBContext {
         }
     }
 
-    
+    public List<Product> getRelatedProductById(int productId) {
+        List<Product> list = new ArrayList<>();
+        Product p = getProductById(productId);
+        try {
+            String sql = "SELECT top 4 [product_id]\n"
+                    + "      ,[title]\n"
+                    + "      ,[price]\n"
+                    + "      ,[sale_price]\n"
+                    + "      ,[quantity]\n"
+                    + "      ,[description]\n"
+                    + "      ,[img]\n"
+                    + "      ,[category_id]\n"
+                    + "      ,[create_date]\n"
+                    + "  FROM [dbo].[product]\n"
+                    + "  where category_id = ? and product_id != ? order by price desc";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, p.getCategory_id());
+            ps.setInt(2, productId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Product product = Product.builder()
+                        .product_id(rs.getInt(1))
+                        .title(rs.getString(2))
+                        .price(rs.getFloat(3))
+                        .sale_price(rs.getFloat(4))
+                        .quantity(rs.getInt(5))
+                        .description(rs.getString(6))
+                        .img(rs.getString(7))
+                        .category_id(rs.getInt(8))
+                        .create_date(rs.getDate(9))
+                        .build();
+                list.add(product);
+            }
+            return list;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
 }

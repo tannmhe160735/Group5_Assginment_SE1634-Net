@@ -17,7 +17,7 @@ public class Linh_DBContext {
        Connection conn = null;
        String url = "jdbc:sqlserver://localhost\\MSSQLSERVERSM22:1433;databaseName=data";
        String username="sa";
-       String password="123";
+       String password="12345";
        try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn = DriverManager.getConnection(url, username, password);

@@ -57,8 +57,8 @@
                                             <img class="card-img-top" src="${p.img}" alt="..." />
                                         </div>
                                         <!-- Product image-->
-                                        <a href="detail?productId=${P.id}">
-                                            <img class="card-img-top" src="${P.imageUrl}" alt="..." />
+                                        <a href="detail?productId=${P.product_id}">
+                                            <img class="card-img-top" src="${P.img}" alt="..." />
                                         </a>
                                         <!-- Product details-->
                                         <div class="card-body p-4">

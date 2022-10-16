@@ -38,7 +38,6 @@ public class DetailController extends HttpServlet {
             List<Product> listRelatedProducts = new ProductDAO().getRelatedProductById(productId);
             request.setAttribute("listRelatedProducts", listRelatedProducts);
             request.setAttribute("product", product);
-            request.getSession().setAttribute("urlHistory", "detail?productId="+productId);
             request.getRequestDispatcher("detail.jsp").forward(request, response);
         }
     } 

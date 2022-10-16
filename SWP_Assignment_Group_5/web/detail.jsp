@@ -36,11 +36,7 @@
                         <div class="col-md-6">
                             <div class="small mb-1">SKU: BST-498</div>
                             <h1 class="display-5 fw-bolder">Shop item</h1>
-                            <div class="fs-5 mb-5">
-                                <span class="text-decoration-line-through">$45.00</span>
-                                <span>${product.price}</span>
-                        </div>
-                        <p class="lead">${product.description}</p>
+                            <p class="lead">${product.description}</p>
                         <div class="d-flex">
                             <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
                                    style="max-width: 3rem" />
@@ -62,9 +58,12 @@
                         <div class="col mb-5">
                             <div class="card h-100">
                                 <!-- Sale badge-->
-                                <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
                                 <!-- Product image-->
-                                <img class="card-img-top" src="${RP.img}" alt="..." />
+                                <div class="card-body p-4">
+                                    <a href="detail?productId=${p.product_id}">
+                                        <img class="card-img-top" src="${RP.img}" alt="..." />
+                                    </a>
+                                </div>
                                 <!-- Product details-->
                                 <div class="card-body p-4">
                                     <div class="text-center">
@@ -79,16 +78,22 @@
                                             <div class="bi-star-fill"></div>
                                         </div>
                                         <!-- Product price-->
-                                        <span class="text-muted text-decoration-line-through">$20.00</span>
-                                        $${RP.price}
+
                                     </div>
                                 </div>
-                                <!-- Product actions-->
+                                <div class="card-body p-4">
+                                    <div class="text-center">
+                                        <span class="text"> $${RP.price}</span>
+                                    </div>                                         
+                                </div>
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                     <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="detail?productId=${RP.product_id}">Detail</a></div>
                                 </div>
                             </div>
                         </div>
+                        <!-- Product actions-->
+
+
                     </c:forEach>
                 </div>
             </div>

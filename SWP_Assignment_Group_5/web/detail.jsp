@@ -37,7 +37,6 @@
                         <h1 class="display-5 fw-bolder">${requestScope.product.title}</h1>
                         <div class="fs-5 mb-5">
                             <span>$${requestScope.product.price}</span>
-                            <span class="text-decoration-line-through">$45.00</span>
                         </div>
                         <p class="lead">${requestScope.product.description}</p>
                         <div class="d-flex">
@@ -62,7 +61,6 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
                             <!-- Product image-->
                             <img class="card-img-top" src="${RP.img}" alt="..." />
                             <!-- Product details-->

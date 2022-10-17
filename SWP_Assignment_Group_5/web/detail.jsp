@@ -40,8 +40,7 @@
                             <span class="text-decoration-line-through">$45.00</span>
                         </div>
                         <p class="lead">${requestScope.product.description}</p>
-                    </div>
-                    <div class="d-flex">
+                        <div class="d-flex">
                         <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
                                style="max-width: 3rem" />
                         <button class="btn btn-outline-light flex-shrink-0" type="button">
@@ -49,6 +48,8 @@
                             Add to cart
                         </button>
                     </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>

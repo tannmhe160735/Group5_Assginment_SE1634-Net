@@ -95,6 +95,26 @@ public class AccountDAO {
         }
     }
 
+    public void RegisterNewAccount(String email, String password , String fullname) {
+        try {
+            String sql = "INSERT INTO [account]\n"
+                    + "           ([email]\n"
+                    + "           ,[password],[role_id],[fullname]\n"
+                    + ")\n"
+                    + "     VALUES\n"
+                    + "           (?\n"
+                    + "           ,?,?,?)";
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setString(1, email);
+            stm.setString(2, password);
+            stm.setString(3, "3");
+            stm.setString(4, fullname);
+            stm.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public ArrayList<Account> ListRoleId() {
         ArrayList<Account> accounts = new ArrayList<>();
         try {

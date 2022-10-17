@@ -55,7 +55,7 @@
                                 </div>
 
                                 <div>
-                                    <p class="mb-0">Don't have an account? <a href="register.jsp" class="text-white-50 fw-bold">Sign Up</a>
+                                    <p class="mb-0">Don't have an account? <a href="register" class="text-white-50 fw-bold">Sign Up</a>
                                     </p>
                                 </div>
 
@@ -68,7 +68,7 @@
     </body>
     <script>
         function sendback() {
-            window.location.href = "home.jsp";
+            window.location.href = "home";
         }
     </script>
 </html>

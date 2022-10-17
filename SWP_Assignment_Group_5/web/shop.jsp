@@ -34,21 +34,21 @@
                 <div class="container px-4 px-lg-5 my-5 text-light">
                     <div class="row">
                         <div class="col-md-3 mb-5 ">
-                            <h3>List Categories</h3>
+                            <h3>Danh Mục</h3>
                             <ul class="list-group">
-                            <c:forEach items="${listCategories}" var="C">
-                                <a href="#"><li class="list-group-item">${C.cate_name}</li></a>
-                                    </c:forEach>
+                            <c:forEach items="${listCategories}" var="c">
+                                <li class="list-group-item"><a href="filter-category?categoryId=${c.cate_id}">${c.cate_name}</a></li>
+                                </c:forEach>
+                            <a href="#"><li class="list-group-item">${c.cate_name}</li></a>
                             <style>
                                 .list-group-item:hover{
-                                    background-color: yellow;
+                                    background-color: gray;
                                 }
                             </style>
-
                         </ul>
                     </div>
                     <div class="col-md-9">
-                        <h3>List Products</h3>
+                        <h3>Sản Phẩm</h3>
                         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 justify-content-center text-dark">
                             <c:forEach  items="${listProducts}" var="p">
                                 <div class="col mb-5 ">
@@ -57,31 +57,27 @@
                                             <img class="card-img-top" src="${p.img}" alt="..." />
                                         </div>
                                         <!-- Product image-->
-
+                                   
                                         <!-- Product details-->
                                         <div class="card-body p-4">
                                             <div class="text-center">
                                                 <!-- Product name-->
                                                 <h5 class="fw-bolder">${p.title}</h5>
                                                 <!-- Product price-->
-
                                             </div>
                                         </div>
                                         <div class="card-body p-4">
                                             <div class="text-center">
-                                                  <span class="text"> $${p.price}</span>
-                                            </div>
-                                          
+                                                <span class="text"> $${p.price}</span>
+                                            </div>                                         
                                         </div>
-
                                         <!-- Product actions-->
                                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="detail.jsp">View options</a></div>
+                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="detail?productId=${p.product_id}">View options</a></div>
                                         </div>
                                     </div>
                                 </div>
                             </c:forEach>
-
                         </div>
                     </div>
                 </div>

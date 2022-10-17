@@ -35,27 +35,32 @@
 
                                     <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
                                     <p class="text-white-50 mb-5">Đăng ký tên đăng nhập và mật khẩu của bạn!</p>
+                                    <p class="text-white-50 mb-5"><%=request.getAttribute("msg")!=null?request.getAttribute("msg"):""%></p>
+                                    <form action="register" method="POST">
+                                        <div class="form-outline form-white mb-4">
+                                            <input name="fullname" type="fullname" id="typeFullNameX" class="form-control form-control-lg" value="" />
+                                            <label class="form-label" for="typeFullNameX">Your Full Name</label>
+                                        </div>
+                                        
+                                        <div class="form-outline form-white mb-4">
+                                            <input name="email" type="email" id="typeEmailX" class="form-control form-control-lg" value=""/>
+                                            <label class="form-label" for="typeEmailX">Email</label>
+                                        </div>
 
-                                    <div class="form-outline form-white mb-4">
-                                        <input type="email" id="typeEmailX" class="form-control form-control-lg" />
-                                        <label class="form-label" for="typeEmailX">Email</label>
-                                    </div>
+                                        <div class="form-outline form-white mb-4">
+                                            <input name="password" type="password" id="typePasswordX" class="form-control form-control-lg" value=""/>
+                                            <label class="form-label" for="typePasswordX">Password</label>
+                                        </div>
 
-                                    <div class="form-outline form-white mb-4">
-                                        <input type="password" id="typePasswordX" class="form-control form-control-lg" />
-                                        <label class="form-label" for="typePasswordX">Password</label>
-                                    </div>
+                                        <div class="form-outline form-white mb-4">
+                                            <input name="re_password" type="password" id="typePasswordX" class="form-control form-control-lg" value=""/>
+                                            <label class="form-label" for="typePasswordX">Confirm Password</label>
+                                        </div>
 
-                                    <div class="form-outline form-white mb-4">
-                                        <input type="password" id="typePasswordX" class="form-control form-control-lg" />
-                                        <label class="form-label" for="typePasswordX">Confirm Password</label>
-                                    </div>
-
-
-                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">Submit</button>
-
+                                        <button onclick="sendback()" class="btn btn-outline-light btn-lg px-5" type="button">Back</button>
+                                        <button class="btn btn-outline-light btn-lg px-5" type="submit">Submit</button> 
+                                    </form>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -63,5 +68,10 @@
             </div>
         </section>
     </body>
+    <script>
+        function sendback() {
+            window.location.href = "login.jsp";
+        }
+    </script>
 </html>
 

@@ -85,7 +85,7 @@
                                 <h4 class="modal-title">Edit Product</h4>
                                 <a href="listVoucher"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></a>
                             </div>
-                            <form action="editProduct?code=${requestScope.voucher.voucher_code}" method="post">
+                            <form action="editVoucher?code=${requestScope.voucher.voucher_code}" method="post">
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label>Voucher Code</label>

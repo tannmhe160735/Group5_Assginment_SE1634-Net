@@ -5,6 +5,7 @@
 package Controller;
 
 import DAO.ProductDAO;
+import Entity.Cart;
 import Entity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,13 +13,15 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
+import jakarta.servlet.http.HttpSession;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  *
  * @author DELL
  */
-public class DetailController extends HttpServlet {
+public class AddToCartController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,14 +38,25 @@ public class DetailController extends HttpServlet {
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             int productId = Integer.parseInt(request.getParameter("productId"));
-            Product product = new ProductDAO().getProductById(productId);
-            List<Product> listRelatedProducts = new ProductDAO().getRelatedProductById(productId);
-            request.setAttribute("listRelatedProducts", listRelatedProducts);
-            request.setAttribute("product", product);
-
-            request.getSession().setAttribute("urlHistory", "detail?productId="+productId);
-
-            request.getRequestDispatcher("detail.jsp").forward(request, response);
+            HttpSession session = request.getSession();
+            Map<Integer, Cart> carts = (Map<Integer, Cart>) session.getAttribute("carts");
+            if (carts == null) {
+                carts = new LinkedHashMap<>();
+            }
+            if (carts.containsKey(productId)) { //san pham da co tren gio hang
+                int oldQuantity = carts.get(productId).getQuantity();
+                carts.get(productId).setQuantity(oldQuantity + 1);
+            } else { //san pham chua co tren gio hang
+                Product product = new ProductDAO().getProductById(productId);
+                carts.put(productId, Cart.builder().product(product).quantity(1).build());
+            }
+            //save cart into session
+            session.setAttribute("carts", carts);
+            String urlHistory = (String) session.getAttribute("urlHistory");
+            if (urlHistory == null) {
+                urlHistory = "home";
+            }
+            response.sendRedirect(urlHistory);
         }
     }
 

@@ -37,10 +37,10 @@
                         <h1 class="display-5 fw-bolder">${requestScope.product.title}</h1>
                         <div class="fs-5 mb-5">
                             <span>$${requestScope.product.price}</span>
-                            <span class="text-decoration-line-through">$45.00</span>
                         </div>
                         <p class="lead">${requestScope.product.description}</p>
                         <div class="d-flex">
+
                             <a href="add-to-cart?productId=${requestScope.product.product_id}" class="btn btn-outline-dark flex-shrink-0" type="button">
                                 <i class="bi-cart-fill me-1 bi bi-cart"></i>
                                 Add to cart
@@ -49,6 +49,12 @@
                                 <i class="bi-cart-fill me-1 bi bi-cart"></i>
                                 Buy now
                             </a>
+                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
+                                   style="max-width: 3rem" />
+                            <button class="btn btn-outline-light flex-shrink-0" type="button">
+                                <i class="bi-cart-fill me-1"></i>
+                                Add to cart
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -64,7 +70,6 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
                             <!-- Product image-->
                             <img class="card-img-top" src="${RP.img}" alt="..." />
                             <!-- Product details-->

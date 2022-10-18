@@ -37,9 +37,9 @@
                             <h3>Danh Mục</h3>
                             <ul class="list-group">
                             <c:forEach items="${listCategories}" var="c">
-                                <li class="list-group-item"><a href="filter-category?categoryId=${c.cate_id}">${c.cate_name}</a></li>
+                                <a href="filter-category?categoryId=${c.cate_id}"><li class="list-group-item">${c.cate_name}</li></a>
                                 </c:forEach>
-                            <a href="#"><li class="list-group-item">${c.cate_name}</li></a>
+                        
                             <style>
                                 .list-group-item:hover{
                                     background-color: gray;

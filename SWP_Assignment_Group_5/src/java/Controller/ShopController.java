@@ -42,6 +42,8 @@ public class ShopController extends HttpServlet {
         List<Product> listProducts = dao.getAllProducts();
         request.setAttribute("listCategories", listCategories);
         request.setAttribute("listProducts", listProducts);
+        
+        request.getSession().setAttribute("urlHistory", "shop");
 
         request.getRequestDispatcher("shop.jsp").forward(request, response);
 

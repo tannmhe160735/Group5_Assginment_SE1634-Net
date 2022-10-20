@@ -44,6 +44,10 @@
         <servlet-name>DetailController</servlet-name>
         <servlet-class>Controller.DetailController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddToCartController</servlet-name>
+        <servlet-class>Controller.AddToCartController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>DetailController</servlet-name>
         <url-pattern>/detail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddToCartController</servlet-name>
+        <url-pattern>/add-to-cart</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

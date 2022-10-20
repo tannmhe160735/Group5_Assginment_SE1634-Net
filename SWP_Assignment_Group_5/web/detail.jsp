@@ -41,20 +41,20 @@
                         <p class="lead">${requestScope.product.description}</p>
                         <div class="d-flex">
 
-                            <a href="add-to-cart?productId=${requestScope.product.product_id}" class="btn btn-outline-dark flex-shrink-0" type="button">
-                                <i class="bi-cart-fill me-1 bi bi-cart"></i>
-                                Add to cart
-                            </a>
-                            <a class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
+
+                            <a class="btn btn-outline-success flex-shrink-0 ms-2 mx-2" type="button">
                                 <i class="bi-cart-fill me-1 bi bi-cart"></i>
                                 Buy now
                             </a>
-                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
-                                   style="max-width: 3rem" />
-                            <button class="btn btn-outline-light flex-shrink-0" type="button">
-                                <i class="bi-cart-fill me-1"></i>
+
+
+                            <a href="add-to-cart?productId=${requestScope.product.product_id}" class="btn btn-outline-light flex-shrink-0 mx-0" type="button">
+                                <i class="bi-cart-fill me-1 bi bi-cart"></i>
                                 Add to cart
-                            </button>
+                            </a>
+                                
+                            <input class="form-control text-center mx-1" id="inputQuantity" type="num" value="1"
+                                   style="max-width: 3rem" />
                         </div>
                     </div>
                 </div>

@@ -82,7 +82,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Edit Product</h4>
+                                <h4 class="modal-title">Edit Voucher</h4>
                                 <a href="listVoucher"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></a>
                             </div>
                             <form action="editVoucher?code=${requestScope.voucher.voucher_code}" method="post">

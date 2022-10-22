@@ -18,11 +18,19 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+public class Order {
+    
+    private int ord_id;
+    private int prod_id;
+    private int quantity;
 
-public class Category {
-    private int cate_id;
-    private String cate_name;
-    
-    
+    public Order() {
+    }
+
+    public Order(int ord_id, int prod_id, int quantity) {
+        this.ord_id = ord_id;
+        this.prod_id = prod_id;
+        this.quantity = quantity;
+    }
     
 }

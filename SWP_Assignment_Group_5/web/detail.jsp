@@ -86,7 +86,7 @@
                                         <div class="bi-star-fill"></div>
                                     </div>
                                     <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$20.00</span>
+                                  
                                     $${RP.price}
                                 </div>
                             </div>

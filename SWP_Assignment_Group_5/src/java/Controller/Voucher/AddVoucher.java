@@ -35,7 +35,7 @@ public class AddVoucher extends HttpServlet {
         if(dao.CheckVoucherCode(code)){
             request.setAttribute("msg", "This voucher code already existed");
         }else{
-             dao.AdNewVoucher(code, dateObj.toString(), experience, Double.parseDouble(discount));
+             dao.AddNewVoucher(code, dateObj.toString(), experience, Double.parseDouble(discount));
              request.setAttribute("msg", "Add new voucher code success");
              
         }

@@ -18,11 +18,13 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-
-public class Category {
-    private int cate_id;
-    private String cate_name;
-    
-    
+public class OrderDetail {
+    private int ord_id;
+    private String address;
+    private int phone;
+    private String email;
+    private int user_id;
+    private String payment;
+    private boolean status;
     
 }

@@ -48,6 +48,10 @@
         <servlet-name>AddToCartController</servlet-name>
         <servlet-class>Controller.AddToCartController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>OrderAPI</servlet-name>
+        <servlet-class>API.OrderAPI</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -96,6 +100,7 @@
         <servlet-name>AddToCartController</servlet-name>
         <url-pattern>/add-to-cart</url-pattern>
     </servlet-mapping>
+
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>

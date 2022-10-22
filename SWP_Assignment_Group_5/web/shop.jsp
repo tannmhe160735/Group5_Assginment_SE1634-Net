@@ -65,7 +65,7 @@
                                                 <!-- Product name-->
                                                 <h5 class="fw-bolder">${p.title}</h5>
                                                 <!-- Product price-->
-                                                <span class="text-muted text-decoration-line-through">$20.00</span> $${p.price}
+                                                 $${p.price}
                                             </div>
                                         </div>
                                         <!-- Product actions-->

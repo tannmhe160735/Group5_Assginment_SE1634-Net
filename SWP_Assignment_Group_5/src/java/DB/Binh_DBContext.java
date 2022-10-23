@@ -17,7 +17,7 @@ public class Binh_DBContext {
        Connection conn = null;
        String url = "jdbc:sqlserver://localhost;databaseName=data";
        String username="sa";
-       String password="123456";
+       String password="123";
        try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn = DriverManager.getConnection(url, username, password);

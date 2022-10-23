@@ -39,7 +39,6 @@
                             <c:forEach items="${listCategories}" var="c">
                                 <a href="filter-category?categoryId=${c.cate_id}"><li class="list-group-item">${c.cate_name}</li></a>
                                     </c:forEach>
-
                             <style>
                                 .list-group-item:hover{
                                     background-color: gray;
@@ -81,7 +80,6 @@
                                             <div class="text-center">
                                                 <a class="btn btn-outline-dark mt-auto" href="detail?productId=${p.product_id}">
                                                     View Detail</a>
-
                                             </div>
                                         </div>
                                     </div>

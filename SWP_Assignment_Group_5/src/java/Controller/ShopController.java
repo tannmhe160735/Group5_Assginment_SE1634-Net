@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,14 +40,39 @@ public class ShopController extends HttpServlet {
 
         List<Category> listCategories = new CategoryDAO().getAllCategories();
         ProductDAO dao = new ProductDAO();
-        List<Product> listProducts = dao.getAllProducts();
+        String typePage = request.getParameter("typePage");
+        List<Product> listProducts = new ArrayList<>();
+        if (typePage.equals("all")) {
+            listProducts = dao.getAllProducts();
+
+        } else if (typePage.equals("category")) {
+            listProducts = dao.getProductsByCategoryId(Integer.parseInt(request.getParameter("cond")));
+        }
+        request.setAttribute("typePage", typePage);
+        request.setAttribute("cond", request.getParameter("cond"));
+        HttpSession session = request.getSession();
+        int page = Integer.parseInt(request.getParameter("page"));
+        int totalPage = listProducts.size() / 6;
+        if (listProducts.size() % 6 != 0) {
+            totalPage += 1;
+        }
+        int start = (page - 1) * 6;
+        int end = start + 6;
+        if (end > listProducts.size()) {
+            end = listProducts.size();
+        }
+        if (page == 1) {
+            request.setAttribute("condPrev", "disabled");
+        }
+        if (page == totalPage) {
+            request.setAttribute("condNext", "disabled");
+        }
+        request.setAttribute("totalPage", totalPage);
+        request.setAttribute("page", page);
+        request.setAttribute("listProducts", listProducts.subList(start, end));
         request.setAttribute("listCategories", listCategories);
-        request.setAttribute("listProducts", listProducts);
-        
         request.getSession().setAttribute("urlHistory", "shop");
-
         request.getRequestDispatcher("shop.jsp").forward(request, response);
-
     }
 
     @Override

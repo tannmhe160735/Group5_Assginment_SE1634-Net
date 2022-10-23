@@ -36,70 +36,94 @@
                                 <div class="card-body text-center">
                                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                                          class="rounded-circle img-fluid" style="width: 150px;">
-                                    <h5 class="my-3">${requestScope.acc.acc_name}</h5>
-                                <p class="text-muted mb-4">${requestScope.acc.address}</p>
-                                <div class="d-flex justify-content-center mb-2">
-                                    <button onclick="sendback()" type="button" class="btn btn-primary">Edit</button>
-                                    <button onclick="sendto()" type="button" class="btn btn-outline-primary ms-1">Change Password</button>
+                                    <br>
+                                    <br>
+                                    <div class="d-flex justify-content-center mb-2">
+                                        <button type="button" class="btn btn-primary">Choose Image</button>
+                                        <!--                    <button type="button" class="btn btn-outline-primary ms-1">Change Password</button>-->
+                                    </div>
                                 </div>
                             </div>
+                            <!--              <div class="card mb-4 mb-lg-0 ">
+                                            <div class="card-body p-0">
+                                              <ul class="list-group list-group-flush rounded-3">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center p-3 bg-dark text-white">
+                                                  <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                                                  <p class="mb-0">instagram</p>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center p-3 bg-dark text-white">
+                                                  <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+                                                  <p class="mb-0">facebook</p>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                          </div>-->
                         </div>
-                        <div class="card mb-4 mb-lg-0 ">
-                            <div class="card-body p-0">
-                                <ul class="list-group list-group-flush rounded-3">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center p-3 bg-dark text-white">
-                                        <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
-                                        <p class="mb-0">instagram</p>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center p-3 bg-dark text-white">
-                                        <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
-                                        <p class="mb-0">facebook</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="card mb-4 bg-dark text-white">
-                            <div class="card-body">
-                                <div class="row">
-                                    <h4  style="color: green;">${requestScope.msg}</h4>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <p class="mb-0">Full Name</p>
+                        <div class="col-lg-8">
+                            <div class="card mb-4 bg-dark text-white">
+                                <div class="card-body">
+                                    <form action="edit_profile" method="POST">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Full Name</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input name="acc_name" class="text-muted mb-0" value="${requestScope.acc.acc_name}">
+                                        </div>
                                     </div>
-                                    <div class="col-sm-9">
-                                        <p class="text-muted mb-0">${requestScope.acc.acc_name}</p>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Email</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input name="email" class="text-muted mb-0" value="${requestScope.acc.email}">
+                                        </div>
                                     </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <p class="mb-0">Email</p>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Phone</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input name="phone" class="text-muted mb-0" value="${requestScope.acc.phone}">
+                                        </div>
                                     </div>
-                                    <div class="col-sm-9">
-                                        <p class="text-muted mb-0">${requestScope.acc.email}</p>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Address</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input name="address" class="text-muted mb-0" value="${requestScope.acc.address}">
+                                        </div>
                                     </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <p class="mb-0">Phone</p>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Gender</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <c:if test="${requestScope.acc.gender eq true}">
+                                                Male <input type="radio" name="gender" checked="checked" value="true" />
+                                                Female <input type="radio" name="gender" value="false" />
+                                            </c:if>
+                                            <c:if test="${requestScope.acc.gender ne true}">
+                                                Male <input type="radio" name="gender" value="true" />
+                                                Female <input type="radio" name="gender" value="false" checked="checked" />
+                                            </c:if>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-9">
-                                        <p class="text-muted mb-0">${requestScope.acc.phone}</p>
+                                    <hr>
+                                    <div class="row" style="margin-top: 20px;">
+                                        <div class="col-sm-9">
+                                            <button onclick="sendback()" class="btn btn-outline-light btn-lg px-5" type="button">Back</button>
+                                        </div>
+                                        <div class="col-sm-3" >
+                                            <button class="btn btn-outline-light btn-lg px-5" type="submit">Save</button>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <p class="mb-0">Address</p>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <p class="text-muted mb-0">${requestScope.acc.address}</p>
-                                    </div>
-                                </div>
+                                </form>                 
                             </div>
                         </div>
                         <!--              <div class="row">
@@ -185,11 +209,8 @@
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     <script>
-            function sendback() {
-                window.location.href = "edit_profile";
-            }
-            function sendto() {
-                window.location.href = "change_pass.jsp";
-            }
+                      function sendback() {
+                          window.location.href = "profile";
+                      }
     </script>
 </html>

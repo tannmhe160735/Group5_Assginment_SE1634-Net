@@ -40,21 +40,15 @@
                         </div>
                         <p class="lead">${requestScope.product.description}</p>
                         <div class="d-flex">
-
-
                             <a class="btn btn-outline-success flex-shrink-0 ms-2 mx-2" type="button">
                                 <i class="bi-cart-fill me-1 bi bi-cart"></i>
-                                Buy now
+                                Buy now                              
                             </a>
-
-
                             <a href="add-to-cart?productId=${requestScope.product.product_id}" class="btn btn-outline-light flex-shrink-0 mx-0" type="button">
                                 <i class="bi-cart-fill me-1 bi bi-cart"></i>
-                                Add to cart
-                            </a>
-                                
-                            <input class="form-control text-center mx-1" id="inputQuantity" type="num" value="1"
-                                   style="max-width: 3rem" />
+                                Add to cart                             
+                            </a>                               
+                            <input class="form-control text-center mx-1" id="inputQuantity" type="num" value="1" style="max-width: 3rem"/>
                         </div>
                     </div>
                 </div>
@@ -66,17 +60,17 @@
         <div class="container px-4 px-lg-5 mt-5">
             <h2 class="fw-bolder mb-4 text-white">Các Sản phẩm khác</h2>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                <c:forEach items="${listRelatedProducts}" var="RP">
+                <c:forEach items="${listRelatedProducts}" var="rp">
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Sale badge-->
                             <!-- Product image-->
-                            <img class="card-img-top" src="${RP.img}" alt="..." />
+                            <img class="card-img-top" src="${rp.img}" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">${RP.title}</h5>
+                                    <h5 class="fw-bolder">${rp.title}</h5>
                                     <!-- Product reviews-->
                                     <div class="d-flex justify-content-center small text-warning mb-2">
                                         <div class="bi-star-fill"></div>
@@ -86,22 +80,19 @@
                                         <div class="bi-star-fill"></div>
                                     </div>
                                     <!-- Product price-->
-                                  
-                                    $${RP.price}
+                                    $${rp.price}
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="detail?productId=${RP.product_id}">Detail</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="detail?productId=${rp.product_id}">Detail</a></div>
                             </div>
                         </div>
                     </div>
                 </c:forEach>
             </div>
         </div>
-
     </section>
-
     <!-- Comment-->
     <section style="background-color: #181A1B;">
         <div class="container my-5 py-5 text-dark">
@@ -119,7 +110,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="d-flex flex-start">
@@ -149,7 +139,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="d-flex flex-start">
@@ -178,7 +167,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="d-flex flex-start">
@@ -210,7 +198,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="d-flex flex-start">
@@ -245,7 +232,6 @@
             </div>
         </div>
     </section>
-
     <jsp:include page="footer.jsp"></jsp:include>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->

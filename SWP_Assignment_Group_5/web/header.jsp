@@ -29,7 +29,7 @@
                     </li>
                 </ul>
 
-                <a href="cart.jsp">
+                <a href="carts.jsp">
                     <button class="btn btn-outline-light" type="submit">
                         <i class="bi-cart-fill me-1"></i>
                         Cart

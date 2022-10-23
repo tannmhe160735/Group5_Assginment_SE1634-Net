@@ -49,25 +49,50 @@
                                                     <div class="col-md-3 col-lg-3 col-xl-3">
                                                         <h6 class="text-black mb-0">${c.value.product.title}</h6>
                                                     </div>
-                                                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                        <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex quantity">
+                                                        <button class="btn btn-link px-2" onclick="minus${c.value.product.product_id}()">
                                                             <i class="fas fa-minus"></i>
                                                         </button>
 
-                                                        <input id="form1" min="0" name="quantity" value="1" type="number"
-                                                               class="form-control form-control-sm" />
+                                                        <input id="quantity${c.value.product.product_id}" min="0" name="quantity" value="1" 
+                                                               class="form-control form-control-sm disabled" />
 
-                                                        <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                        <button class="btn btn-link px-2" onclick="plus${c.value.product.product_id}()">
                                                             <i class="fas fa-plus"></i>
                                                         </button>
+
                                                     </div>
                                                     <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                        <h6 class="mb-0">$${c.value.product.price}</h6>
+                                                        <h6 class="mb-0" id="price${c.value.product.product_id}">$${c.value.product.price}</h6>
                                                     </div>
                                                     <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                                         <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
                                                     </div>
                                                 </div>
+                                                <script>
+                                                    function plus${c.value.product.product_id}()
+                                                    {
+                                                        var obj = document.getElementById("quantity${c.value.product.product_id}");
+                                                        var quantity = obj.value;
+                                                        quantity = parseInt(quantity) + 1;
+                                                        obj.value = quantity;
+                                                        var price = parseFloat(${c.value.product.price} * quantity).toFixed(1);
+                                                        document.getElementById("price${c.value.product.product_id}").innerHTML = "$" + price;
+                                                    
+                                                    }
+
+                                                    function minus${c.value.product.product_id}()
+                                                    {
+                                                        var obj = document.getElementById("quantity${c.value.product.product_id}");
+                                                        var quantity = obj.value;
+                                                        if (quantity != 1) {
+                                                            quantity = parseInt(quantity) - 1;
+                                                            obj.value = quantity;
+                                                        }
+                                                        var price = parseFloat(${c.value.product.price} * quantity).toFixed(1);
+                                                        document.getElementById("price${c.value.product.product_id}").innerHTML = "$" + price;
+                                                    }
+                                                </script>
                                             </c:forEach>
 
                                             <hr class="my-4">

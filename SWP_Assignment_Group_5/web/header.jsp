@@ -30,6 +30,7 @@
             <div class="d-flex my-2">
                 <a class="btn btn-outline-light" href="carts">
                     <i class="bi-cart-fill me-1"></i>
+                    Cart
                     <span class="badge bg-dark text-white ms-1 rounded-pill">${sessionScope.carts.size()}</span>
                 </a>
             </div>

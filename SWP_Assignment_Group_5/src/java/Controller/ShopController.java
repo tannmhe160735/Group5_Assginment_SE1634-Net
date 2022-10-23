@@ -70,7 +70,8 @@ public class ShopController extends HttpServlet {
         request.setAttribute("page", page);
         request.setAttribute("listProducts", listProducts.subList(start, end));
         request.setAttribute("listCategories", listCategories);
-        request.getSession().setAttribute("urlHistory", "shop");
+        String url = "shop?typePage="+request.getAttribute("typePage")+"&&page="+request.getAttribute("page")+"&&cond="+request.getAttribute("cond")+"";
+        request.getSession().setAttribute("urlHistory", url);
         request.getRequestDispatcher("shop.jsp").forward(request, response);
     }
 

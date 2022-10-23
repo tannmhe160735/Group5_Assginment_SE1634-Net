@@ -45,17 +45,32 @@
         <servlet-class>Controller.DetailController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>RegisterController</servlet-name>
+        <servlet-class>Controller.RegisterController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>AddToCartController</servlet-name>
         <servlet-class>Controller.AddToCartController</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< Updated upstream
         <servlet-name>OrderAPI</servlet-name>
         <servlet-class>API.OrderAPI</servlet-class>
-=======
+    </servlet>
+    <servlet>
         <servlet-name>CartController</servlet-name>
         <servlet-class>Controller.CartController</servlet-class>
->>>>>>> Stashed changes
+    </servlet>
+    <servlet>
+        <servlet-name>ProfileController</servlet-name>
+        <servlet-class>Controller.ProfileController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditProfileController</servlet-name>
+        <servlet-class>Controller.EditProfileController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangePassController</servlet-name>
+        <servlet-class>Controller.ChangePassController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
@@ -102,17 +117,29 @@
         <url-pattern>/detail</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>RegisterController</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>AddToCartController</servlet-name>
         <url-pattern>/add-to-cart</url-pattern>
     </servlet-mapping>
-<<<<<<< Updated upstream
-
-=======
     <servlet-mapping>
         <servlet-name>CartController</servlet-name>
         <url-pattern>/carts</url-pattern>
     </servlet-mapping>
->>>>>>> Stashed changes
+    <servlet-mapping>
+        <servlet-name>ProfileController</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditProfileController</servlet-name>
+        <url-pattern>/edit_profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePassController</servlet-name>
+        <url-pattern>/change_pass</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>

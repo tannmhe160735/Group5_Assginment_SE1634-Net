@@ -45,6 +45,33 @@ public class AccountDAO {
 
         return null;
     }
+    
+        public Account getAccountById(int acc_id) {
+        Account acc = new Account();
+        String sql = "select * from account where acc_id = ?";
+        try {
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setInt(1, acc_id);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                acc.setAcc_id(rs.getInt("acc_id"));
+                acc.setAcc_name(rs.getString("fullname"));
+                acc.setEmail(rs.getString("email"));
+                acc.setPassword(rs.getString("password"));
+                acc.setGender(rs.getBoolean("gender"));
+                acc.setPhone(rs.getInt("phone"));
+                acc.setAddress(rs.getString("address"));
+                acc.setRole_id(rs.getInt("role_id"));
+                acc.setAvatar(rs.getString("avatar"));
+                return acc;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 
     public ArrayList<Account> list() {
         ArrayList<Account> accounts = new ArrayList<>();
@@ -130,6 +157,42 @@ public class AccountDAO {
             e.printStackTrace();
         }
         return accounts;
+    }
+    
+    public void UpdateAccountById(int acc_id, String acc_name, String email, int phone, String address,boolean gender) {
+        try {
+            String sql = "UPDATE [account]\n"
+                    + "   SET [fullname] = ?\n"
+                    + "      ,[email] = ?\n"
+                    + "      ,[gender] = ?\n"
+                    + "      ,[phone] = ?\n"
+                    + "      ,[address] = ?\n"
+                    + " WHERE acc_id = ?";
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setString(1, acc_name);
+            stm.setString(2, email);
+            stm.setBoolean(3, gender);
+            stm.setInt(4, phone);
+            stm.setString(5, address);
+            stm.setInt(6, acc_id);
+            stm.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void ChangePassAccountById(int acc_id, String newPass) {
+        try {
+            String sql = "UPDATE [account] \n"
+                    + "   SET [password] = ?\n"
+                    + " WHERE acc_id = ?";
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setString(1, newPass);
+            stm.setInt(2, acc_id);
+            stm.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {

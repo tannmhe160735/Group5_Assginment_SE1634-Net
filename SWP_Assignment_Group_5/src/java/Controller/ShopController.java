@@ -44,7 +44,6 @@ public class ShopController extends HttpServlet {
         List<Product> listProducts = new ArrayList<>();
         if (typePage.equals("all")) {
             listProducts = dao.getAllProducts();
-
         } else if (typePage.equals("category")) {
             listProducts = dao.getProductsByCategoryId(Integer.parseInt(request.getParameter("cond")));
         }
@@ -79,7 +78,6 @@ public class ShopController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
     }
 
     @Override

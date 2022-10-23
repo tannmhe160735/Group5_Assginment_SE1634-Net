@@ -95,6 +95,32 @@ public class AccountDAO {
         }
         return accounts;
     }
+    
+    public ArrayList<Account> listByName(String acc_name) {
+        ArrayList<Account> accounts = new ArrayList<>();
+        try {
+            String sql = "select acc_id, fullname, email, gender, phone, address, role_id from account where fullname like ?";
+            PreparedStatement stm = conn.prepareStatement(sql);
+            String fullname = "%" + acc_name + "%";
+            stm.setString(1, fullname);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Account acc = new Account();
+                acc.setAcc_id(rs.getInt("acc_id"));
+                acc.setAcc_name(rs.getString("fullname"));
+                acc.setEmail(rs.getString("email"));
+                acc.setGender(rs.getBoolean("gender"));
+                acc.setPhone(rs.getInt("phone"));
+                acc.setAddress(rs.getString("address"));
+                acc.setRole_id(rs.getInt("role_id"));
+                accounts.add(acc);             
+            }
+            return accounts;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public void DeleteAccountById(int acc_id) {
         try {
@@ -194,6 +220,8 @@ public class AccountDAO {
             e.printStackTrace();
         }
     }
+    
+    
 
     public static void main(String[] args) {
         AccountDAO dao = new AccountDAO();

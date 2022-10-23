@@ -30,12 +30,17 @@ public class VoucherDAO {
             ResultSet rs = ptmt.executeQuery();
 
             while (rs.next()) {
-                Voucher vc = new Voucher();
+                try{
+                    Voucher vc = new Voucher();
                 vc.setVoucher_code(rs.getString("voucher_code"));
                 vc.setVoucher_create(DateFor.format(rs.getDate("voucher_create")));
                 vc.setVoucher_experience(DateFor.format(rs.getDate("voucher_experience")));
                 vc.setVoucher_discount(rs.getDouble("voucher_discount"));
                 voucher.add(vc);
+                }catch(Exception e){
+                    
+                }
+                
             }
 
         } catch (SQLException ex) {
@@ -45,7 +50,7 @@ public class VoucherDAO {
 
     }
 
-    public void AdNewVoucher(String code, String create, String experience, double discount) {
+    public void AddNewVoucher(String code, String create, String experience, double discount) {
         String sql = " INSERT INTO [dbo].[voucher_new] VALUES (?,?,?,?)";
 
         PreparedStatement ptmt;
@@ -114,7 +119,10 @@ public class VoucherDAO {
 
     public static void main(String[] args) {
         VoucherDAO dao = new VoucherDAO();
-
-        dao.EditVoucher("SaleSapSan", "SaleSapSan33","2022-10-30", 30);
+        
+        for (Voucher arg : dao.GetAllVoucher()) {
+            System.out.println(arg.toString());
+        }
+        
     }
 }

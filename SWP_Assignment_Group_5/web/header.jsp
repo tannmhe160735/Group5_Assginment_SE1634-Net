@@ -1,11 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="home">Tùy Store</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
             <span class="fas fa-bars ms-1"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -24,20 +22,18 @@
                 </li>
             </ul>
             
-            <form class="d-flex mx-auto">
+<!--            <form class="d-flex mx-auto">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            </form>-->
             
             <div class="d-flex my-2">
                 <a class="btn btn-outline-light" href="carts">
                     <i class="bi-cart-fill me-1"></i>
-                    Cart
                     <span class="badge bg-dark text-white ms-1 rounded-pill">${sessionScope.carts.size()}</span>
                 </a>
             </div>
             <a href="${sessionScope.log}"><button class="btn btn-outline-primary ms-lg-2">${sessionScope.value_log}</button></a>               
-
         </div>
     </nav>
 <header class="bg-dark py-5">

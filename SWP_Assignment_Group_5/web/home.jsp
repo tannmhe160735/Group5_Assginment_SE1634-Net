@@ -46,7 +46,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="shop" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="shop">All Products</a></li>
+                            <li><a class="dropdown-item" href="shop?typePage=all&&cond=0&&page=1">All Products</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
@@ -56,14 +56,14 @@
                     </li>
                 </ul>
 
-                <a href="cart.jsp">
+                <a href="carts.jsp">
                     <button class="btn btn-outline-light" type="submit">
                         <i class="bi-cart-fill me-1"></i>
                         Cart
                         <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                     </button>
                 </a>
-                <a href="${sessionScope.log}"><button class="btn btn-outline-primary ms-lg-2">${sessionScope.value_log}  </button></a>
+                <a href="${sessionScope.log}"><button class="btn btn-outline-primary ms-lg-2">${sessionScope.value_log}</button></a>
 
             </div>
         </div>

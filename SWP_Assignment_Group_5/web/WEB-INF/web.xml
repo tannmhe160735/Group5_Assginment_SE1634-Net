@@ -72,7 +72,10 @@
         <servlet-name>ChangePassController</servlet-name>
         <servlet-class>Controller.ChangePassController</servlet-class>
     </servlet>
-
+    <servlet>
+        <servlet-name>SearchAccountController</servlet-name>
+        <servlet-class>Controller.SearchAccountController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -141,7 +144,10 @@
         <servlet-name>ChangePassController</servlet-name>
         <url-pattern>/change_pass</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>SearchAccountController</servlet-name>
+        <url-pattern>/search_admin</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>

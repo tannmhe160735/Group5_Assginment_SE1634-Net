@@ -145,6 +145,7 @@
                         </div>
 
                     </div>
+                </div>
 
                     <!-- Javascript -->
                     <script src="plugins/jquery/jquery.min.js"></script>

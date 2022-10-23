@@ -36,15 +36,23 @@
                         <div class="col-md-3 mb-5 ">
                             <h3>Danh Mục</h3>
                             <ul class="list-group">
+                                <style>
+                                    .list-group-item:hover{
+                                        color:white;
+                                        background-color: grey;
+                                    }
+                                    .active-cate{
+                                        color:white;
+                                        background-color: grey;
+                                    }
+                                </style>
                             <c:forEach items="${listCategories}" var="c">
-                                <a href="filter-category?categoryId=${c.cate_id}"><li class="list-group-item">${c.cate_name}</li></a>
-                                    </c:forEach>
 
-                            <style>
-                                .list-group-item:hover{
-                                    background-color: gray;
-                                }
-                            </style>
+                                <a href="shop?typePage=category&&cond=${c.cate_id}&&page=1">
+                                    <li class="list-group-item ${cond==c.cate_id? "active-cate":""}">${c.cate_name}</li>
+                                </a>
+                            </c:forEach>
+
                         </ul>
                     </div>
                     <div class="col-md-9">
@@ -65,7 +73,7 @@
                                                 <!-- Product name-->
                                                 <h5 class="fw-bolder">${p.title}</h5>
                                                 <!-- Product price-->
-                                                 $${p.price}
+                                                $${p.price}
                                             </div>
                                         </div>
                                         <!-- Product actions-->
@@ -87,6 +95,46 @@
                                 </div>
                             </c:forEach>
                         </div>
+
+                        <c:set var="totalPage" value="${requestScope.totalPage}"/>
+                        <c:if test="${totalPage!=1}">
+                            <nav aria-label="Page navigation example">
+                                <style>
+                                    .page-link{
+                                        color: white;
+                                    }
+                                    .page-item{
+                                        margin: 20px;
+                                    }
+                                    .disabled {
+                                        pointer-events: none;
+                                        cursor: default;
+                                        color:graytext;
+                                    }
+
+                                    .active{
+                                        color:#FFC800;
+                                    }
+
+                                </style>
+
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item">
+                                        <a class="page-link ${requestScope.condPrev}" href="shop?typePage=${requestScope.typePage}&&cond=${requestScope.cond}&&page=${requestScope.page-1}" tabindex="-1" aria-disabled="true">Previous</a>
+                                    </li>
+                                    <c:forEach begin="1" end="${requestScope.totalPage}" var="page">
+                                        <li class="page-item">
+                                            <a class="page-link ${page==requestScope.page? "active":""}" href="shop?typePage=${requestScope.typePage}&&cond=${requestScope.cond}&&page=${page}">${page}</a>
+                                        </li>
+                                    </c:forEach>
+                                    <li class="page-item">
+                                        <a class="page-link ${requestScope.condNext}" href="shop?typePage=${requestScope.typePage}&&cond=${requestScope.cond}&&page=${requestScope.page+1}">Next</a>
+                                    </li>
+                                </ul>
+
+                            </nav>
+                        </c:if>
+
                     </div>
                 </div>
             </div>

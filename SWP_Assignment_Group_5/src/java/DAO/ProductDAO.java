@@ -48,6 +48,33 @@ public class ProductDAO extends Binh_DBContext {
         }
         return list;
     }
+    
+    public ArrayList<Product> getAllProductByTitle(String title) {
+        ArrayList<Product> list = new ArrayList<>();
+        try {
+            String sql = "select * from product where title like ?";
+            String Title = "%" + title + "%";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, Title);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Product product = Product.builder()
+                        .product_id(rs.getInt(1))
+                        .title(rs.getString(2))
+                        .price(rs.getFloat(3))
+                        .sale_price(rs.getFloat(4))
+                        .quantity(rs.getInt(5))
+                        .description(rs.getString(6))
+                        .img(rs.getString(7))
+                        .category_id(rs.getInt(8))
+                        .create_date(rs.getDate(9))
+                        .build();
+                list.add(product);
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
 
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();

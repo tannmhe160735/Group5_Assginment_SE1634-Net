@@ -193,6 +193,7 @@ public class AccountDAO {
                     + "      ,[gender] = ?\n"
                     + "      ,[phone] = ?\n"
                     + "      ,[address] = ?\n"
+                    + "      ,[avatar] = ?\n"
                     + " WHERE acc_id = ?";
             PreparedStatement stm = conn.prepareStatement(sql);
             stm.setString(1, acc_name);

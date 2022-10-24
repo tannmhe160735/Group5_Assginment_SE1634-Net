@@ -72,10 +72,18 @@ public class SearchAccountController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         String input = request.getParameter("input");
-        AccountDAO Accdao = new AccountDAO();
-        ArrayList<Account> acc = Accdao.listByName(input);
-        request.setAttribute("acc", acc);
-        request.getRequestDispatcher("user.jsp").forward(request, response);       
+        String action = request.getParameter("action");
+        if(action.equals("product")){
+            ProductDAO Prodao = new ProductDAO();
+            ArrayList<Product> pro = Prodao.getAllProductByTitle(input);
+            request.setAttribute("pro", pro);
+            request.getRequestDispatcher("product.jsp").forward(request, response);
+        }else{
+            AccountDAO Accdao = new AccountDAO();
+            ArrayList<Account> acc = Accdao.listByName(input);
+            request.setAttribute("acc", acc);
+            request.getRequestDispatcher("user.jsp").forward(request, response); 
+        }            
     }
 
     /** 

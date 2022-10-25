@@ -48,7 +48,7 @@
                                             <label class="form-label" for="typePasswordX">Password</label>
                                         </div>
 
-                                        <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="forgot_pass.jsp">Forgot password?</a></p>
+                                        <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="forgotpass">Forgot password?</a></p>
                                         <button onclick="sendback()" class="btn btn-outline-light btn-lg px-5" type="button">Back</button>
                                         <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
                                     </form>

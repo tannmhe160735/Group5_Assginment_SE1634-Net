@@ -21,7 +21,7 @@ import java.util.ArrayList;
  *
  * @author minht
  */
-public class SearchAccountController extends HttpServlet {
+public class SearchManagementController extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.

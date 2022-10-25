@@ -39,15 +39,15 @@
                                         <p class="text-white-50 mb-5">Hãy nhập Mật khẩu cũ và mới của bạn!</p>
                                         <p class="text-white-50 mb-5"><%=request.getAttribute("msg")!=null?request.getAttribute("msg"):""%></p>
                                         <div class="form-outline form-white mb-4">
-                                            <input name="oldpass" type="oldpass" id="typeOldP" class="form-control form-control-lg" />
+                                            <input name="oldpass" type="password" id="typeOldP" class="form-control form-control-lg" />
                                             <label class="form-label" for="typeOldP">Old Password</label>
                                         </div>  
                                         <div class="form-outline form-white mb-4">
-                                            <input name="newpass" type="newpass" id="typeNewP" class="form-control form-control-lg" />
+                                            <input name="newpass" type="password" id="typeNewP" class="form-control form-control-lg" />
                                             <label class="form-label" for="typeNewP">New Password</label>
                                         </div>
                                         <div class="form-outline form-white mb-4">
-                                            <input name="renewpass" type="renewpass" id="typeReNewP" class="form-control form-control-lg" />
+                                            <input name="renewpass" type="password" id="typeReNewP" class="form-control form-control-lg" />
                                             <label class="form-label" for="typeReNewP">ReNew Password</label>
                                         </div>
                                         <button onclick="sendback()" class="btn btn-outline-light btn-lg px-5" type="button">Back</button>

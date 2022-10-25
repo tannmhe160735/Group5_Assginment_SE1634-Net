@@ -248,7 +248,19 @@ public class AccountDAO {
         }
     }
     
-    
+    public void ChangePassAccountByEmail(String email, String newPass) {
+        try {
+            String sql = "UPDATE [account] \n"
+                    + "   SET [password] = ?\n"
+                    + " WHERE email = ?";
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setString(1, newPass);
+            stm.setString(2, email);
+            stm.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
         AccountDAO dao = new AccountDAO();

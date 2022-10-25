@@ -58,6 +58,11 @@ public class LoginController extends HttpServlet {
                 RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
                  rd.forward(request, response);
             }
+            if(pass.equals("abc@123a")){
+                request.setAttribute("email", email);
+                RequestDispatcher rd = request.getRequestDispatcher("new_password.jsp");
+                rd.forward(request, response);
+            }
             if(acc.getRole_id()==3){
                  RequestDispatcher rd = request.getRequestDispatcher("home");
                  rd.forward(request, response);

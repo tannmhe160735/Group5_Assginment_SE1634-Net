@@ -45,7 +45,33 @@ public class AccountDAO {
 
         return null;
     }
-    
+    public Account getAccountByEmail(String email) {
+        Account acc = new Account();
+        String sql = "select * from account \n" +
+                     "where email = ?";
+        try {
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setString(1, email);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                acc.setAcc_id(rs.getInt("acc_id"));
+                acc.setAcc_name(rs.getString("fullname"));
+                acc.setEmail(rs.getString("email"));
+                acc.setPassword(rs.getString("password"));
+                acc.setGender(rs.getBoolean("gender"));
+                acc.setPhone(rs.getInt("phone"));
+                acc.setAddress(rs.getString("address"));
+                acc.setRole_id(rs.getInt("role_id"));
+                acc.setAvatar(rs.getString("avatar"));
+                return acc;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
         public Account getAccountById(int acc_id) {
         Account acc = new Account();
         String sql = "select * from account where acc_id = ?";

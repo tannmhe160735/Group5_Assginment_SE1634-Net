@@ -23,7 +23,7 @@ public class Nhat_FeedbackDBContext extends Nhat_DBContext<Feedback>{
     public ArrayList<Feedback> listAllFeedbackStarAndContentByProductID(int productID){
         try {
             ArrayList<Feedback> listOfFeedback = new ArrayList<Feedback>();
-            String sql = "select feedback_id, number_of_star,feedback_content from feedback where product_id = ? ORDER BY feedback_date desc";
+            String sql = "select feedback_id, number_of_star,feedback_content from feedback where product_id = ? ORDER BY feedback_id desc";
             PreparedStatement prstm = connection.prepareStatement(sql);
             prstm.setInt(1, productID);
             ResultSet rs = prstm.executeQuery();

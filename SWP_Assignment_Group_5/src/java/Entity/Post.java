@@ -22,6 +22,30 @@ public class Post {
     public Post() {
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setPost_title(String post_title) {
+        this.post_title = post_title;
+    }
+
+    public void setContent1(String content1) {
+        this.content1 = content1;
+    }
+
+    public void setContent2(String content2) {
+        this.content2 = content2;
+    }
+
+    public void setImage_path(String image_path) {
+        this.image_path = image_path;
+    }
+
+    public void setPost_date(Date post_date) {
+        this.post_date = post_date;
+    }
+
     public Post(int id, int product_id,String post_title, String content1,String content2, String image_path, Date post_date) {
         this.id = id;
         this.post_title = post_title;

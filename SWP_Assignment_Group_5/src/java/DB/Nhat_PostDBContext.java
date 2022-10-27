@@ -86,7 +86,7 @@ public class Nhat_PostDBContext extends Nhat_DBContext<Post> {
         return 0;
     }
 
-    public void addThisPost(Post thisPost) {
+    public boolean addThisPost(Post thisPost) {
         try {
             String sql = "INSERT INTO [dbo].[post]\n"
                     + "           ([product_id]\n"
@@ -113,9 +113,10 @@ public class Nhat_PostDBContext extends Nhat_DBContext<Post> {
         } catch (SQLException ex) {
             Logger.getLogger(Nhat_PostDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return true;
     }
 
-    public void editThisPostExceptIMGpath(Post thisPost) {
+    public boolean editThisPostExceptIMGpath(Post thisPost) {
         try {
             String sql = "UPDATE [dbo].[post]\n"
                     + "   SET [product_id] = ?\n"
@@ -135,9 +136,10 @@ public class Nhat_PostDBContext extends Nhat_DBContext<Post> {
         } catch (SQLException ex) {
             Logger.getLogger(Nhat_PostDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return true;
     }
 
-    public void editThisPost(Post thisPost) {
+    public boolean editThisPost(Post thisPost) {
         try {
             String sql = "UPDATE [dbo].[post]\n"
                     + "   SET [product_id] = ?\n"
@@ -159,9 +161,10 @@ public class Nhat_PostDBContext extends Nhat_DBContext<Post> {
         } catch (SQLException ex) {
             Logger.getLogger(Nhat_PostDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return true;
     }
 
-    public void hidePost(Post thisPost) {
+    public boolean hidePost(Post thisPost) {
         try {
             String sql = "UPDATE [dbo].[post]\n"
                     + "   SET [post_title] =? \n"
@@ -173,6 +176,7 @@ public class Nhat_PostDBContext extends Nhat_DBContext<Post> {
         } catch (SQLException ex) {
             Logger.getLogger(Nhat_PostDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return true;
     }
 
 }

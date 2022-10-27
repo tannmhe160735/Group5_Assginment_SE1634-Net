@@ -14,61 +14,63 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <table>
-            <tr>
-                <td><table>
-                        <tr>
-                            <td style="width: 85vw"><h1>View detail post</h1></td>
-                            <td><a href="editPost.jsp"><button style="background-color: deepskyblue">Edit this post</button></a>
-                                <a href=""><button style="background-color: red">Delete this post</button></a></td>
-                        </tr>
-                    </table></td>
-            </tr>
-            <tr>
-                <td><table>
-                        <tr>
-                            <td style="width: 95vw"><h2 style="text-align:center">${requestScope.thisPost.post_title}</h2></td>
-                        </tr>
-                    </table></td>
-            </tr>
-            <tr>
-                <td><table>
-                        <tr>
-                            <td style="width: 10vw"></td>
-                            <td style="width: 60vw">${requestScope.thisPost.content1}</td>
-                        </tr>
-                        <tr>
-                            <td style="width: 10vw"></td>
-                            <td><img src="${requestScope.thisPost.image_path}" alt="sda" width="500"/></td>
-                        </tr>
-                        <tr>
-                            <td style="width: 10vw"></td>
-                            <td style="width: 60vw">${requestScope.thisPost.content2}</td>
-                        </tr>
-                    </table></td>
-            </tr>
-            <dava:if test="${requestScope.thisProduct != null}">
-            <tr>
-                <td><table>
-                        <tr>
-                            <td style="width: 10vw"></td>
-                            <td><h6 style="margin-bottom: 3px;margin-top: 3px;font-size: 18px">Product detail:</h6></td>
-                            <td style="width: 40vw">
-                                <table style="background-color: cadetblue;width: 40vw">
-                                    <tr>
-                                        <td style="width: 10vw;"><img src="${requestScope.thisProduct.img}" alt=""/></td>
-                                        <td><table>
-                                                <tr><td><h6 style="font-size: 18px;margin-bottom: 15px">${requestScope.thisProduct.title}</h6></td></tr>
-                                                <tr><td><p>${requestScope.thisProduct.price}đ</p></td></tr>
-                                            </table></td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    </table></td>
-            </tr>
-            </dava:if>
-        </table>
-
+        <%@include file="sidebar.jsp" %>
+        <div class="main"> 
+            <table>
+                <tr>
+                    <td><table>
+                            <tr>
+                                <td style="width: 85vw"><h1>View detail post</h1></td>
+                                <td><a href="editPost.jsp"><button style="background-color: deepskyblue">Edit this post</button></a>
+                                    <a href=""><button style="background-color: red">Delete this post</button></a></td>
+                            </tr>
+                        </table></td>
+                </tr>
+                <tr>
+                    <td><table>
+                            <tr>
+                                <td style="width: 95vw"><h2 style="text-align:center">${requestScope.thisPost.post_title}</h2></td>
+                            </tr>
+                        </table></td>
+                </tr>
+                <tr>
+                    <td><table>
+                            <tr>
+                                <td style="width: 10vw"></td>
+                                <td style="width: 60vw">${requestScope.thisPost.content1}</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 10vw"></td>
+                                <td><img src="${requestScope.thisPost.image_path}" alt="sda" width="500"/></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 10vw"></td>
+                                <td style="width: 60vw">${requestScope.thisPost.content2}</td>
+                            </tr>
+                        </table></td>
+                </tr>
+                <dava:if test="${requestScope.thisProduct != null}">
+                    <tr>
+                        <td><table>
+                                <tr>
+                                    <td style="width: 10vw"></td>
+                                    <td><h6 style="margin-bottom: 3px;margin-top: 3px;font-size: 18px">Product detail:</h6></td>
+                                    <td style="width: 40vw">
+                                        <table style="background-color: cadetblue;width: 40vw">
+                                            <tr>
+                                                <td style="width: 10vw;"><img src="${requestScope.thisProduct.img}" alt=""/></td>
+                                                <td><table>
+                                                        <tr><td><h6 style="font-size: 18px;margin-bottom: 15px">${requestScope.thisProduct.title}</h6></td></tr>
+                                                        <tr><td><p>${requestScope.thisProduct.price}đ</p></td></tr>
+                                                    </table></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table></td>
+                    </tr>
+                </dava:if>
+            </table>
+        </div>
     </body>
 </html>

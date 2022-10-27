@@ -18,7 +18,7 @@
                 border-bottom: 1px solid #f2f2f2;
                 margin-left: auto;
                 margin-right: auto;
-                width : 100vw;
+                width : 85vw;
             }
             table.b{
                 border-collapse: collapse;
@@ -40,38 +40,40 @@
                 color: orange
 
             }
-            b
         </style>
     </head>
     <body>
-        <table class="a">
-            <tr>
-                <td valign='top'>
-                    <%pageContext.setAttribute("a", "adidat2");%>
-                    <table class="b" style="width: 27vw; margin-left: 1vw">
-                        <th>Tên giày</th>
-                        <dava:forEach items="${requestScope.listAllIdAndTitleOfProduct}" var="aIdAndTitleOfProduct">
-                            <tr
-                                <dava:if test="${param.product_id==aIdAndTitleOfProduct.product_id}" >
-                                    style="background-color: cornflowerblue"
-                                </dava:if>><td><a href="?product_id=${aIdAndTitleOfProduct.product_id}">${aIdAndTitleOfProduct.title}</a></td></tr>
-                                    </dava:forEach>
-                    </table>
-                </td>
-                <td valign='top'>
-                    <table class="b" style="width: 65vw; margin-right:  1vw">
-                        <th>Feedback</th>
-                            <dava:forEach items="${requestScope.listAllFeedbackStarAndContentByProductID}" var="FeedbackStarAndContent">
-                            <tr>
-                                <td><myCustomTag:Star_Format numberOfStarOfComment="${FeedbackStarAndContent.numberOfStar}"/>${FeedbackStarAndContent.feedbackContent}
-                                    <a class="a" href="editFeedBack.jsp" style="float:right;text-align:right;"><button>Edit</button></a>
-                                </td>
-                            </tr>
-                        </dava:forEach>
+        <%@include file="sidebar.jsp" %>
+        <div class="main">
+            <table class="a">
+                <tr>
+                    <td valign='top'>
+                        <%pageContext.setAttribute("a", "adidat2");%>
+                        <table class="b" style="width: 25vw; margin-left: 1vw">
+                            <th>Tên giày</th>
+                                <dava:forEach items="${requestScope.listAllIdAndTitleOfProduct}" var="aIdAndTitleOfProduct">
+                                <tr
+                                    <dava:if test="${param.product_id==aIdAndTitleOfProduct.product_id}" >
+                                        style="background-color: cornflowerblue"
+                                    </dava:if>><td><a href="?product_id=${aIdAndTitleOfProduct.product_id}">${aIdAndTitleOfProduct.title}</a></td></tr>
+                                        </dava:forEach>
+                        </table>
+                    </td>
+                    <td valign='top'>
+                        <table class="b" style="width: 60vw; margin-right:  1vw">
+                            <th>Feedback</th>
+                                <dava:forEach items="${requestScope.listAllFeedbackStarAndContentByProductID}" var="FeedbackStarAndContent">
+                                <tr>
+                                    <td><myCustomTag:Star_Format numberOfStarOfComment="${FeedbackStarAndContent.numberOfStar}"/>${FeedbackStarAndContent.feedbackContent}
+                                        <a class="a" href="editFeedBack.jsp" style="float:right;text-align:right;"><button>Edit</button></a>
+                                    </td>
+                                </tr>
+                            </dava:forEach>
 
-                    </table>
-                </td>
-            </tr>
-        </table>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </body>
 </html>

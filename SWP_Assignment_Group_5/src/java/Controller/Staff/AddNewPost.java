@@ -83,11 +83,31 @@ public class AddNewPost extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //save img file to "path"
+        //get path of new img
+        ClassLoader loader = AddNewPost.class.getClassLoader();
+        String pathOfProject = loader.getResource("Controller/Staff/AddNewPost.class").toString();
+                           //  file:/D:/SWP391/Group5_Assginment_SE1634-Net/SWP_Assignment_Group_5/build/web/WEB-INF/classes/Controller/Staff/AddNewPost.class
+        String[] splittedPathOfProject = pathOfProject.split("/");
+        StringBuilder path = new StringBuilder();
+        int lengthOfSplittedPathOfProject = splittedPathOfProject.length;
+        for(int i=1;i<lengthOfSplittedPathOfProject;i++){
+            if(splittedPathOfProject[i].equals("build") 
+                    && splittedPathOfProject[i+1].equals("web")
+                    && splittedPathOfProject[i+2].equals("WEB-INF")
+                    && splittedPathOfProject[i+3].equals("classes")
+                    && splittedPathOfProject[i+4].equals("Controller")){
+                break;
+            }
+            path.append(splittedPathOfProject[i]);
+            path.append("\\");
+        }
+        path.append("web\\assets\\img\\img_for_posts\\");
         Part filePart = request.getPart("file");
         String fileName = filePart.getSubmittedFileName();
+        path.append(fileName);
+        //save img file to "path"
         Part[] parts = request.getParts().toArray(new Part[5]);
-        parts[1].write("D:\\SWP391\\Group5_Assginment_SE1634-Net\\SWP_Assignment_Group_5\\web\\assets\\img\\img_for_posts\\" + fileName);
+        parts[1].write(path.toString());
         //create img path to save in DB
         String pathOfIMGofThisPost = "assets/img/img_for_posts/"+fileName;
         //take title and content1 and content2 and productID of this Post

@@ -33,7 +33,7 @@
                 padding: 13px 30px;
                 border-bottom: 1px solid #10558d;
                 color: #cce5ff;
-                font-size: 16px;
+                font-size: 20px;
                 position: relative;
             }
             ul li a:hover{

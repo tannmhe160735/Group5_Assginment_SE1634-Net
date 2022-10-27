@@ -21,8 +21,8 @@
                     <td><table>
                             <tr>
                                 <td style="width: 85vw"><h1>View detail post</h1></td>
-                                <td><a href="editPost.jsp"><button style="background-color: deepskyblue">Edit this post</button></a>
-                                    <a href=""><button style="background-color: red">Delete this post</button></a></td>
+                                <td><a href="EditPost?postID=${requestScope.thisPost.id}"><button style="background-color: deepskyblue">Edit</button></a>
+                                    <a href="HidePost?postID=${requestScope.thisPost.id}"><button style="background-color: red">Hide</button></a></td>
                             </tr>
                         </table></td>
                 </tr>

@@ -45,6 +45,7 @@
     <body>
         <%@include file="sidebar.jsp" %>
         <div class="main">
+            <h1 style="font-size: 20px">List of feedback</h1>
             <table class="a">
                 <tr>
                     <td valign='top'>

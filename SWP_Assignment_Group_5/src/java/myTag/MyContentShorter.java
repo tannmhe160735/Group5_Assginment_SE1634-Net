@@ -29,10 +29,10 @@ public class MyContentShorter extends SimpleTagSupport {
 
     @Override
     public void doTag() throws IOException {
-        if (content1.length() < 350) {
+        if (content1.length() < 300) {
             getJspContext().getOut().write(content1);
         } else {
-            formatContent1 = content1.substring(0, 350);
+            formatContent1 = content1.substring(0, 300);
             getJspContext().getOut().write(formatContent1 + "...");
         }
 

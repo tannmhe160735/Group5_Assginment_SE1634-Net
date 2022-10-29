@@ -23,10 +23,12 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/footer.css" rel="stylesheet" />
+
     </head>
     <jsp:include page="header.jsp"></jsp:include>
         <body id="page-top">
             <!-- Navigation-->
+
             <!-- Section-->
             <section on class="py-5" style="background-color: #181A1B">
                 <div class="container px-4 px-lg-5 my-5 text-light">
@@ -50,6 +52,7 @@
                                     <li class="list-group-item ${cond==c.cate_id? "active-cate":""}">${c.cate_name}</li>
                                 </a>
                             </c:forEach>
+
                         </ul>
                     </div>
                     <div class="col-md-9">
@@ -57,12 +60,17 @@
                         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 justify-content-center text-dark">
                             <c:forEach  items="${listProducts}" var="p">
                                 <div class="col mb-5 ">
+                                     
                                     <div class="card h-100">
-                                        <!-- Sale badge-->
+                                       
+                                    
+                                             <a href="detail?productId=${p.product_id}">
+                                                <img class="card-img" src="${p.img}" alt="..." />
+                                            </a>
+                                       
+                                           
                                         <!-- Product image-->
-                                        <a href="detail?productId=${p.product_id}">
-                                            <img class="card-img-top" src="${p.img}" alt="..." />
-                                        </a>
+                                        
                                         <!-- Product details-->
                                         <div class="card-body p-4">
                                             <div class="text-center">
@@ -84,6 +92,7 @@
                                 </div>
                             </c:forEach>
                         </div>
+
                         <c:set var="totalPage" value="${requestScope.totalPage}"/>
                         <c:if test="${totalPage!=1}">
                             <nav aria-label="Page navigation example">
@@ -103,32 +112,26 @@
                                     .active{
                                         color:#FFC800;
                                     }
+
                                 </style>
+
                                 <ul class="pagination justify-content-center">
                                     <li class="page-item">
-                                        <a class="page-link ${requestScope.condPrev}" 
-                                           href="shop?typePage=${requestScope.typePage}&&cond=${requestScope.cond}&&page=${requestScope.page-1}" 
-                                           tabindex="-1" aria-disabled="true">
-                                            Previous
-                                        </a>
+                                        <a class="page-link ${requestScope.condPrev}" href="shop?typePage=${requestScope.typePage}&&cond=${requestScope.cond}&&page=${requestScope.page-1}" tabindex="-1" aria-disabled="true">Previous</a>
                                     </li>
                                     <c:forEach begin="1" end="${requestScope.totalPage}" var="page">
                                         <li class="page-item">
-                                            <a class="page-link ${page==requestScope.page? "active":""}" 
-                                               href="shop?typePage=${requestScope.typePage}&&cond=${requestScope.cond}&&page=${page}">
-                                                ${page}
-                                            </a>
+                                            <a class="page-link ${page==requestScope.page? "active":""}" href="shop?typePage=${requestScope.typePage}&&cond=${requestScope.cond}&&page=${page}">${page}</a>
                                         </li>
                                     </c:forEach>
                                     <li class="page-item">
-                                        <a class="page-link ${requestScope.condNext}" 
-                                           href="shop?typePage=${requestScope.typePage}&&cond=${requestScope.cond}&&page=${requestScope.page+1}">
-                                            Next
-                                        </a>
+                                        <a class="page-link ${requestScope.condNext}" href="shop?typePage=${requestScope.typePage}&&cond=${requestScope.cond}&&page=${requestScope.page+1}">Next</a>
                                     </li>
                                 </ul>
+
                             </nav>
                         </c:if>
+
                     </div>
                 </div>
             </div>

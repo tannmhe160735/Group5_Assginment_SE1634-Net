@@ -4,18 +4,23 @@
  */
 package API;
 
+import DAO.OrderDAO;
 import DAO.VoucherDAO;
 import Entity.Order;
+import Entity.OrderDetail;
+import Entity.Voucher;
 import Utils.HttpUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.List;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -56,7 +61,29 @@ public class OrderAPI extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        OrderDAO dao = new OrderDAO();
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json");
+       
+        try ( PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("TestGet");
+            List<OrderDetail> list = dao.GetAllOrder();
+            for (OrderDetail order : list) {
+                out.println("OrderID: "+order.getOrd_id());
+                out.println("UserID: "+order.getUser_id());
+                out.println("Email: "+order.getEmail());
+                out.println("Adress: "+order.getAddress());
+                out.println("Phone: "+order.getPhone());
+                out.println("Payment Method:"+order.getPayment());
+                out.println("Order Status: "+order.isStatus());
+                out.println("List Order Product: ");
+                for (Order orderDetail : order.getListOrders()) {
+                    out.println(orderDetail.getProd_id()+": "+orderDetail.getQuantity());
+                }
+                out.println("");
+            }
+        }
     }
 
     @Override
@@ -67,23 +94,17 @@ public class OrderAPI extends HttpServlet {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         out.println("Test Post");
-        try{
-             List<Order> listOrder = HttpUtil.of(request.getReader()).toModel(Order.class);
-             for (Order order : listOrder) {
+        try {
+            List<Order> listOrder = HttpUtil.of(request.getReader()).toModel(Order.class);
+            for (Order order : listOrder) {
                 out.println(order.toString());
             }
-             
-        }catch(Exception e){
+
+        } catch (Exception e) {
             out.println(e.getMessage());
         }
-       
-        
-        
 
-    
-        
     }
-        
 
     @Override
     public String getServletInfo() {

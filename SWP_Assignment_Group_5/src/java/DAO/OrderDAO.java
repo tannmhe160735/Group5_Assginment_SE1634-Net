@@ -23,8 +23,8 @@ public class OrderDAO {
      Connection conn = DB.Binh_DBContext.CreateConnection();
      public List<OrderDetail> GetAllOrder(){
          List<OrderDetail> list = new ArrayList<OrderDetail>();
-         String sql = "select * from order_detail";
-         String listOrder = "select * from order_new where order_id = ?";
+         String sql = "select * from [order]";
+         String listOrder = "select * from order_detail where order_id = ?";
          try {
              PreparedStatement ptmt = conn.prepareStatement(sql);
              ResultSet rs = ptmt.executeQuery();

@@ -147,11 +147,11 @@
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
                                 <li class="page-item ${requestScope.condPrev}" >
-                                    <a class="page-link" href="listVoucher?page=${requestScope.page-1}">Previous</a>
+                                <a class="page-link" href="listVoucher?page=${sessionScope.page-1}">Previous</a>
                                 </li>
 
                                 <li class="page-item ${requestScope.condNext}">
-                                    <a class="page-link" href="listVoucher?page=${requestScope.page+1}">Next</a>
+                                    <a class="page-link" href="listVoucher?page=${sessionScope.page+1}">Next</a>
                                 </li>
                             </ul>
                         </nav>

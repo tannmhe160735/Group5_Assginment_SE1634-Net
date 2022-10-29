@@ -60,13 +60,17 @@
                         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 justify-content-center text-dark">
                             <c:forEach  items="${listProducts}" var="p">
                                 <div class="col mb-5 ">
+                                     
                                     <div class="card h-100">
-                                        <!-- Sale badge-->
-
+                                       
+                                    
+                                             <a href="detail?productId=${p.product_id}">
+                                                <img class="card-img" src="${p.img}" alt="..." />
+                                            </a>
+                                       
+                                           
                                         <!-- Product image-->
-                                        <a href="detail?productId=${p.product_id}">
-                                            <img class="card-img-top" src="${p.img}" alt="..." />
-                                        </a>
+                                        
                                         <!-- Product details-->
                                         <div class="card-body p-4">
                                             <div class="text-center">

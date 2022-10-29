@@ -74,7 +74,7 @@
             <div class="masthead-subheading">Welcome To Tùy Store!</div>
             <h4 class="masthead-subheading">${sessionScope.acc.acc_name}</h4>
             <div class="masthead-heading text-uppercase">Giày gì cũng bán</div>
-            <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
+            
         </div>
     </header>
     <body id="page-top">

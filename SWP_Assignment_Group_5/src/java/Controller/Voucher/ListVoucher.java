@@ -31,19 +31,27 @@ public class ListVoucher extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             VoucherDAO dao = new VoucherDAO();
             List<Voucher> voucher = dao.GetAllVoucher();
-            HttpSession session = request.getSession();
+            
             int page = Integer.parseInt(request.getParameter("page"));
+            request.setAttribute("page", page);
             int start = (page - 1) * 5;
             int end = start + 5;
             int totalPage = (int) voucher.size() / 5;
+            if(totalPage%5!=0){
+                totalPage+=1;
+            }
+            if(end>voucher.size()){
+                end=voucher.size();
+            }
             if (page == 1) {
                 request.setAttribute("condPrev", "disabled");
             }
             if (page == totalPage) {
                 request.setAttribute("condNext", "disabled");
             }
-
-            request.setAttribute("page", page);
+            HttpSession session = request.getSession();
+            session.setAttribute("page", page);
+            
             request.setAttribute("listVoucher", voucher.subList(start, end));
             RequestDispatcher rd = request.getRequestDispatcher("voucher.jsp");
             rd.forward(request, response);

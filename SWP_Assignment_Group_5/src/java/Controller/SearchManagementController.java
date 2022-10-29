@@ -6,19 +6,22 @@
 package Controller;
 
 import DAO.AccountDAO;
+import DAO.ProductDAO;
 import Entity.Account;
+import Entity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
+
 /**
  *
  * @author minht
  */
-public class EditProfileController extends HttpServlet {
+public class SearchManagementController extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,10 +38,10 @@ public class EditProfileController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EditProfileController</title>");  
+            out.println("<title>Servlet SearchByAdminController</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet EditProfileController at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet SearchByAdminController at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -55,12 +58,7 @@ public class EditProfileController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Account acc = (Account) session.getAttribute("acc");
-        int acc_id = acc.getAcc_id();
-        AccountDAO dao = new AccountDAO();
-        request.setAttribute("acc", dao.getAccountById(acc_id));
-        request.getRequestDispatcher("edit_profile.jsp").forward(request, response);
+        processRequest(request, response);
     } 
 
     /** 
@@ -73,19 +71,19 @@ public class EditProfileController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String acc_name = request.getParameter("acc_name");
-        String email = request.getParameter("email");
-        String address = request.getParameter("address");
-        int phone = Integer.parseInt(request.getParameter("phone")); 
-        boolean gender =Boolean.parseBoolean(request.getParameter("gender"));
-        HttpSession session = request.getSession();
-        Account acc = (Account) session.getAttribute("acc");
-        int acc_id = acc.getAcc_id();
-        AccountDAO dao = new AccountDAO();
-        dao.UpdateAccountById(acc_id, acc_name, email, phone, address, gender);
-        request.setAttribute("acc", dao.getAccountById(acc_id));
-        request.setAttribute("msg", "Edit succesfully");
-        request.getRequestDispatcher("profile.jsp").forward(request, response);
+        String input = request.getParameter("input");
+        String action = request.getParameter("action");
+        if(action.equals("product")){
+            ProductDAO Prodao = new ProductDAO();
+            ArrayList<Product> pro = Prodao.getAllProductByTitle(input);
+            request.setAttribute("pro", pro);
+            request.getRequestDispatcher("product.jsp").forward(request, response);
+        }else{
+            AccountDAO Accdao = new AccountDAO();
+            ArrayList<Account> acc = Accdao.listByName(input);
+            request.setAttribute("acc", acc);
+            request.getRequestDispatcher("user.jsp").forward(request, response); 
+        }            
     }
 
     /** 

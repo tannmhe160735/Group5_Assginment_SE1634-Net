@@ -34,31 +34,23 @@
 
                                 <div class="mb-md-5 mt-md-4 pb-5">
                                     
-                                    <form action="login" method="post">
-                                        <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                                        <p class="text-white-50 mb-5">Hãy nhập tên đăng nhập và mật khẩu của bạn!</p>
-                                        <p class="text-white-50 mb-5"><%=request.getAttribute("msg")!=null?request.getAttribute("msg"):""%></p>
+                                    <form action="newpassword" method="post">
+                                        <h2 class="fw-bold mb-2 text-uppercase">Change password</h2>
+                                        <p class="text-white-50 mb-5">Hãy nhập Mật khẩu mới của bạn!</p>
+                                        <p class="text-white-50 mb-5"><%=request.getAttribute("msg")!=null?request.getAttribute("msg"):""%></p> 
+                                        <input type="hidden" name="email" value="${requestScope.email}">
                                         <div class="form-outline form-white mb-4">
-                                            <input name="email" type="email" id="typeEmailX" class="form-control form-control-lg" />
-                                            <label class="form-label" for="typeEmailX">Email</label>
+                                            <input name="newpass" type="password" id="typeNewP" class="form-control form-control-lg" />
+                                            <label class="form-label" for="typeNewP">New Password</label>
                                         </div>
-
                                         <div class="form-outline form-white mb-4">
-                                            <input name="password" type="password" id="typePasswordX" class="form-control form-control-lg" />
-                                            <label class="form-label" for="typePasswordX">Password</label>
+                                            <input name="renewpass" type="password" id="typeReNewP" class="form-control form-control-lg" />
+                                            <label class="form-label" for="typeReNewP">ReNew Password</label>
                                         </div>
-
-                                        <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="forgotpass">Forgot password?</a></p>
                                         <button onclick="sendback()" class="btn btn-outline-light btn-lg px-5" type="button">Back</button>
-                                        <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                                        <button class="btn btn-outline-light btn-lg px-5" type="submit">Save</button>
                                     </form>
                                 </div>
-
-                                <div>
-                                    <p class="mb-0">Don't have an account? <a href="register" class="text-white-50 fw-bold">Sign Up</a>
-                                    </p>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -68,7 +60,7 @@
     </body>
     <script>
         function sendback() {
-            window.location.href = "home";
+            window.location.href = "login.jsp";
         }
     </script>
 </html>

@@ -6,7 +6,7 @@
         </button>
         <!-- search form -->
         <div class="search-form d-none d-lg-inline-block">
-            <form action="search_admin?action=account" method="POST">
+            <form action="search_admin?action=product" method="POST">
                 <div class="input-group">
 
                     <button type="submit" name="search" id="search-btn" class="btn btn-flat">

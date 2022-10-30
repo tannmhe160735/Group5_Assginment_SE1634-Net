@@ -67,22 +67,7 @@ public class OrderAPI extends HttpServlet {
        
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("TestGet");
-            List<OrderDetail> list = dao.GetAllOrder();
-            for (OrderDetail order : list) {
-                out.println("OrderID: "+order.getOrd_id());
-                out.println("UserID: "+order.getUser_id());
-                out.println("Email: "+order.getEmail());
-                out.println("Adress: "+order.getAddress());
-                out.println("Phone: "+order.getPhone());
-                out.println("Payment Method:"+order.getPayment());
-                out.println("Order Status: "+order.isStatus());
-                out.println("List Order Product: ");
-                for (Order orderDetail : order.getListOrders()) {
-                    out.println(orderDetail.getProd_id()+": "+orderDetail.getQuantity());
-                }
-                out.println("");
-            }
+
         }
     }
 

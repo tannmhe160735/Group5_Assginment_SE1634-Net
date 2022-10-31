@@ -75,21 +75,21 @@
                     <!-- Header -->
                 <jsp:include page="admin_header.jsp"></jsp:include>
 
-                <!-- ====================================
-                    ??? CONTENT WRAPPER
-                    ===================================== -->
-                <div>
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Add Product</h4>
-                                <a href="product"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></a>
-                            </div>
+                    <!-- ====================================
+                        ??? CONTENT WRAPPER
+                        ===================================== -->
+                    <div>
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Add Product</h4>
+                                    <a href="product"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></a>                                  
+                                </div>
                             <form action="action_pro?action=add" method="post">
                                 <div class="modal-body">
-                                <c:if test="${requestScope.msg ne null}">
-                                    <p style="color: green;">${requestScope.msg}</p>
-                                </c:if>
+                                    <c:if test="${requestScope.msg ne null}">
+                                        <p style="color: green;">${requestScope.msg}</p>
+                                    </c:if>
                                     <div class="form-group">
                                         <label>Title</label>
                                         <input name="title" type="text" class="form-control">
@@ -116,14 +116,14 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Category</label>
-                                            <select name="category">
-                                        <c:forEach items="${requestScope.listCategories}" var="c">
-                                            <option value="${c.cate_id}">${c.cate_name}</option>
-                                        </c:forEach>
-                                            </select>               
+                                        <select name="category">
+                                            <c:forEach items="${requestScope.listCategories}" var="c">
+                                                <option value="${c.cate_id}">${c.cate_name}</option>
+                                            </c:forEach>
+                                        </select>               
                                     </div>
-                                    
-                                    
+
+
 
                                 </div>
                                 <div class="modal-footer">

@@ -18,7 +18,9 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "Login", urlPatterns = {"/login"})
 public class LoginController extends HttpServlet {
-
+    public static final char SPACE = ' ';
+    public static final char TAB = '\t';
+    public static final char BREAK_LINE = '\n';
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -57,7 +59,7 @@ public class LoginController extends HttpServlet {
                 request.setAttribute("msg", "Invalid email or password ! ");
                 RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
                  rd.forward(request, response);
-            }
+            }          
             if(pass.equals("abc@123a")){
                 request.setAttribute("email", email);
                 RequestDispatcher rd = request.getRequestDispatcher("new_password.jsp");
@@ -76,7 +78,9 @@ public class LoginController extends HttpServlet {
                  rd.forward(request, response);
             }
             if(acc.getRole_id()==0){
-                 request.setAttribute("msg", "You have been BANNED from server please contact us to retrieve  your account ");
+                request.setAttribute("msg", "You have been BANNED from server please contact us to retrieve  your account ");
+                session.removeAttribute("account");
+                session.removeAttribute("acc");
                 RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
                  rd.forward(request, response);
             }
@@ -88,4 +92,24 @@ public class LoginController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    public static int countWords(String input) {
+        if (input == null) {
+            return -1;
+        }
+        int count = 0;
+        int size = input.length();
+        boolean notCounted = true;
+        for (int i = 0; i < size; i++) {
+            if (input.charAt(i) != SPACE && input.charAt(i) != TAB 
+                    && input.charAt(i) != BREAK_LINE) {
+                if(notCounted) {
+                    count++;
+                    notCounted = false;
+                }
+            } else {
+                notCounted = true;
+            }
+        }
+        return count;
+    }
 }

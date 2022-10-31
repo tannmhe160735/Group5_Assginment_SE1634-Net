@@ -79,7 +79,13 @@ public class NewPasswordController extends HttpServlet {
             request.setAttribute("email", email);
             request.getRequestDispatcher("new_password.jsp").forward(request, response);
         }
-        if (!newpass.equals(renewpass)) {           
+        if (newpass.length() < 8 || newpass.length() < 8) {
+            request.setAttribute("msg", "Your Password must be at least 8 characters");
+            request.setAttribute("email", email);
+            request.getRequestDispatcher("new_password.jsp").forward(request, response);
+            return;
+        }
+        if (!newpass.equals(renewpass)) {
             request.setAttribute("msg", "Mật khẩu mới và mật khẩu nhập lại không giống nhau");
             request.setAttribute("email", email);
             request.getRequestDispatcher("new_password.jsp").forward(request, response);

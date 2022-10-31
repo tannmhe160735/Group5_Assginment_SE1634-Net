@@ -78,7 +78,7 @@ public class ProductDAO extends Binh_DBContext {
 
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();
-        List<Product> list = dao.getRelatedProductById(2);
+        List<Product> list = dao.getAllProducts();
         for (Product prod : list) {
             System.out.println(prod.toString());
         }

@@ -84,7 +84,8 @@
                             <div class="modal-header">
                                 <h4 class="modal-title">Edit Product</h4>
                                 <a href="product"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></a>
-                            </div>
+                                <p><%=request.getAttribute("msg")!=null?request.getAttribute("msg"):""%></p>
+                            </div>                           
                             <form action="action_pro?action=edit" method="post">
                                 <div class="modal-body">                    
                                     <div class="form-group">

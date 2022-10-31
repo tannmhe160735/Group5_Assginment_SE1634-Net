@@ -41,7 +41,7 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="admin.jsp">Management</a></li>
                     </c:if>
                     <c:if test="${sessionScope.acc.role_id eq 3}">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Welcome ${sessionScope.acc.acc_name}</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="profile">Welcome ${sessionScope.acc.acc_name}</a></li>
                     </c:if>    
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="shop" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>

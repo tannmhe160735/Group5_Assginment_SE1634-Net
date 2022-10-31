@@ -5,11 +5,13 @@
 package Controller.Voucher;
 
 import DAO.VoucherDAO;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -75,7 +77,8 @@ public class DeleteVoucher extends HttpServlet {
             throws ServletException, IOException {
           VoucherDAO dao = new VoucherDAO();
           dao.DeleteVoucher(request.getParameter("vid"));
-          response.sendRedirect("listVoucher");
+           HttpSession session = request.getSession();
+           RequestDispatcher rd = request.getRequestDispatcher("listVoucher?page="+session.getAttribute("page"));
     }
 
     /**

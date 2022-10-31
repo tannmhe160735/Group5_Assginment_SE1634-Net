@@ -46,6 +46,7 @@ public class VoucherAPI extends HttpServlet {
             List<Voucher> list = dao.GetAllVoucher();
             for (Voucher voucher : list) {
                 out.println(voucher.toString());
+                
             }
 
         }

@@ -83,7 +83,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title">Add Voucher</h4>
-                                <a href="listVoucher"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></a>
+                                <a href="listVoucher?page=${sessionScope.page}"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></a>
                             </div>
                             <form action="addVoucher" method="post">
                                 <div class="modal-body">
@@ -103,7 +103,7 @@
 
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="listVoucher"><button type="button" class="btn btn-close" data-dismiss="modal" aria-hidden="true">Cancel</button></a>
+                                    <a href="listVoucher?page=${sessionScope.page}"><button type="button" class="btn btn-close" data-dismiss="modal" aria-hidden="true">Cancel</button></a>
                                     <input type="submit" class="btn btn-success" value="Add">
                                 </div>
                             </form>

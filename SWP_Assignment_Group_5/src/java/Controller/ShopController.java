@@ -44,6 +44,7 @@ public class ShopController extends HttpServlet {
         List<Product> listProducts = new ArrayList<>();
         if (typePage.equals("all")) {
             listProducts = dao.getAllProducts();
+           
         } else if (typePage.equals("category")) {
             listProducts = dao.getProductsByCategoryId(Integer.parseInt(request.getParameter("cond")));
         }
@@ -52,14 +53,14 @@ public class ShopController extends HttpServlet {
         HttpSession session = request.getSession();
         int page = Integer.parseInt(request.getParameter("page"));
         int totalPage = listProducts.size() / 6;
-        if (listProducts.size() % 6 != 0) {
-            totalPage += 1;
+        if(listProducts.size() % 6!=0){
+            totalPage +=1;
         }
         int start = (page - 1) * 6;
         int end = start + 6;
-        if (end > listProducts.size()) {
+        if(end>listProducts.size()){
             end = listProducts.size();
-        }
+        } 
         if (page == 1) {
             request.setAttribute("condPrev", "disabled");
         }
@@ -73,12 +74,14 @@ public class ShopController extends HttpServlet {
         String url = "shop?typePage="+request.getAttribute("typePage")+"&&page="+request.getAttribute("page")+"&&cond="+request.getAttribute("cond")+"";
         request.getSession().setAttribute("urlHistory", url);
         request.getRequestDispatcher("shop.jsp").forward(request, response);
+
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+
     }
 
     @Override

@@ -144,10 +144,22 @@
                             </div>
 
                         </div>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item ${requestScope.condPrev}" >
+                                <a class="page-link" href="listVoucher?page=${sessionScope.page-1}">Previous</a>
+                                </li>
+
+                                <li class="page-item ${requestScope.condNext}">
+                                    <a class="page-link" href="listVoucher?page=${sessionScope.page+1}">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
+
                 </div>
 
-                =
+
 
             </div>
 

@@ -24,13 +24,6 @@ public class Order {
     private int prod_id;
     private int quantity;
 
-    public Order() {
-    }
 
-    public Order(int ord_id, int prod_id, int quantity) {
-        this.ord_id = ord_id;
-        this.prod_id = prod_id;
-        this.quantity = quantity;
-    }
     
 }

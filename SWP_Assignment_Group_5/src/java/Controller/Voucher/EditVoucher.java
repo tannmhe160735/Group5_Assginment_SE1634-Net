@@ -12,6 +12,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
@@ -88,7 +89,8 @@ public class EditVoucher extends HttpServlet {
         out.println(request.getParameter("discount"));
         String code = request.getParameter("new_code");
         dao.EditVoucher(item.getVoucher_code(), request.getParameter("new_code"), request.getParameter("date"), Double.parseDouble(request.getParameter("discount")));
-        RequestDispatcher rd = request.getRequestDispatcher("listVoucher");
+        HttpSession session = request.getSession();
+        RequestDispatcher rd = request.getRequestDispatcher("listVoucher?page="+session.getAttribute("page"));
         rd.forward(request, response);
 
 

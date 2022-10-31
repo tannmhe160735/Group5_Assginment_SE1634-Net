@@ -40,13 +40,13 @@
                     <c:if test="${sessionScope.acc.role_id eq 1}">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="admin.jsp">Management</a></li>
                     </c:if>
-                    <c:if test="${sessionScope.acc.role_id ne null}">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="profile">Profile</a></li>       
-                    </c:if>
+                    <c:if test="${sessionScope.acc.role_id eq 3}">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Welcome ${sessionScope.acc.acc_name}</a></li>
+                    </c:if>    
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="shop" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="shop?typePage=all&&cond=0&&page=1">All Products</a></li>
+                            <li><a class="dropdown-item" href="shop?typePage=all&&page=1&&cond=0">All Products</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
@@ -74,7 +74,7 @@
             <div class="masthead-subheading">Welcome To Tùy Store!</div>
             <h4 class="masthead-subheading">${sessionScope.acc.acc_name}</h4>
             <div class="masthead-heading text-uppercase">Giày gì cũng bán</div>
-            <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
+            
         </div>
     </header>
     <body id="page-top">

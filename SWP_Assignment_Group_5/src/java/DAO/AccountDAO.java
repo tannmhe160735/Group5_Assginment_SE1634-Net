@@ -211,7 +211,7 @@ public class AccountDAO {
         return accounts;
     }
     
-    public void UpdateAccountById(int acc_id, String acc_name, String email, int phone, String address,boolean gender) {
+    public void UpdateAccountById(int acc_id, String acc_name, String email, String phone, String address,boolean gender, String img) {
         try {
             String sql = "UPDATE [account]\n"
                     + "   SET [fullname] = ?\n"
@@ -225,7 +225,30 @@ public class AccountDAO {
             stm.setString(1, acc_name);
             stm.setString(2, email);
             stm.setBoolean(3, gender);
-            stm.setInt(4, phone);
+            stm.setString(4, phone);
+            stm.setString(5, address);
+            stm.setString(6, img);
+            stm.setInt(7, acc_id);
+            stm.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void UpdateAccountByIdNoImg(int acc_id, String acc_name, String email, String phone, String address,boolean gender) {
+        try {
+            String sql = "UPDATE [account]\n"
+                    + "   SET [fullname] = ?\n"
+                    + "      ,[email] = ?\n"
+                    + "      ,[gender] = ?\n"
+                    + "      ,[phone] = ?\n"
+                    + "      ,[address] = ?\n"
+                    + " WHERE acc_id = ?";
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setString(1, acc_name);
+            stm.setString(2, email);
+            stm.setBoolean(3, gender);
+            stm.setString(4, phone);
             stm.setString(5, address);
             stm.setInt(6, acc_id);
             stm.executeUpdate();

@@ -30,17 +30,16 @@
 
             <section style="background-color: #181A1B;">
                 <div class="container py-5">
-                    <!-- comment -->
+                    <form action="edit_profile" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="card mb-4 bg-dark">
                                 <div class="card-body text-center">
-                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                                    <img src="${requestScope.acc.avatar}" alt="avatar"
                                          class="rounded-circle img-fluid" style="width: 150px;">
                                     <br>
-                                    <br>
                                     <div class="d-flex justify-content-center mb-2">
-                                        <input type="file" id="img" class="btn btn-primary" name="img" accept="image/*">
+                                        <input type="file" class="btn btn-primary" name="file" accept="image/*" value="${requestScope.acc.avatar}">
                                     </div>
                                 </div>
                             </div>
@@ -48,7 +47,10 @@
                         <div class="col-lg-8">
                             <div class="card mb-4 bg-dark text-white">
                                 <div class="card-body">
-                                    <form action="edit_profile" method="POST">
+                                    <div class="row">
+                                        <h4  style="color: red;">${requestScope.msg}</h4>
+                                    </div>
+                                    
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <p class="mb-0">Full Name</p>
@@ -72,7 +74,7 @@
                                             <p class="mb-0">Phone</p>
                                         </div>
                                         <div class="col-sm-9">
-                                            <input name="phone" class="text-muted mb-0" value="${requestScope.acc.phone}">
+                                            <input name="phone" class="text-muted mb-0" value="0${requestScope.acc.phone}">
                                         </div>
                                     </div>
                                     <hr>
@@ -109,12 +111,12 @@
                                             <button class="btn btn-outline-light btn-lg px-5" type="submit">Save</button>
                                         </div>
                                     </div>
-                                </form>                 
+                                              
                             </div>
                         </div>                       
                     </div>
                 </div>
-                                        <!-- comment -->
+                </form>  
             </div>
         </section>
     </body>

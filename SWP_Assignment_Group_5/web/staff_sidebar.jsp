@@ -43,7 +43,7 @@
                     <a class="sidenav-item-link" href="listVoucher?page=1">
                       <span class="nav-text">Voucher</span>
                     </a>
-                    <a class="sidenav-item-link" href="order.jsp">
+                    <a class="sidenav-item-link" href="order">
                       <span class="nav-text">Order</span>
                     </a>
                   </li>

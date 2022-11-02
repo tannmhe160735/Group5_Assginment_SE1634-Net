@@ -129,7 +129,7 @@ public class ActionProductController extends HttpServlet {
             dao.AddProduct(title, price, sale_price, quantity, description, img, category_id, today);
             List<Category> listCategories = new CategoryDAO().getAllCategories();
             request.setAttribute("listCategories", listCategories);
-            request.setAttribute("msg", "Finally SOME GOOD PRODUCT");
+            request.setAttribute("msg", "new PRODUCT added");
             request.getRequestDispatcher("addProduct.jsp").forward(request, response); 
         }
     }

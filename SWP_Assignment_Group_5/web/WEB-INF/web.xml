@@ -80,6 +80,10 @@
         <servlet-name>SearchManagementController</servlet-name>
         <servlet-class>Controller.SearchManagementController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminController</servlet-name>
+        <servlet-class>Controller.AdminController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -155,6 +159,10 @@
     <servlet-mapping>
         <servlet-name>SearchManagementController</servlet-name>
         <url-pattern>/search_admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminController</servlet-name>
+        <url-pattern>/admin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

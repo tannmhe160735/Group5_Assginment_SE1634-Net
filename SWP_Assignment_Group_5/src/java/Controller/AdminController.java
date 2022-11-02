@@ -5,12 +5,15 @@
 
 package Controller;
 
+import DAO.OrderDAO;
+import Entity.OrderDetail2;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
@@ -53,6 +56,13 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        OrderDAO dao = new OrderDAO();
+        List<OrderDetail2> orderdetails = dao.GetOrderByMonth1();
+        for (OrderDetail2 orderdetail : orderdetails) {
+           float tongThang1 = orderdetail.getProduct_id().getPrice() * orderdetail.getQuantity();
+           tongThang1 += orderdetail.getProduct_id().getPrice() * orderdetail.getQuantity();
+           request.setAttribute("thang1", tongThang1);
+        }
         request.getRequestDispatcher("admin.jsp").forward(request, response);
     } 
 

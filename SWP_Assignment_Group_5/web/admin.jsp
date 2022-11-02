@@ -514,7 +514,7 @@
                                       backgroundColor: "transparent",
                                       borderColor: "rgb(82, 136, 255)",
                                       data: [
-                                          100,
+                                          ${requestScope.thang1},
                                           11000,
                                           10000,
                                           14000,

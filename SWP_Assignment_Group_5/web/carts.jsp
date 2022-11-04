@@ -66,7 +66,7 @@
                                                         <h6 class="mb-0" id="price${c.value.product.product_id}">$${c.value.product.price}</h6>
                                                     </div>
                                                     <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                        <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+                                                        <a href="delete-cart?productId=${c.value.product.product_id}"><i class="fas fa-times"></i></a>
                                                     </div>
                                                 </div>
                                                 <script>
@@ -78,7 +78,7 @@
                                                         obj.value = quantity;
                                                         var price = parseFloat(${c.value.product.price} * quantity).toFixed(1);
                                                         document.getElementById("price${c.value.product.product_id}").innerHTML = "$" + price;
-                                                    
+
                                                     }
 
                                                     function minus${c.value.product.product_id}()
@@ -93,16 +93,15 @@
                                                         document.getElementById("price${c.value.product.product_id}").innerHTML = "$" + price;
                                                     }
                                                 </script>
-                                            </c:forEach>
-
+                                            </c:forEach>                                             
                                             <hr class="my-4">
-
                                             <div class="pt-5">
                                                 <h6 class="mb-0">
                                                     <a href="shop?typePage=all&&cond=0&&page=1" class="text-body">
                                                         <i class="fas fa-long-arrow-alt-left me-2"></i>
                                                         Back to shop
-                                                    </a></h6>
+                                                    </a>
+                                                </h6>
                                             </div>
                                         </div>
                                     </div>
@@ -116,17 +115,6 @@
                                                 <h5>$${totalMoney}</h5>
                                             </div>
 
-                                            <h5 class="text-uppercase mb-3">Shipping</h5>
-
-                                            <div class="mb-4 pb-2">
-                                                <select class="select">
-                                                    <option value="1">Standard-Delivery- €5.00</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                    <option value="4">Four</option>
-                                                </select>
-                                            </div>
-
                                             <h5 class="text-uppercase mb-3">Give code</h5>
 
                                             <div class="mb-5">
@@ -135,14 +123,11 @@
                                                     <label class="form-label" for="form3Examplea2">Enter your code</label>
                                                 </div>
                                             </div>
-
                                             <hr class="my-4">
-
                                             <div class="d-flex justify-content-between mb-5">
                                                 <h5 class="text-uppercase">Total price</h5>
                                                 <h5>€ 137.00</h5>
                                             </div>
-
                                             <button type="button" class="btn btn-dark btn-block btn-lg"
                                                     data-mdb-ripple-color="dark">Confirm</button>
                                         </div>

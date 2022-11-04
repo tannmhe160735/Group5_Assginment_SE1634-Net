@@ -24,5 +24,4 @@ public class Category {
     private String cate_name;
     
     
-    
 }

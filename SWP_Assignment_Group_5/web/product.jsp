@@ -76,13 +76,12 @@
                 <div class="page-wrapper">
 
                     <!-- Header -->
-                <jsp:include page="product_header.jsp"></jsp:include>
+                <jsp:include page="admin_header.jsp"></jsp:include>
 
                     <!-- ====================================
                         ??? CONTENT WRAPPER
                         ===================================== -->
-                <c:if test="${requestScope.pro eq null}">
-                        <div class="content-wrapper">
+                    <div class="content-wrapper">
                         <div class="content">
                             <div class="card card-default">
                                 <div class="card-header">
@@ -181,110 +180,7 @@
                             </div>
                         </div>
                     </div>
-                </div> 
-                </c:if>
-                <c:if test="${requestScope.pro ne null}">
-                            <div class="content-wrapper">
-                        <div class="content">
-                            <div class="card card-default">
-                                <div class="card-header">
-                                    <a href="action_pro?action=add" class="btn btn-success"><span>Add New <b>Product</b></span></a>
-                                </div>
-                                <div>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th></th>
-                                                <th>ID</th>
-                                                <th>Title</th>
-                                                <th>Price</th>
-                                                <th>Sale_price</th>
-                                                <th>Quantity</th>
-                                                <th>Description</th>
-                                                <th>Image</th>
-                                                <th>Category</th>
-                                                <th>Created_Date</th>
-                                                <th>Edit</th>
-                                                <th>Delete</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        <c:forEach items="${requestScope.pro}" var="p">
-                                            <tr>
-                                                <td></td>
-                                                <td>${p.product_id}</td>
-                                                <td>${p.title}</td>
-                                                <td>$${p.price}</td>
-                                                <td>${p.sale_price}</td>
-                                                <td>${p.quantity}</td>
-                                                <td>${p.description}</td>
-                                                <td><img src="${p.img}" style="width:150px; height:100px;" class="user-image" alt="User Image" /></td>                      
-                                                <c:if test="${p.category_id eq 0}">
-                                                    <td>Vans Auth</td>
-                                                </c:if>
-                                                <c:if test="${p.category_id eq 1}">
-                                                    <td>Vans Authentic</td>
-                                                </c:if>
-                                                <c:if test="${p.category_id eq 2}">
-                                                    <td>Vans Old skool</td>
-                                                </c:if>
-                                                <c:if test="${p.category_id eq 3}">
-                                                    <td>Vans Slip-on</td>
-                                                </c:if>
-                                                <c:if test="${p.category_id eq 4}">
-                                                    <td>Vans SK8 - Hitdth</td>
-                                                </c:if>
-                                                <c:if test="${p.category_id eq 5}">
-                                                    <td>Vans Vault</td>
-                                                </c:if>
-                                                <c:if test="${p.category_id eq 6}">
-                                                    <td>Vans Auth</td>
-                                                </c:if>
-                                                <td>${p.create_date}</td>
-                                                <td>
-                                                    <a href="action_pro?pro_id=${p.product_id}&action=edit" style="color: black;" ><i class="material-icons"
-                                                                                                    data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                                </td>
-                                                <td>                                                   
-                                                    <button type="button" data-toggle="modal" data-target="#modal${p.product_id}">
-                                                        <i class="material-icons" title="Delete">&#xE872;</i>
-                                                    </button>                                                                                                                                                                                      
-                                                </td>
-                                                <td>
-                                                    <div id="modal${p.product_id}" class="modal fade">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <form action="action_pro?pro_id=${p.product_id}&action=delete" method="POST">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title">Delete Product</h4>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <p>Are you sure you want to delete these Products?</p>
-                                                                        <p class="text-warning"><small>This action cannot be undone.</small></p>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                                                        <input type="submit" class="btn btn-danger" value="Delete">
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>    
-                                                </td>
-                                                
-                                            </tr>
-                                        </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </c:if>              
+                </div>               
             </div>
         </div>
 

@@ -36,6 +36,8 @@
         <servlet-name>AddNewPost</servlet-name>
         <servlet-class>Controller.Staff.AddNewPost</servlet-class>
     </servlet>
+<<<<<<< HEAD
+=======
     <servlet>
         <servlet-name>FilterCategoryController</servlet-name>
         <servlet-class>Controller.FilterCategoryController</servlet-class>
@@ -80,6 +82,7 @@
         <servlet-name>AdminController</servlet-name>
         <servlet-class>Controller.AdminController</servlet-class>
     </servlet>
+>>>>>>> main
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -116,6 +119,8 @@
         <servlet-name>AddNewPost</servlet-name>
         <url-pattern>/AddNewPost</url-pattern>
     </servlet-mapping>
+<<<<<<< HEAD
+=======
     <servlet-mapping>
         <servlet-name>FilterCategoryController</servlet-name>
         <url-pattern>/filter-category</url-pattern>
@@ -156,6 +161,7 @@
         <servlet-name>AdminController</servlet-name>
         <url-pattern>/admin</url-pattern>
     </servlet-mapping>
+>>>>>>> main
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>

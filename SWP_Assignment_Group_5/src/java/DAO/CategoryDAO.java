@@ -18,9 +18,9 @@ import java.util.List;
  *
  * @author DELL
  */
-public class CategoryDAO extends Binh_DBContext {
+public class CategoryDAO extends Linh_DBContext {
 
-    Connection connection = DB.Binh_DBContext.CreateConnection();
+    Connection connection = DB.Linh_DBContext.CreateConnection();
 
     public List<Category> getAllCategories() {
         List<Category> list = new ArrayList<>();

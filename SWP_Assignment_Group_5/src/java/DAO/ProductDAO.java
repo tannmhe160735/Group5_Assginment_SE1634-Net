@@ -4,7 +4,7 @@
  */
 package DAO;
 
-import DB.Binh_DBContext;
+import DB.Linh_DBContext;
 import Entity.Category;
 import Entity.Product;
 import java.sql.Connection;
@@ -20,76 +20,15 @@ import java.util.List;
  *
  * @author DELL
  */
-public class ProductDAO extends Binh_DBContext {
+public class ProductDAO extends Linh_DBContext {
 
-    Connection connection = DB.Binh_DBContext.CreateConnection();
+    Connection connection = DB.Linh_DBContext.CreateConnection();
 
     public List<Product> getAllProducts() {
         List<Product> list = new ArrayList<>();
         try {
             String sql = "select * from product";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Product product = Product.builder()
-                        .product_id(rs.getInt(1))
-                        .title(rs.getString(2))
-                        .price(rs.getFloat(3))
-                        .sale_price(rs.getFloat(4))
-                        .quantity(rs.getInt(5))
-                        .description(rs.getString(6))
-                        .img(rs.getString(7))
-                        .category_id(rs.getInt(8))
-                        .create_date(rs.getDate(9))
-                        .build();
-                list.add(product);
-            }
-        } catch (SQLException e) {
-        }
-        return list;
-    }
-    
-    public ArrayList<Product> getAllProductByTitle(String title) {
-        ArrayList<Product> list = new ArrayList<>();
-        try {
-            String sql = "select * from product where title like ?";
-            String Title = "%" + title + "%";
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, Title);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Product product = Product.builder()
-                        .product_id(rs.getInt(1))
-                        .title(rs.getString(2))
-                        .price(rs.getFloat(3))
-                        .sale_price(rs.getFloat(4))
-                        .quantity(rs.getInt(5))
-                        .description(rs.getString(6))
-                        .img(rs.getString(7))
-                        .category_id(rs.getInt(8))
-                        .create_date(rs.getDate(9))
-                        .build();
-                list.add(product);
-            }
-        } catch (SQLException e) {
-        }
-        return list;
-    }
-
-    public static void main(String[] args) {
-        ProductDAO dao = new ProductDAO();
-        List<Product> list = dao.getRelatedProductById(2);
-        for (Product prod : list) {
-            System.out.println(prod.toString());
-        }
-    }
-
-    public List<Product> getProductsByCategoryId(int categoryId) {
-        List<Product> list = new ArrayList<>();
-        try {
-            String sql = "select * from product where product.category_id = ?";
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, categoryId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Product product = Product.builder()
@@ -213,44 +152,11 @@ public class ProductDAO extends Binh_DBContext {
         }
     }
 
-    public List<Product> getRelatedProductById(int productId) {
-        List<Product> list = new ArrayList<>();
-        Product p = getProductById(productId);
-        try {
-            String sql = "SELECT top 4 [product_id]\n"
-                    + "      ,[title]\n"
-                    + "      ,[price]\n"
-                    + "      ,[sale_price]\n"
-                    + "      ,[quantity]\n"
-                    + "      ,[description]\n"
-                    + "      ,[img]\n"
-                    + "      ,[category_id]\n"
-                    + "      ,[create_date]\n"
-                    + "  FROM [dbo].[product]\n"
-                    + "  where category_id = ? and product_id != ? order by price desc";
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, p.getCategory_id());
-            ps.setInt(2, productId);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Product product = Product.builder()
-                        .product_id(rs.getInt(1))
-                        .title(rs.getString(2))
-                        .price(rs.getFloat(3))
-                        .sale_price(rs.getFloat(4))
-                        .quantity(rs.getInt(5))
-                        .description(rs.getString(6))
-                        .img(rs.getString(7))
-                        .category_id(rs.getInt(8))
-                        .create_date(rs.getDate(9))
-                        .build();
-                list.add(product);
-            }
-            return list;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return null;
-    }
+    public static void main(String[] args) {
+        ProductDAO dao = new ProductDAO();
+        dao.EditProduct(6, "giay sieu dep", "100", "0", "6", "White, Disorders of visual pathways in (due to) inflammatory disorders, left side", "https://images.vans.com/is/image/Vans/VN000D3HW00-ALT1?hei=392&wid=390&qlt=85", "2", "2022-10-12");
+        Product product = dao.getProductById(6);
+        System.out.println(product);
 
+    }
 }

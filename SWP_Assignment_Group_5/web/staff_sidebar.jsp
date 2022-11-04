@@ -40,10 +40,10 @@
                     <a class="sidenav-item-link" href="feedback.jsp">
                       <span class="nav-text">Feedback</span>
                     </a>
-                    <a class="sidenav-item-link" href="listVoucher?page=1">
+                    <a class="sidenav-item-link" href="listVoucher">
                       <span class="nav-text">Voucher</span>
                     </a>
-                    <a class="sidenav-item-link" href="order">
+                    <a class="sidenav-item-link" href="order.jsp">
                       <span class="nav-text">Order</span>
                     </a>
                   </li>

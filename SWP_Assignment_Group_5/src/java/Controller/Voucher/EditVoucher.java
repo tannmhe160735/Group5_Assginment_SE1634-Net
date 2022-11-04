@@ -12,7 +12,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
@@ -81,18 +80,17 @@ public class EditVoucher extends HttpServlet {
                 item = vc;
             }
         }
-
         PrintWriter out = response.getWriter();
         out.println(item.getVoucher_code());
         out.println(request.getParameter("new_code"));
+        out.println(item.getVoucher_create());
         out.println(request.getParameter("date"));
         out.println(request.getParameter("discount"));
         String code = request.getParameter("new_code");
-        dao.EditVoucher(item.getVoucher_code(), request.getParameter("new_code"), request.getParameter("date"), Double.parseDouble(request.getParameter("discount")));
-        HttpSession session = request.getSession();
-        RequestDispatcher rd = request.getRequestDispatcher("listVoucher?page="+session.getAttribute("page"));
+        dao.EditVoucher(item.getVoucher_code(), request.getParameter("new_code"), item.getVoucher_create(), request.getParameter("date"), Double.parseDouble(request.getParameter("discount")));
+        request.setAttribute("msg", "Edit voucher code success");
+        RequestDispatcher rd = request.getRequestDispatcher("listVoucher");
         rd.forward(request, response);
-
 
     }
 

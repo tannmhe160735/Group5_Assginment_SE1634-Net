@@ -25,7 +25,7 @@ public class Product {
     private String title;
     private float price;
     private float sale_price;
-    private int quantity; //so luong san pham trong kho
+    private int quantity;
     private String description;
     private String img;
     private int category_id;

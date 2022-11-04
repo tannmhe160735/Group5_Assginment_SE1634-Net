@@ -40,7 +40,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("login").forward(request, response);
+        processRequest(request, response);
     }
 
     @Override
@@ -57,11 +57,6 @@ public class LoginController extends HttpServlet {
                 request.setAttribute("msg", "Invalid email or password ! ");
                 RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
                  rd.forward(request, response);
-            }
-            if(pass.equals("abc@123a")){
-                request.setAttribute("email", email);
-                RequestDispatcher rd = request.getRequestDispatcher("new_password.jsp");
-                rd.forward(request, response);
             }
             if(acc.getRole_id()==3){
                  RequestDispatcher rd = request.getRequestDispatcher("home");

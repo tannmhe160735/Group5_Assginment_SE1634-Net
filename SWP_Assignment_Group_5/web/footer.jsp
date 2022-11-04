@@ -19,7 +19,7 @@
                             <h2 class="widget-title">Thông Tin</h2>
                             <ul>
                                 <li>Đại học fpt, Thạch Thất, Hà Nội.</li>
-                                <li>hotronguoidungtuystore@gmail.com</li>
+                                <li>support@fpt.edu.vn</li>
                                 <li>+00 111 222 3333</li>
                             </ul>
                         </div>

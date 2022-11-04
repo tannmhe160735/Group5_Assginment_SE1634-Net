@@ -82,8 +82,7 @@
                     <div class="content-wrapper">
                         <div class="content">
                         <c:if test="${requestScope.action ne 'edit'}">
-                            <c:if test="${requestScope.acc eq null}">
-                                <div class="card card-default">
+                            <div class="card card-default">
                                 <div class="card-header">
                                     <a href="action_acc?action=edit" class="btn btn-success"><span>Promote change role <b>Account</b></span></a>
                                 </div>
@@ -164,7 +163,6 @@
                                     </table>
                                 </div>
                             </div>    
-                            </c:if>                           
                         </c:if>
 
                         <c:if test="${requestScope.action eq 'edit'}">
@@ -246,89 +244,7 @@
                                     </div>
                                 </div>    
                             </c:if>   
-                            <c:if test="${requestScope.acc ne null}">
-                            <div class="card card-default">
-                                <div class="card-header">
-                                    <a href="action_acc?action=edit" class="btn btn-success"><span>Promote change role <b>Account</b></span></a>
-                                </div>
-                                <div>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th></th>
-                                                <th>ID</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Gender</th>
-                                                <th>Phone</th>
-                                                <th>Address</th>
-                                                <th>Role_ID</th>
-                                                <th>Delete</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <c:forEach items="${requestScope.acc}" var="a">
-                                                <tr>
-                                                    <td></td>
-                                                    <td>${a.acc_id}</td>
-                                                    <td>${a.acc_name}</td>
-                                                    <td>${a.email}</td>
-                                                    <c:if test="${a.gender eq true}">
-                                                        <td>Male</td>
-                                                    </c:if>
-                                                    <c:if test="${a.gender ne true}">
-                                                        <td>Female</td>
-                                                    </c:if>
-                                                    <td>${a.phone}</td>
-                                                    <td>${a.address}</td>
-                                                    <c:if test="${a.role_id eq 0}">
-                                                        <td><p style="color: red;">Banned</p></td>
-                                                    </c:if>
-                                                    <c:if test="${a.role_id eq 1}">
-                                                        <td>Admin</td>
-                                                    </c:if>
-                                                    <c:if test="${a.role_id eq 2}">
-                                                        <td>Staff</td>
-                                                    </c:if>
-                                                    <c:if test="${a.role_id eq 3}">
-                                                        <td>Customer</td>
-                                                    </c:if>
-                                                    <td>                                                   
-                                                        <button type="button" data-toggle="modal" data-target="#modal${a.acc_id}">
-                                                            <i class="material-icons" title="Delete">&#xE872;</i>
-                                                        </button>                                                                                                                                                                                      
-                                                    </td>
-                                                    <td>
-                                                        <div id="modal${a.acc_id}" class="modal fade">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
-                                                                    <form action="action_acc?id=${a.acc_id}&action=delete" method="POST">
-                                                                        <div class="modal-header">
-                                                                            <h4 class="modal-title">Delete Account</h4>
-                                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <p>Are you sure you want to delete these Account?</p>
-                                                                            <p class="text-warning"><small>This action cannot be undone.</small></p>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                                                            <input type="submit" class="btn btn-danger" value="Delete">
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
 
-                                                            </div>
-
-                                                        </div>    
-                                                    </td>
-                                                </tr>
-                                            </c:forEach>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>    
-                        </c:if>   
                         </div>
                     </div>
 

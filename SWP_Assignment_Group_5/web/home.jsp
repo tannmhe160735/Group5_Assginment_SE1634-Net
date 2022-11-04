@@ -38,15 +38,12 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="home">Home</a></li>
                     <c:if test="${sessionScope.acc.role_id eq 1}">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="admin">Management</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="admin.jsp">Dashboard</a></li>
                     </c:if>
-                    <c:if test="${sessionScope.acc.role_id ne null}">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="profile">Welcome ${sessionScope.acc.acc_name}</a></li>
-                    </c:if>    
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="shop" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="shop?typePage=all&&page=1&&cond=0">All Products</a></li>
+                            <li><a class="dropdown-item" href="shop">All Products</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
@@ -56,14 +53,14 @@
                     </li>
                 </ul>
 
-                <a href="carts.jsp">
+                <a href="cart.jsp">
                     <button class="btn btn-outline-light" type="submit">
                         <i class="bi-cart-fill me-1"></i>
                         Cart
                         <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                     </button>
                 </a>
-                <a href="${sessionScope.log}"><button class="btn btn-outline-primary ms-lg-2">${sessionScope.value_log}</button></a>
+                <a href="${sessionScope.log}"><button class="btn btn-outline-primary ms-lg-2">${sessionScope.value_log}  </button></a>
 
             </div>
         </div>
@@ -74,7 +71,7 @@
             <div class="masthead-subheading">Welcome To Tùy Store!</div>
             <h4 class="masthead-subheading">${sessionScope.acc.acc_name}</h4>
             <div class="masthead-heading text-uppercase">Giày gì cũng bán</div>
-            
+            <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
         </div>
     </header>
     <body id="page-top">

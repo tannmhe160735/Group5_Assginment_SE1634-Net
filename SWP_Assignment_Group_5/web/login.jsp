@@ -48,14 +48,14 @@
                                             <label class="form-label" for="typePasswordX">Password</label>
                                         </div>
 
-                                        <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="forgotpass">Forgot password?</a></p>
+                                        <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
                                         <button onclick="sendback()" class="btn btn-outline-light btn-lg px-5" type="button">Back</button>
                                         <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
                                     </form>
                                 </div>
 
                                 <div>
-                                    <p class="mb-0">Don't have an account? <a href="register" class="text-white-50 fw-bold">Sign Up</a>
+                                    <p class="mb-0">Don't have an account? <a href="register.jsp" class="text-white-50 fw-bold">Sign Up</a>
                                     </p>
                                 </div>
 
@@ -68,7 +68,7 @@
     </body>
     <script>
         function sendback() {
-            window.location.href = "home";
+            window.location.href = "home.jsp";
         }
     </script>
 </html>

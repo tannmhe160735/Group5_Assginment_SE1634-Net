@@ -16,12 +16,11 @@ import jakarta.servlet.http.HttpSession;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-
 /**
  *
  * @author DELL
  */
-@WebServlet(name="DeleteCartController", urlPatterns={"/carts"})
+@WebServlet(name = "CartController", urlPatterns = {"/carts"})
 public class CartController extends HttpServlet {
 
     /**

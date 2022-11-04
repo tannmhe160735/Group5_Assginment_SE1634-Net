@@ -5,8 +5,10 @@
 package Test.Binh;
 
 import DAO.AccountDAO;
+import DAO.OrderDAO;
 import DAO.VoucherDAO;
 import Entity.Account;
+import Entity.Order;
 import Entity.Voucher;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -66,9 +68,9 @@ public class VoucherDAOTest {
     public void CheckVoucherCodeTest(){
         VoucherDAO dao = new VoucherDAO();
         List rs = new ArrayList<>();
+        rs.add(dao.CheckVoucherCode("SaleDenChet2"));
+        rs.add(dao.CheckVoucherCode("TESADD2"));
         rs.add(dao.CheckVoucherCode("TESTEDIT"));
-        rs.add(dao.CheckVoucherCode("TESTLAN2"));
-        rs.add(dao.CheckVoucherCode("TESTEDIT45"));
         for (Object r : rs) {
             assertEquals(true, r);
         }
@@ -123,7 +125,22 @@ public class VoucherDAOTest {
     @Test
     public void ListVoucherCodeTest(){
          VoucherDAO dao = new VoucherDAO();
-         assertEquals(16, dao.GetAllVoucher().size()); 
+         assertEquals(14, dao.GetAllVoucher().size()); 
+    }
+    
+    @Test
+    public void ChangeOrderStatusTest(){
+        OrderDAO dao = new OrderDAO();
+        dao.ChangeStatus(1,3);
+        List<Order> order = dao.GetAllOrder();
+        
+        for (Order order1 : order) {
+            if(order1.getOrd_id()==3){
+               Order ord = order1;
+               assertEquals(1, ord.getStatus());
+            }
+        }
+        
     }
     
     

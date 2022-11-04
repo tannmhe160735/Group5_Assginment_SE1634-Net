@@ -64,10 +64,10 @@
                 <!-- ====================================
                     ??? CONTENT WRAPPER
                     ===================================== -->
-                <div class="content-wrapper">
+<!--                <div class="content-wrapper">
                     <div class="content">
 
-                        <!-- Top Statistics -->
+                         Top Statistics 
                         <div class="row">
                             <div class="col-xl-3 col-sm-6">
                                 <div class="card card-mini mb-4">
@@ -114,7 +114,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
 
 
                     <div class="content">
@@ -131,13 +131,13 @@
                             <div class="card-footer d-flex flex-wrap bg-white p-0">
                                 <div class="col-6 px-0">
                                     <div class="text-center p-4">
-                                        <h4>$6,308</h4>
+                                        <h4>${requestScope.count}</h4>
                                         <p class="mt-2">Total orders of this year</p>
                                     </div>
                                 </div>
                                 <div class="col-6 px-0">
                                     <div class="text-center p-4 border-left">
-                                        <h4>$70,506</h4>
+                                        <h4>$${requestScope.tong}</h4>
                                         <p class="mt-2">Total revenue of this year</p>
                                     </div>
                                 </div>
@@ -514,18 +514,18 @@
                                       backgroundColor: "transparent",
                                       borderColor: "rgb(82, 136, 255)",
                                       data: [
-                                          100,
-                                          11000,
-                                          10000,
-                                          14000,
-                                          11000,
-                                          17000,
-                                          14500,
-                                          18000,
-                                          5000,
-                                          23000,
-                                          14000,
-                                          19000
+                                          ${requestScope.revenue1},
+                                          ${requestScope.revenue2},
+                                          ${requestScope.revenue3},
+                                          ${requestScope.revenue4},
+                                          ${requestScope.revenue5},
+                                          ${requestScope.revenue6},
+                                          ${requestScope.revenue7},
+                                          ${requestScope.revenue8},
+                                          ${requestScope.revenue9},
+                                          ${requestScope.revenue10},
+                                          ${requestScope.revenue11},
+                                          ${requestScope.revenue12}
                                       ],
                                       lineTension: 0.3,
                                       pointRadius: 5,

@@ -18,7 +18,7 @@
           <!-- sidebar menu -->
           <ul class="nav sidebar-inner" id="sidebar-menu">
             <li class="has-sub ">
-              <a href="admin.jsp">
+              <a href="admin">
                 <i class="mdi mdi-view-dashboard-outline"></i>
                 <span class="nav-text">Dashboard</span>
               </a>

@@ -113,7 +113,7 @@
 
                                             <div class="d-flex justify-content-between mb-4">
                                                 <h5 class="text-uppercase">items 3</h5>
-                                                <h5>€ 132.00</h5>
+                                                <h5>$${totalMoney}</h5>
                                             </div>
 
                                             <h5 class="text-uppercase mb-3">Shipping</h5>

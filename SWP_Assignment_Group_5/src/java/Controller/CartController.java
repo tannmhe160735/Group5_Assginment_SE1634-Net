@@ -40,6 +40,13 @@ public class CartController extends HttpServlet {
             if (carts == null) {
                 carts = new LinkedHashMap<>();
             }
+            double totalMoney = 0;
+            for (Map.Entry<Integer, Cart> entry : carts.entrySet()) {
+                Object productId = entry.getKey();
+                Cart cart = entry.getValue();
+                totalMoney += cart.getQuantity() * cart.getProduct().getPrice();
+            }
+            request.setAttribute("totalMoney", totalMoney);
             request.setAttribute("carts", carts);
             request.getRequestDispatcher("carts.jsp").forward(request, response);
         }

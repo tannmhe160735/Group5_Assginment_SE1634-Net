@@ -5,6 +5,7 @@
 package Controller;
 
 import DAO.ProductDAO;
+import Entity.Account;
 import Entity.Cart;
 import Entity.Product;
 import java.io.IOException;
@@ -41,6 +42,11 @@ public class AddToCartController extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             int productId = Integer.parseInt(request.getParameter("productId"));
             HttpSession session = request.getSession();
+            Account acc = (Account) session.getAttribute("acc");
+            if(acc == null){
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+                return;
+            }
             Map<Integer, Cart> carts = (Map<Integer, Cart>) session.getAttribute("carts");
             if (carts == null) {
                 carts = new LinkedHashMap<>();

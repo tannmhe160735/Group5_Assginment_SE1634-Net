@@ -60,16 +60,13 @@
                         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 justify-content-center text-dark">
                             <c:forEach  items="${listProducts}" var="p">
                                 <div class="col mb-5 ">
-                                     
+
                                     <div class="card h-100">
-                                       
-                                    
-                                             <a href="detail?productId=${p.product_id}">
-                                                <img class="card-img" src="${p.img}" alt="..." />
-                                            </a>
-                                       
-                                           
+
                                         <!-- Product image-->
+                                        <a href="detail?productId=${p.product_id}">
+                                            <img class="card-img" src="${p.img}" alt="..." />
+                                        </a>
                                         
                                         <!-- Product details-->
                                         <div class="card-body p-4">
@@ -80,8 +77,8 @@
                                                 $${p.price}
                                             </div>
                                         </div>
-                                        <!-- Product actions-->
-
+                                            
+                                        <!-- Product actions-->                                  
                                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                             <div class="text-center">
                                                 <a class="btn btn-outline-dark mt-auto" href="add-to-cart?productId=${p.product_id}">

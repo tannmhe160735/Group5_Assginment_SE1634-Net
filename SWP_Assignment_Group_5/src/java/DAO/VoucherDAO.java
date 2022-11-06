@@ -30,17 +30,17 @@ public class VoucherDAO {
             ResultSet rs = ptmt.executeQuery();
 
             while (rs.next()) {
-                try{
+                try {
                     Voucher vc = new Voucher();
-                vc.setVoucher_code(rs.getString("voucher_code"));
-                vc.setVoucher_create(DateFor.format(rs.getDate("voucher_create")));
-                vc.setVoucher_experience(DateFor.format(rs.getDate("voucher_experience")));
-                vc.setVoucher_discount(rs.getDouble("voucher_discount"));
-                voucher.add(vc);
-                }catch(Exception e){
-                    
+                    vc.setVoucher_code(rs.getString("voucher_code"));
+                    vc.setVoucher_create(DateFor.format(rs.getDate("voucher_create")));
+                    vc.setVoucher_experience(DateFor.format(rs.getDate("voucher_experience")));
+                    vc.setVoucher_discount(rs.getDouble("voucher_discount"));
+                    voucher.add(vc);
+                } catch (Exception e) {
+
                 }
-                
+
             }
 
         } catch (SQLException ex) {
@@ -99,12 +99,12 @@ public class VoucherDAO {
         }
     }
 
-    public void EditVoucher(String old_code,String new_code,String experience, double discount) {
-     String sql ="UPDATE [dbo].[voucher_new] SET "
-             + "[voucher_code] = ?,"
-             + "[voucher_experience] = ?,"
-             + "[voucher_discount] = ? WHERE voucher_code =? ";
-         try {
+    public void EditVoucher(String old_code, String new_code, String experience, double discount) {
+        String sql = "UPDATE [dbo].[voucher_new] SET "
+                + "[voucher_code] = ?,"
+                + "[voucher_experience] = ?,"
+                + "[voucher_discount] = ? WHERE voucher_code =? ";
+        try {
             PreparedStatement ptmt = conn.prepareStatement(sql);
             ptmt.setString(1, new_code);
             ptmt.setString(2, experience);
@@ -119,10 +119,36 @@ public class VoucherDAO {
 
     public static void main(String[] args) {
         VoucherDAO dao = new VoucherDAO();
-        
-        for (Voucher arg : dao.GetAllVoucher()) {
-            System.out.println(arg.toString());
-        }
-        
+
+        System.out.println(dao.getDiscountPercentById("SALETHANG10"));
+
     }
+
+    public float getDiscountPercentById(String voucher_code) {
+        String sql = "SELECT  [voucher_discount]\n"
+                + ",[voucher_experience]\n"
+                + "  FROM [data].[dbo].[voucher_new]\n"
+                + "  where voucher_code=?";
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setString(1, voucher_code);
+            ResultSet rs = ptmt.executeQuery();
+            while (rs.next()) {
+                try {
+                    Date expired = rs.getDate("voucher_experience");
+                    Date today = new Date(System.currentTimeMillis());
+//                    System.out.println(today.before(expired));
+                    if (today.before(expired)) {
+                        return rs.getFloat("voucher_discount");
+                    }
+                } catch (Exception e) {    
+                    System.out.println(e.getMessage());
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return 0;
+    }
+
 }

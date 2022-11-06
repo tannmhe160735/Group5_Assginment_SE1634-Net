@@ -47,7 +47,6 @@
                                     }
                                 </style>
                             <c:forEach items="${listCategories}" var="c">
-
                                 <a href="shop?typePage=category&&cond=${c.cate_id}&&page=1">
                                     <li class="list-group-item ${cond==c.cate_id? "active-cate":""}">${c.cate_name}</li>
                                 </a>

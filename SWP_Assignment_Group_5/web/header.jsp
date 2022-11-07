@@ -11,25 +11,15 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="home">Home</a></li>
                     <c:if test="${sessionScope.acc.role_id eq 1}">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="admin.jsp">Management</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="admin">Management</a></li>
                     </c:if>
                     <c:if test="${sessionScope.acc.role_id eq 3}">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="profile">Welcome ${sessionScope.acc.acc_name}</a></li>
-                    </c:if>    
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="shop" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="shop?typePage=all&&page=1"">All Products</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                        </ul>
-                    </li>
+                    </c:if>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="shop?typePage=all&&page=1&&cond=0">Shop</a></li>
                 </ul>
 
-                <a href="carts.jsp">
+                <a href="carts">
                     <button class="btn btn-outline-light" type="submit">
                         <i class="bi-cart-fill me-1"></i>
                         Cart

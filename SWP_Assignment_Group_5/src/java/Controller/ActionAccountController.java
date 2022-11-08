@@ -13,6 +13,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 /**
@@ -55,7 +56,13 @@ public class ActionAccountController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {       
+    throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Account account =(Account) session.getAttribute("acc");
+        if(account == null || account.getRole_id() != 1){
+            response.sendRedirect("home");
+            return;
+        }
         String action = request.getParameter("action");
         if(action.equals("edit")){
             AccountDAO dao = new AccountDAO();
@@ -78,6 +85,7 @@ public class ActionAccountController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        CheckAdmin(request, response);
         String action = request.getParameter("action");
         AccountDAO dao = new AccountDAO();
         if(action.equals("delete")){  
@@ -109,5 +117,13 @@ public class ActionAccountController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
+    public static void CheckAdmin(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        HttpSession session = request.getSession();
+        Account account =(Account) session.getAttribute("acc");
+        if(account == null || account.getRole_id() != 1){
+            response.sendRedirect("home");
+            return;
+        }
+    }
 }

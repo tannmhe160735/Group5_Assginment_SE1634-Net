@@ -38,59 +38,29 @@
                                         <div class="col-lg-8">
                                             <div class="p-5">
                                                 <div class="d-flex justify-content-between align-items-center mb-5">
-                                                    <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1></div
-                                                <hr class="my-4">
-                                                <div class="row mb-4 d-flex justify-content-between align-items-center">
-                                                        <div class="col-md-2 col-lg-2 col-xl-2">
-                                                            <h6 class="text-black mb-0">Image</h6>
-                                                        </div>
-                                                        <div class="col-md-3 col-lg-3 col-xl-3">
-                                                            <h6 class="text-black mb-0">Title</h6>
-                                                        </div>
-
-                                                        <div class="col-md-1 col-lg-1 col-xl-1">
-                                                            <h6 class="text-black mb-0">Size</h6>
-                                                        </div>
-
-                                                        <div class="col-md-2 col-lg-2 col-xl-2 d-flex quantity">
-                                                            <h6 class="text-black mb-0">Quantity</h6>
-                                                        </div>
-                                                        <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-1">
-                                                            <h6 class="text-black mb-0">Price</h6>
-                                                        </div>
-                                                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                            
-                                                        </div>
-                                                    </div>
-                                            <c:forEach items="${carts}" var="c">
-
-                                                <form action="update-quantity">
+                                                    <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1></div>
+                                                <c:forEach items="${carts}" var="c">
                                                     
+                                                <form action="update-quantity">
                                                     <hr class="my-4">
 
                                                     <div class="row mb-4 d-flex justify-content-between align-items-center">
                                                         <div class="col-md-2 col-lg-2 col-xl-2">
-                                                            <img src="${c.product.img}" class="img-fluid rounded-3" alt="">
+                                                            <img src="${c.value.product.img}" class="img-fluid rounded-3" alt="">
                                                         </div>
                                                         <div class="col-md-3 col-lg-3 col-xl-3">
-                                                            <h6 class="text-black mb-0">${c.product.title}</h6>
+                                                            <h6 class="text-black mb-0">${c.value.product.title}</h6>
                                                         </div>
-
-                                                        <div class="col-md-1 col-lg-1 col-xl-1">
-                                                            <h6 class="text-black mb-0">${c.size}</h6>
-                                                        </div>
-
-                                                        <input type="hidden" name="productId" value="${c.product.product_id}">
-                                                        <input type="hidden" name="size" value="${c.size}">
-                                                        <div class="col-md-2 col-lg-2 col-xl-2 d-flex quantity">
-                                                            <input onchange="this.form.submit()" type="number" min="1" name="quantity" value="${c.quantity}"
+                                                        <input type="hidden" name="productId" value="${c.value.product.product_id}">
+                                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex quantity">
+                                                            <input onchange="this.form.submit()" type="number" min="1" name="quantity" value="${c.value.quantity}"
                                                                    class="form-control form-control-sm disabled" />
                                                         </div>
-                                                        <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-1">
-                                                            <h6 class="mb-0">$${c.product.price*c.quantity}</h6>
+                                                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                            <h6 class="mb-0" id="price${c.value.product.product_id}">$${c.value.product.price*c.value.quantity}</h6>
                                                         </div>
                                                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                            <a href="delete-cart?productId=${c.product.product_id}&&size=${c.size}"><i class="fas fa-times"></i></a>
+                                                            <a href="delete-cart?productId=${c.value.product.product_id}"><i class="fas fa-times"></i></a>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -130,8 +100,8 @@
                                                 <h5 class="text-uppercase">Total price</h5>
                                                 <h5>$${paymentMoney}</h5>
                                             </div>
-                                            <a href="checkout" class="btn btn-dark btn-block btn-lg"
-                                                    data-mdb-ripple-color="dark">Confirm</a>
+                                            <button type="button" class="btn btn-dark btn-block btn-lg"
+                                                    data-mdb-ripple-color="dark">Confirm</button>
                                         </div>
                                     </div>
                                 </div>

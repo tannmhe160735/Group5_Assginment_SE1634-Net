@@ -4,7 +4,6 @@
  */
 package Controller;
 
-import DAO.CartDAO;
 import DAO.ProductDAO;
 import Entity.Account;
 import Entity.Cart;
@@ -41,22 +40,26 @@ public class AddToCartController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            int quantity = Integer.parseInt(request.getParameter("quantity"));
-            int size = Integer.parseInt(request.getParameter("size"));          
             int productId = Integer.parseInt(request.getParameter("productId"));
             HttpSession session = request.getSession();
             Account acc = (Account) session.getAttribute("acc");
             if(acc == null){
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 return;
-            }else{
-                CartDAO dao = new CartDAO();
-        
-            dao.AddToCart((int) session.getAttribute("acc_id"), productId, size, quantity);
             }
-            
+            Map<Integer, Cart> carts = (Map<Integer, Cart>) session.getAttribute("carts");
+            if (carts == null) {
+                carts = new LinkedHashMap<>();
+            }
+            if (carts.containsKey(productId)) { //san pham da co tren gio hang
+                int oldQuantity = carts.get(productId).getQuantity();
+                carts.get(productId).setQuantity(oldQuantity + 1);
+            } else { //san pham chua co tren gio hang
+                Product product = new ProductDAO().getProductById(productId);
+                carts.put(productId, Cart.builder().product(product).quantity(1).build());
+            }
             //save cart into session
-            
+            session.setAttribute("carts", carts);
             String urlHistory = (String) session.getAttribute("urlHistory");
             if (urlHistory == null) {
                 urlHistory = "home";

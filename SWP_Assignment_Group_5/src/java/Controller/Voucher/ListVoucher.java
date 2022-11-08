@@ -46,7 +46,7 @@ public class ListVoucher extends HttpServlet {
             if (page == 1) {
                 request.setAttribute("condPrev", "disabled");
             }
-            if (page == totalPage || totalPage<1) {
+            if (page == totalPage) {
                 request.setAttribute("condNext", "disabled");
             }
             HttpSession session = request.getSession();

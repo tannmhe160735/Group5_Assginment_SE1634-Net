@@ -46,7 +46,7 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="shop?typePage=all&&page=1&&cond=0">Shop</a></li>
                 </ul>
 
-                <a href="carts">
+                <a href="carts.jsp">
                     <button class="btn btn-outline-light" type="submit">
                         <i class="bi-cart-fill me-1"></i>
                         Cart
@@ -134,6 +134,7 @@
                     <section class="page-section " id="team" style="background-color: #181A1B">
                         <div class="container">
                             <div class="text-center text-white">
+                                <h2 class="section-heading text-uppercase">Amazing Team</h2>
                                 <h3 class="section-subheading text-muted">Trùm đường dây buôn bán giày fake.</h3>
                             </div>
                             <div class="row text-white" >

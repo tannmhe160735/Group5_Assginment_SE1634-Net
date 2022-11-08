@@ -77,9 +77,8 @@ public class DeleteVoucher extends HttpServlet {
             throws ServletException, IOException {
           VoucherDAO dao = new VoucherDAO();
           dao.DeleteVoucher(request.getParameter("vid"));
-          HttpSession session = request.getSession();
-          RequestDispatcher rd = request.getRequestDispatcher("listVoucher?page="+session.getAttribute("page"));
-          rd.forward(request, response);
+           HttpSession session = request.getSession();
+           RequestDispatcher rd = request.getRequestDispatcher("listVoucher?page="+session.getAttribute("page"));
     }
 
     /**

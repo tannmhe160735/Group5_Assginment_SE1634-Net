@@ -50,8 +50,6 @@ public class CartController extends HttpServlet {
                     List<Cart> carts = dao.GetCartByUser(acc_id);
                     float totalMoney = 0;
                     for (Cart item : carts) {
-
-//                cart.getProduct().setPrice(Float.parseFloat(String.format("%.02f", cart.getProduct().getPrice())));
                         totalMoney += item.getQuantity() * item.getProduct().getPrice();
                     }
                     String voucher_code = request.getParameter("voucher_code");

@@ -13,16 +13,13 @@ import lombok.ToString;
  *
  * @author DELL
  */
-
 @Builder
 @Getter
 @Setter
 @ToString
 
-public class Cart {
-    private Product product;
-    private int quantity; //so luong san pham tren gio hang
+public class Product_size {
+    private int product_id;
     private int size;
-    
-    
+    private int quantity;
 }

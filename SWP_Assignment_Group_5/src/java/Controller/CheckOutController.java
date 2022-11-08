@@ -4,10 +4,8 @@
  */
 package Controller;
 
-import DAO.ProductDAO;
-import Entity.Account;
+import DAO.VoucherDAO;
 import Entity.Cart;
-import Entity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -23,8 +21,8 @@ import java.util.Map;
  *
  * @author DELL
  */
-@WebServlet(name = "AddToCartController", urlPatterns = {"/add-to-cart"})
-public class AddToCartController extends HttpServlet {
+@WebServlet(name = "CheckOutController", urlPatterns = {"/checkout"})
+public class CheckOutController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,34 +37,35 @@ public class AddToCartController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            int quantity = Integer.parseInt(request.getParameter("quantity"));
-            int size = Integer.parseInt(request.getParameter("size"));          
-            int productId = Integer.parseInt(request.getParameter("productId"));
             HttpSession session = request.getSession();
-            Account acc = (Account) session.getAttribute("acc");
-            if(acc == null){
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-                return;
-            }
             Map<Integer, Cart> carts = (Map<Integer, Cart>) session.getAttribute("carts");
             if (carts == null) {
                 carts = new LinkedHashMap<>();
             }
-            if (carts.containsKey(productId)) { //san pham da co tren gio hang
-                int oldQuantity = carts.get(productId).getQuantity();
-                carts.get(productId).setQuantity(oldQuantity + 1);
-            } else { //san pham chua co tren gio hang
-                Product product = new ProductDAO().getProductById(productId);
-                carts.put(productId, Cart.builder().product(product).size(size).quantity(quantity).build());
+            double totalMoney = 0;
+            for (Map.Entry<Integer, Cart> entry : carts.entrySet()) {
+                Integer productId = entry.getKey();
+                Cart cart = entry.getValue();
+//                cart.getProduct().setPrice(Float.parseFloat(String.format("%.02f", cart.getProduct().getPrice())));
+                totalMoney += cart.getQuantity() * cart.getProduct().getPrice();
             }
-            //save cart into session
-            session.setAttribute("carts", carts);
-            String urlHistory = (String) session.getAttribute("urlHistory");
-            if (urlHistory == null) {
-                urlHistory = "home";
+            String voucher_code = request.getParameter("voucher_code");
+            VoucherDAO vch = new VoucherDAO();
+            float discountpercent = vch.getDiscountPercentById(voucher_code);
+            Float paymentMoney = (float) (totalMoney - totalMoney * discountpercent);
+            String voucher_msg = " ";
+            if (voucher_code != null) {
+                if (discountpercent == 0) {
+                    voucher_msg = "Voucher is not exist or expired !";
+                } else {
+                    voucher_msg = "Discount: " + String.format("%.02f", discountpercent * 100) + "%";
+                }
             }
-            response.sendRedirect(urlHistory);
+            request.setAttribute("voucher_msg", voucher_msg);
+            request.setAttribute("paymentMoney", paymentMoney);
+            request.setAttribute("totalMoney", totalMoney);
+            request.getRequestDispatcher("checkout.jsp").forward(request, response);
+
         }
     }
 

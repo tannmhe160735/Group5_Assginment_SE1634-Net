@@ -37,18 +37,19 @@
                         <h1 class="display-5 fw-bolder">${requestScope.product.title}</h1>
                         <div class="fs-5 mb-5">
                             <span>$${requestScope.product.price}</span>
+                            <p class="lead">${requestScope.product.description}</p>
                         </div>
-                        <p class="lead">${requestScope.product.description}</p>
                         <div class="d-flex">
-                            <a class="btn btn-outline-success flex-shrink-0 ms-2 mx-2" type="button">
-                                <i class="bi-cart-fill me-1 bi bi-cart"></i>
-                                Buy now                              
-                            </a>
-                            <a href="add-to-cart?productId=${requestScope.product.product_id}" class="btn btn-outline-light flex-shrink-0 mx-0" type="button">
-                                <i class="bi-cart-fill me-1 bi bi-cart"></i>
-                                Add to cart                             
-                            </a>                               
-                            <input class="form-control text-center mx-1" id="inputQuantity" type="num" value="1" style="max-width: 3rem"/>
+                            <form action="add-to-cart">
+                                <input type="hidden" name="productId" value="${requestScope.product.product_id}"/>
+                                <select class="btn btn-outline-light" name="size">
+                                    <c:forEach items="${listSizes}" var="s">
+                                        <option value="${s.size}">${s.size}</option>
+                                    </c:forEach>
+                                </select>
+                                <input name="quantity" type="num" value="1" style="max-width: 3rem"/></br>
+                                <input type="submit" class="btn btn-outline-light flex-shrink-0 mx-0" value="Add to cart"/>
+                            </form>                                                      
                         </div>
                     </div>
                 </div>

@@ -5,7 +5,9 @@
 package Controller;
 
 import DAO.ProductDAO;
+import DAO.ProductSizeDAO;
 import Entity.Product;
+import Entity.Product_size;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -37,6 +39,9 @@ public class DetailController extends HttpServlet {
             int productId = Integer.parseInt(request.getParameter("productId"));
             Product product = new ProductDAO().getProductById(productId);
             List<Product> listRelatedProducts = new ProductDAO().getRelatedProductById(productId);
+            List<Product_size> listSizes = new ProductSizeDAO().getSizeByProductId(productId);
+            
+            request.setAttribute("listSizes", listSizes);
             request.setAttribute("listRelatedProducts", listRelatedProducts);
             request.setAttribute("product", product);
 

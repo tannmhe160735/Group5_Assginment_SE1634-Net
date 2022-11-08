@@ -37,7 +37,6 @@ public class CartController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -46,31 +45,41 @@ public class CartController extends HttpServlet {
             HttpSession session = request.getSession();
             CartDAO dao = new CartDAO();
             int acc_id = (int) session.getAttribute("acc_id");
-            List<Cart> carts = dao.GetCartByUser(acc_id);
-            float totalMoney = 0;
-            for (Cart item:carts) {
-                
-                
+            try {
+                if (acc_id != 0) {
+                    List<Cart> carts = dao.GetCartByUser(acc_id);
+                    float totalMoney = 0;
+                    for (Cart item : carts) {
+
 //                cart.getProduct().setPrice(Float.parseFloat(String.format("%.02f", cart.getProduct().getPrice())));
-                totalMoney += item.getQuantity() * item.getProduct().getPrice();
-            }
-            String voucher_code = request.getParameter("voucher_code");
-            VoucherDAO vch = new VoucherDAO();
-            float discountpercent = vch.getDiscountPercentById(voucher_code);
-            Float paymentMoney = (float) (totalMoney - totalMoney * discountpercent);
-            String voucher_msg = " ";
-            if (voucher_code != null) {
-                if (discountpercent == 0) {
-                    voucher_msg = "Voucher is not exist or expired !";
-                } else {
-                    voucher_msg = "Discount: " + String.format("%.02f", discountpercent* 100) + "%";
+                        totalMoney += item.getQuantity() * item.getProduct().getPrice();
+                    }
+                    String voucher_code = request.getParameter("voucher_code");
+                    VoucherDAO vch = new VoucherDAO();
+                    float discountpercent = vch.getDiscountPercentById(voucher_code);
+                    Float paymentMoney = (float) (totalMoney - totalMoney * discountpercent);
+                    String voucher_msg = " ";
+                    if (voucher_code != null) {
+                        if (discountpercent == 0) {
+                            voucher_msg = "Voucher is not exist or expired !";
+                        } else {
+                            voucher_msg = "Discount: " + String.format("%.02f", discountpercent * 100) + "%";
+                        }
+                    }
+                    request.setAttribute("voucher_msg", voucher_msg);
+                    request.setAttribute("paymentMoney", paymentMoney);
+                    request.setAttribute("totalMoney", totalMoney);
+                    request.setAttribute("carts", carts);
+                    request.getRequestDispatcher("carts.jsp").forward(request, response);
                 }
-            } 
-            request.setAttribute("voucher_msg", voucher_msg);
-            request.setAttribute("paymentMoney", paymentMoney);
-            request.setAttribute("totalMoney", totalMoney);
-            request.setAttribute("carts", carts);
-            request.getRequestDispatcher("carts.jsp").forward(request, response);
+                else{
+                    response.sendRedirect("login.jsp");
+                }
+
+            } catch (Exception e) {
+                response.sendRedirect("login.jsp");
+            }
+
         }
     }
 

@@ -64,6 +64,7 @@ public class CartController extends HttpServlet {
                             voucher_msg = "Discount: " + String.format("%.02f", discountpercent * 100) + "%";
                         }
                     }
+                    request.setAttribute("voucher", voucher_code);
                     request.setAttribute("voucher_msg", voucher_msg);
                     request.setAttribute("paymentMoney", paymentMoney);
                     request.setAttribute("totalMoney", totalMoney);
@@ -73,11 +74,9 @@ public class CartController extends HttpServlet {
                 else{
                     response.sendRedirect("login.jsp");
                 }
-
             } catch (Exception e) {
                 response.sendRedirect("login.jsp");
             }
-
         }
     }
 

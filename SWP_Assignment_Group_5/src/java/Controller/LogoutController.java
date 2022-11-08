@@ -53,6 +53,7 @@ public class LogoutController extends HttpServlet {
         HttpSession session = request.getSession();
         session.removeAttribute("acc");
         session.setAttribute("acc_id",0);
+        session.removeAttribute("cartSize");
         response.sendRedirect("home");
     }
 

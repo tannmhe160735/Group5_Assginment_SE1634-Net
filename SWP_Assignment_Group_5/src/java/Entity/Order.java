@@ -27,6 +27,7 @@ public class Order {
     private String email;
     private Account acc;
     private String payment;
+    private float total_price;
     private int status;
     private String date_created;
     List<OrderDetail> listOrders;

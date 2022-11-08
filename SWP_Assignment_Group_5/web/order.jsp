@@ -124,6 +124,8 @@
                                                     <hr class="my-2"/>
                                                     <p class="">Email: ${listO.email}</p>
                                                     <hr class="my-2"/>
+                                                     <p class="">Total Price: ${listO.total_price}</p>
+                                                    <hr class="my-2"/>
                                                     <p class="">Payment Method: ${listO.payment}</p>
                                                     <hr class="my-2"/>
                                                     <c:if test="${listO.status==1}">
@@ -138,9 +140,9 @@
                                                         <p>Status : Denied</p>
                                                         <hr class="my-2"/>
                                                     </c:if>
-
-                                                    <a href="#" class="btn btn col-5" style="background-color: #8a909d;color:white">Accept</a>
-                                                    <a href="#" class="btn btn col-5" style="background-color: #8a909d;color:white">Deny</a>
+                                                        
+                                                    <a href="changeStatus?action=accept&&order_id=${listO.ord_id}" class="btn btn col-5" style="background-color: #8a909d;color:white">Accept</a>
+                                                    <a href="changeStatus?action=deny&&order_id=${listO.ord_id}" class="btn btn col-5" style="background-color: #8a909d;color:white">Deny</a>
 
 
                                                 </div>

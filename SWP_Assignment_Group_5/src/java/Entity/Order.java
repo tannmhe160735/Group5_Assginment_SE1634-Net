@@ -29,6 +29,7 @@ public class Order {
     private String email;
     private Account acc;
     private String payment;
+    private float total_price;
     private int status;
     private Date date_created;
     private float totalPrice;

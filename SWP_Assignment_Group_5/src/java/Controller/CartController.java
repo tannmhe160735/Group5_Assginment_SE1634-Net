@@ -6,6 +6,7 @@ package Controller;
 
 import DAO.VoucherDAO;
 import Entity.Cart;
+import Entity.Product_size;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,6 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,6 +35,7 @@ public class CartController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -54,8 +57,6 @@ public class CartController extends HttpServlet {
             VoucherDAO vch = new VoucherDAO();
             float discountpercent = vch.getDiscountPercentById(voucher_code);
             Float paymentMoney = (float) (totalMoney - totalMoney * discountpercent);
-//            String totalMoney1 = String.format("%.02f", totalMoney
-
             String voucher_msg = " ";
             if (voucher_code != null) {
                 if (discountpercent == 0) {
@@ -63,8 +64,7 @@ public class CartController extends HttpServlet {
                 } else {
                     voucher_msg = "Discount: " + String.format("%.02f", discountpercent* 100) + "%";
                 }
-            }
-
+            } 
             request.setAttribute("voucher_msg", voucher_msg);
             request.setAttribute("paymentMoney", paymentMoney);
             request.setAttribute("totalMoney", totalMoney);

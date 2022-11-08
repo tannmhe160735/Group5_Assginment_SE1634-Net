@@ -14,7 +14,7 @@
     </head>
     <body>
         <a href="quanlyfeedback.jsp" >Quản Lý Feedback</a>
-        <a href="../ListOfPostPaginaged" >Quản Lý Feedback</a>
+        <a href="../ListOfPostPaginaged" >Quản Lý Post</a>
         
     </body>
 </html>

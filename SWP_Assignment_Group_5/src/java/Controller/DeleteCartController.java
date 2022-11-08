@@ -5,6 +5,7 @@
 
 package Controller;
 
+import DAO.CartDAO;
 import Entity.Cart;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,6 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -34,20 +36,16 @@ public class DeleteCartController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        
             /* TODO output your page here. You may use following sample code. */
             int productId = Integer.parseInt(request.getParameter("productId"));
+            int size = Integer.parseInt(request.getParameter("size"));
             HttpSession session = request.getSession();
-            Map<Integer, Cart> carts = (Map<Integer, Cart>) session.getAttribute("carts");
-            if (carts == null) {
-                carts = new LinkedHashMap<>();
-            }
-            if (carts.containsKey(productId)) {
-                carts.remove(productId);
-            }
-            session.setAttribute("carts", carts);
-            response.sendRedirect("carts");
-        }
+            int user_id = (int) session.getAttribute("acc_id");
+            CartDAO dao = new CartDAO();
+            dao.DeleteCart(user_id, productId, size);
+                response.sendRedirect("carts");
+      
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

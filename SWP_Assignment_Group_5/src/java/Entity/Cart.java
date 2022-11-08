@@ -22,6 +22,7 @@ import lombok.ToString;
 public class Cart {
     private Product product;
     private int quantity; //so luong san pham tren gio hang
+    private int size;
     
     
 }

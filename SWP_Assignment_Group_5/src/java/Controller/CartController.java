@@ -4,8 +4,11 @@
  */
 package Controller;
 
+import DAO.CartDAO;
 import DAO.VoucherDAO;
+import Entity.Account;
 import Entity.Cart;
+import Entity.Product_size;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,6 +18,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,37 +43,41 @@ public class CartController extends HttpServlet {
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession();
-            Map<Integer, Cart> carts = (Map<Integer, Cart>) session.getAttribute("carts");
-            if (carts == null) {
-                carts = new LinkedHashMap<>();
-            }
-            double totalMoney = 0;
-            for (Map.Entry<Integer, Cart> entry : carts.entrySet()) {
-                Integer productId = entry.getKey();
-                Cart cart = entry.getValue();
-//                cart.getProduct().setPrice(Float.parseFloat(String.format("%.02f", cart.getProduct().getPrice())));
-                totalMoney += cart.getQuantity() * cart.getProduct().getPrice();
-            }
-            String voucher_code = request.getParameter("voucher_code");
-            VoucherDAO vch = new VoucherDAO();
-            float discountpercent = vch.getDiscountPercentById(voucher_code);
-            Float paymentMoney = (float) (totalMoney - totalMoney * discountpercent);
-//            String totalMoney1 = String.format("%.02f", totalMoney
-
-            String voucher_msg = " ";
-            if (voucher_code != null) {
-                if (discountpercent == 0) {
-                    voucher_msg = "Voucher is not exist or expired !";
-                } else {
-                    voucher_msg = "Discount: " + String.format("%.02f", discountpercent* 100) + "%";
+            CartDAO dao = new CartDAO();
+            int acc_id = (int) session.getAttribute("acc_id");
+            try {
+                if (acc_id != 0) {
+                    List<Cart> carts = dao.GetCartByUser(acc_id);
+                    float totalMoney = 0;
+                    for (Cart item : carts) {
+                        totalMoney += item.getQuantity() * item.getProduct().getPrice();
+                    }
+                    String voucher_code = request.getParameter("voucher_code");
+                    VoucherDAO vch = new VoucherDAO();
+                    float discountpercent = vch.getDiscountPercentById(voucher_code);
+                    Float paymentMoney = (float) (totalMoney - totalMoney * discountpercent);
+                    String voucher_msg = " ";
+                    if (voucher_code != null) {
+                        if (discountpercent == 0) {
+                            voucher_msg = "Voucher is not exist or expired !";
+                        } else {
+                            voucher_msg = "Discount: " + String.format("%.02f", discountpercent * 100) + "%";
+                        }
+                    }
+                    request.setAttribute("voucher_msg", voucher_msg);
+                    request.setAttribute("paymentMoney", paymentMoney);
+                    request.setAttribute("totalMoney", totalMoney);
+                    request.setAttribute("carts", carts);
+                    request.getRequestDispatcher("carts.jsp").forward(request, response);
                 }
+                else{
+                    response.sendRedirect("login.jsp");
+                }
+
+            } catch (Exception e) {
+                response.sendRedirect("login.jsp");
             }
 
-            request.setAttribute("voucher_msg", voucher_msg);
-            request.setAttribute("paymentMoney", paymentMoney);
-            request.setAttribute("totalMoney", totalMoney);
-            request.setAttribute("carts", carts);
-            request.getRequestDispatcher("carts.jsp").forward(request, response);
         }
     }
 

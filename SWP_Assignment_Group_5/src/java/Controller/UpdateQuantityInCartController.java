@@ -5,6 +5,8 @@
 
 package Controller;
 
+import DAO.CartDAO;
+import Entity.Account;
 import Entity.Cart;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,19 +39,24 @@ public class UpdateQuantityInCartController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             int productId = Integer.parseInt(request.getParameter("productId"));
             int quantity = Integer.parseInt(request.getParameter("quantity"));
-            
+            int size= Integer.parseInt(request.getParameter("size"));
             HttpSession session = request.getSession();
-            Map<Integer, Cart> carts = (Map<Integer, Cart>) session.getAttribute("carts");
-            if (carts == null) {
-                carts = new LinkedHashMap<>();
+            Account acc = (Account) session.getAttribute("acc");
+            if(acc == null){
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+                return;
+            }else{
+                CartDAO dao = new CartDAO();
+        
+            dao.UpdateQuantity((int) session.getAttribute("acc_id"), productId, size, quantity);
             }
             
-            if (carts.containsKey(productId)) {
-                carts.get(productId).setQuantity(quantity);
-            }
+            //save cart into session
             
-            session.setAttribute("carts", carts);
-            response.sendRedirect("carts");
+        
+        response.sendRedirect("carts");
+        }catch(Exception e){
+            e.printStackTrace();
         }
     } 
 

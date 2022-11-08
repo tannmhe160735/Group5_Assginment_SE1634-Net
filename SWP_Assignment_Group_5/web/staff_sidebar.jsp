@@ -17,12 +17,6 @@
         <div class="" data-simplebar style="height: 100%;">
           <!-- sidebar menu -->
           <ul class="nav sidebar-inner" id="sidebar-menu">
-            <li class="has-sub ">
-              <a href="staff_profile.jsp">
-                <i class="mdi mdi-account"></i>
-                <span class="nav-text">Profile</span>
-              </a>
-            </li>
 
             <li class="has-sub ">
               <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#app"
@@ -34,10 +28,10 @@
               <ul class="collapse " id="app" data-parent="#sidebar-menu">
                 <div class="sub-menu">
                   <li class="">
-                    <a class="sidenav-item-link" href="post.jsp">
+                    <a class="sidenav-item-link" href="view/staff_Screen.jsp">
                       <span class="nav-text">Post</span>
                     </a>
-                    <a class="sidenav-item-link" href="feedback.jsp">
+                      <a class="sidenav-item-link" href="view/staff_Screen.jsp">
                       <span class="nav-text">Feedback</span>
                     </a>
                     <a class="sidenav-item-link" href="listVoucher?page=1">

@@ -4,7 +4,6 @@
  */
 package Entity;
 
-import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,18 +13,13 @@ import lombok.ToString;
  *
  * @author DELL
  */
-
 @Builder
 @Getter
 @Setter
 @ToString
-public class OrderDetail {
-    
-    private int ord_id;
-    private Product product;
-    private int quantity;
+
+public class Product_size {
+    private int product_id;
     private int size;
-
-
-    
+    private int quantity;
 }

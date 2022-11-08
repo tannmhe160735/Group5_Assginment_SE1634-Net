@@ -98,6 +98,20 @@ public class CartDAO {
             ex.printStackTrace();
         }
     }
+    
+    public void UpdateQuantity(int user_id, int product_id, int size, int quantity ){
+        String sql = "update cart set quantity = ? where product_id = ? and [user_id] = ? and size = ?";
+                try {
+                    PreparedStatement ptmt = connection.prepareStatement(sql);
+                    ptmt.setInt(1, quantity);
+                    ptmt.setInt(2, product_id);
+                    ptmt.setInt(3, user_id);
+                    ptmt.setInt(4, size);
+                    ptmt.executeUpdate();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+    }
 
     public static void main(String[] args) {
         CartDAO dao = new CartDAO();

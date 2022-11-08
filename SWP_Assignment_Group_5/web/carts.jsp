@@ -48,11 +48,11 @@
                                                             <h6 class="text-black mb-0">Title</h6>
                                                         </div>
 
-                                                        <div class="col-md-2 col-lg-2 col-xl-2">
+                                                        <div class="col-md-1 col-lg-1 col-xl-1">
                                                             <h6 class="text-black mb-0">Size</h6>
                                                         </div>
 
-                                                        <div class="col-md-1 col-lg-1 col-xl-1 d-flex quantity">
+                                                        <div class="col-md-2 col-lg-2 col-xl-2 d-flex quantity">
                                                             <h6 class="text-black mb-0">Quantity</h6>
                                                         </div>
                                                         <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-1">
@@ -76,12 +76,13 @@
                                                             <h6 class="text-black mb-0">${c.product.title}</h6>
                                                         </div>
 
-                                                        <div class="col-md-2 col-lg-2 col-xl-2">
+                                                        <div class="col-md-1 col-lg-1 col-xl-1">
                                                             <h6 class="text-black mb-0">${c.size}</h6>
                                                         </div>
 
                                                         <input type="hidden" name="productId" value="${c.product.product_id}">
-                                                        <div class="col-md-1 col-lg-1 col-xl-1 d-flex quantity">
+                                                        <input type="hidden" name="size" value="${c.size}">
+                                                        <div class="col-md-2 col-lg-2 col-xl-2 d-flex quantity">
                                                             <input onchange="this.form.submit()" type="number" min="1" name="quantity" value="${c.quantity}"
                                                                    class="form-control form-control-sm disabled" />
                                                         </div>

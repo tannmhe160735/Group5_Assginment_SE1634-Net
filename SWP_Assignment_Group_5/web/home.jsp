@@ -63,7 +63,6 @@
         <div class="container">
             <div class="masthead-subheading">Welcome ${sessionScope.acc.acc_name} To Tùy Store!</div>
             <div class="masthead-heading text-uppercase">Giày gì cũng bán</div>
-            
         </div>
     </header>
     <body id="page-top">

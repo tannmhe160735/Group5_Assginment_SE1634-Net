@@ -25,7 +25,9 @@ public class OrderDAO {
          List<Order> list = new ArrayList<Order>();
          String sql = "select * from [order]";
          String listOrder = "select * from order_detail where order_id = ?";
+         
          try {
+             
              PreparedStatement ptmt = conn.prepareStatement(sql);
              ResultSet rs = ptmt.executeQuery();
              while(rs.next()){
@@ -45,6 +47,7 @@ public class OrderDAO {
                  PreparedStatement ptmtOrder = conn.prepareStatement(listOrder);
                  ptmtOrder.setInt(1, order.getOrd_id());
                  ResultSet rsOrders = ptmtOrder.executeQuery();
+                 
                  while(rsOrders.next()){
                      ProductDAO prod_dao = new ProductDAO();
                      orders.add(OrderDetail.builder()
@@ -53,8 +56,14 @@ public class OrderDAO {
                              .quantity(rsOrders.getInt("quantity"))
                              .size(rsOrders.getInt("size"))
                              .build());
+                    
                  }
+                 float total_price = 0;
                  order.setListOrders(orders);
+                 for (OrderDetail order1 : orders) {
+                     total_price+=order1.getProduct().getPrice()*order1.getQuantity();
+                 } 
+                 order.setTotal_price(total_price);
                  list.add(order);
                 
              }
@@ -97,6 +106,7 @@ public class OrderDAO {
                 }
                 System.out.println("");
             }
+            dao.ChangeStatus(2, 1);
         }
     }
 

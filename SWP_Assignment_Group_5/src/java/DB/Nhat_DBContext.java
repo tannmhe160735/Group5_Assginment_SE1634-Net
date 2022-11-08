@@ -20,8 +20,8 @@ public abstract class Nhat_DBContext<T> {
 
     public Nhat_DBContext() {
         try {
-            String user = "tan";
-            String pass = "12345";
+            String user = "sa";
+            String pass = "123456";
             String url = "jdbc:sqlserver://localhost\\MSSQLSERVER:1433;databaseName=data";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             try {

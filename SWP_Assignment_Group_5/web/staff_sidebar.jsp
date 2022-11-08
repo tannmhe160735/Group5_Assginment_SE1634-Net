@@ -28,10 +28,10 @@
               <ul class="collapse " id="app" data-parent="#sidebar-menu">
                 <div class="sub-menu">
                   <li class="">
-                    <a class="sidenav-item-link" href="post.jsp">
+                    <a class="sidenav-item-link" href="view/staff_Screen.jsp">
                       <span class="nav-text">Post</span>
                     </a>
-                    <a class="sidenav-item-link" href="feedback.jsp">
+                      <a class="sidenav-item-link" href="view/staff_Screen.jsp">
                       <span class="nav-text">Feedback</span>
                     </a>
                     <a class="sidenav-item-link" href="listVoucher?page=1">

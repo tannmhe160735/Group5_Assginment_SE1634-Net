@@ -102,6 +102,9 @@
                                                                 <h6 class="text-black mb-0">${c.product.title}</h6>
                                                             </div>
                                                             <div class="col-md-3 col-lg-3 col-xl-3">
+                                                                <h6 class="text-black mb-0">Size: ${c.size}</h6>
+                                                            </div>
+                                                            <div class="col-md-3 col-lg-3 col-xl-3">
                                                                 <h6 class="text-black mb-0">$${c.product.price} x ${c.quantity} </h6>
                                                             </div>
                                                         </div>

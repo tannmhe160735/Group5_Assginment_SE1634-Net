@@ -15,9 +15,9 @@ import java.sql.SQLException;
 public class Binh_DBContext {
       public static Connection CreateConnection(){
        Connection conn = null;
-       String url = "jdbc:sqlserver://localhost\\MSSQLSERVERSM22:1433;databaseName=data";
+       String url = "jdbc:sqlserver://localhost\\SQLEXPRESS:1433;databaseName=data";
        String username="sa";
-       String password="123";
+       String password="123456";
 
        try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

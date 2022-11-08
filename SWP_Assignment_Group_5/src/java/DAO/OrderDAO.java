@@ -51,6 +51,7 @@ public class OrderDAO {
                              .ord_id(rsOrders.getInt("order_id"))
                              .product(prod_dao.getProductById(rsOrders.getInt("product_id")))
                              .quantity(rsOrders.getInt("quantity"))
+                             .size(rsOrders.getInt("size"))
                              .build());
                  }
                  order.setListOrders(orders);

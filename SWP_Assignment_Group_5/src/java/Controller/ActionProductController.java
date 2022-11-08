@@ -4,8 +4,10 @@
  */
 package Controller;
 
+import static Controller.ActionAccountController.CheckAdmin;
 import DAO.CategoryDAO;
 import DAO.ProductDAO;
+import Entity.Account;
 import Entity.Category;
 import Entity.Product;
 import java.io.IOException;
@@ -14,6 +16,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -62,20 +65,27 @@ public class ActionProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if (action.equals("edit")) {
-            int pro_id = Integer.parseInt(request.getParameter("pro_id"));
-            ProductDAO dao = new ProductDAO();
-            Product product = dao.getProductById(pro_id);
-            List<Category> listCategories = new CategoryDAO().getAllCategories();
-            request.setAttribute("listCategories", listCategories);
-            request.setAttribute("product", product);
-            request.getRequestDispatcher("editProduct.jsp").forward(request, response);
-        }
-        if (action.equals("add")) {
-            List<Category> listCategories = new CategoryDAO().getAllCategories();
-            request.setAttribute("listCategories", listCategories);
-            request.getRequestDispatcher("addProduct.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("acc");
+        if (account == null || account.getRole_id() != 1) {
+            response.sendRedirect("home");
+            return;
+        } else {
+            String action = request.getParameter("action");
+            if (action.equals("edit")) {
+                int pro_id = Integer.parseInt(request.getParameter("pro_id"));
+                ProductDAO dao = new ProductDAO();
+                Product product = dao.getProductById(pro_id);
+                List<Category> listCategories = new CategoryDAO().getAllCategories();
+                request.setAttribute("listCategories", listCategories);
+                request.setAttribute("product", product);
+                request.getRequestDispatcher("editProduct.jsp").forward(request, response);
+            }
+            if (action.equals("add")) {
+                List<Category> listCategories = new CategoryDAO().getAllCategories();
+                request.setAttribute("listCategories", listCategories);
+                request.getRequestDispatcher("addProduct.jsp").forward(request, response);
+            }
         }
     }
 
@@ -144,20 +154,20 @@ public class ActionProductController extends HttpServlet {
                 return;
             }
             if (!(title.trim().equals("") || title == null)) {
-                    for (Product listProduct : listProducts) {
-                        if (title.trim().equals(listProduct.getTitle())) {
-                            request.setAttribute("msg", "PRODUCT is already exist");
-                            request.setAttribute("listCategories", listCategories);
-                            request.getRequestDispatcher("addProduct.jsp").forward(request, response);
-                            return;
-                        }
-                    }                 
+                for (Product listProduct : listProducts) {
+                    if (title.trim().equals(listProduct.getTitle())) {
+                        request.setAttribute("msg", "PRODUCT is already exist");
+                        request.setAttribute("listCategories", listCategories);
+                        request.getRequestDispatcher("addProduct.jsp").forward(request, response);
+                        return;
+                    }
                 }
+            }
             if (!isNumeric(price) || !isNumeric(quantity) || !isNumeric(sale_price)) {
                 request.setAttribute("listCategories", listCategories);
                 request.setAttribute("msg", "price, quantity, sale_price must be number");
                 request.getRequestDispatcher("addProduct.jsp").forward(request, response);
-            } else {              
+            } else {
                 dao.AddProduct(title, price, sale_price, quantity, description, img, category_id, today);
                 request.setAttribute("listCategories", listCategories);
                 request.setAttribute("msg", "new PRODUCT has been added");

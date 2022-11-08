@@ -41,25 +41,29 @@
                                                 </div>
                                                 <hr class="my-4">
 
-                                                <form class="needs-validation" novalidate="">
+                                                <form action="checkout" method="post" class="needs-validation" novalidate="">
                                                     <div class="row">
                                                         <div class="col-md-6 mb-3">
                                                             <label for="firstName">First name</label>
-                                                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                                                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="" value="" required="">
                                                         </div>
                                                         <div class="col-md-6 mb-3">
                                                             <label for="lastName">Last name</label>
-                                                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">                            </div>
+                                                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="" value="" required="">                            </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="phone">Phone</label>
+                                                        <input type="text" class="form-control" id="phone" name="phone" placeholder="" value="" required="">
                                                     </div>
 
                                                     <div class="mb-3">
                                                         <label for="email">Email</label>
-                                                        <input type="email" class="form-control" id="email" placeholder="you@example.com">
-                                                        <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
+                                                        <input type="text" class="form-control" id="email" name="email" placeholder="" value="" required="">
                                                     </div>
+
                                                     <div class="mb-3">
                                                         <label for="address">Address</label>
-                                                        <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+                                                        <input type="text" class="form-control" id="address" name="address" required="">
                                                         <div class="invalid-feedback"> Please enter your shipping address. </div>
                                                     </div>
 
@@ -67,20 +71,11 @@
                                                     <h4 class="col-md-6 mb-3">Payment</h4>
                                                     <div class="d-block my-3">
                                                         <div class="custom-control custom-radio">    
-                                                            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">
+                                                            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="" value="cod">
                                                             <label class="custom-control-label" for="debit">Ship Cod</label>
                                                         </div>
                                                     </div>
-                                                    <h4 class="col-md-6 mb-3">Shipping</h4>
 
-                                                    <div class="d-block my-3">
-                                                        <select class="select">
-                                                            <option value="1">Nhanh: </option>
-                                                            <option value="2">Sieu nhanh</option>
-                                                            <option value="3">Nhanh vl</option>
-                                                        </select>
-                                                    </div>
-                                                </form>
 
                                                 <hr class="my-4">
 
@@ -88,21 +83,20 @@
                                                     <h6 class="mb-0"><a href="shop?typePage=all&&page=1&&cond=0" class="text-body"><i
                                                                 class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
                                                 </div>
-                                            </div>
                                         </div>
-
-                                        <div class="col-lg-4 bg-grey">
-                                            <div class="p-5">
-                                                <h3 class="fw-bold mb-5 mt-2 pt-1">Your Cart</h3>
-                                                <hr class="my-4">
-                                                <ul class="list-group mb-3 sticky-top">
+                                    </div>
+                                    <div class="col-lg-4 bg-grey">
+                                        <div class="p-5">
+                                            <h3 class="fw-bold mb-5 mt-2 pt-1">Your Cart</h3>
+                                            <hr class="my-4">
+                                            <ul class="list-group mb-3 sticky-top">
                                                 <c:forEach items="${carts}" var="c">
                                                     <li class="list-group-item d-flex justify-content-between">
                                                         <div>
-                                                            <h6 class="my-0">${c.value.product.title}</h6>
-                                                            <small class="text-muted">Quantity: ${c.value.quantity}</small>
+                                                            <h6 class="my-0">${c.product.title}</h6>
+                                                            <small class="text-muted">Quantity: ${c.quantity}</small>
                                                         </div>
-                                                        <span class="text-muted">$${c.value.product.price*c.value.quantity}</span>
+                                                        <span class="text-muted">$${c.product.price*c.quantity}</span>
                                                     </li>
                                                 </c:forEach>
                                             </ul>
@@ -115,20 +109,18 @@
                                             <h5 class="text-uppercase mb-3">Give code</h5>
 
                                             <div class="mb-5">
-                                                <form action="checkout" class="form-outline">
-                                                    <input type="text" id="voucher_code" name="voucher_code"class="form-control form-control-lg" />
-                                                    <input style="margin-top: 10px" type="submit" class="form-label" for="form3Examplea2" value="Apply"></input></br>
-                                                    <label>${voucher_msg}</label>
-                                                </form>
+                                                <input type="text" readonly="true" id="voucher_code" name="voucher_code"class="form-control form-control-lg" value="${voucher}"/>
+                                                <label>${voucher_msg}</label>                                              
                                             </div>
 
                                             <div class="d-flex justify-content-between mb-5">
                                                 <h5 class="text-uppercase btn-outline-danger">Total price</h5>
                                                 <h5 class="text-uppercase btn-outline-danger">$${paymentMoney}</h5>
                                             </div>
+                                            <input type="submit" value="Confirm" class="btn btn-dark btn-block btn-lg"
+                                               data-mdb-ripple-color="dark">
 
-                                            <button type="button" class="btn btn-dark btn-block btn-lg"
-                                                    data-mdb-ripple-color="dark">Confirm</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

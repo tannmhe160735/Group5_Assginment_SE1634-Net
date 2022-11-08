@@ -41,25 +41,24 @@
                                                 </div>
                                                 <hr class="my-4">
 
-                                                <form class="needs-validation" novalidate="">
+                                                <form action="checkout" method="post" class="needs-validation" novalidate="">
                                                     <div class="row">
                                                         <div class="col-md-6 mb-3">
                                                             <label for="firstName">First name</label>
-                                                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                                                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="" value="" required="">
                                                         </div>
                                                         <div class="col-md-6 mb-3">
                                                             <label for="lastName">Last name</label>
-                                                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">                            </div>
+                                                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="" value="" required="">                            </div>
                                                     </div>
-
                                                     <div class="mb-3">
-                                                        <label for="email">Email</label>
-                                                        <input type="email" class="form-control" id="email" placeholder="you@example.com">
-                                                        <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
-                                                    </div>
+                                                            <label for="phone">Phone</label>
+                                                            <input type="text" class="form-control" id="phone" name="phone" placeholder="" value="" required="">
+                                                        </div>
+                                                    
                                                     <div class="mb-3">
                                                         <label for="address">Address</label>
-                                                        <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+                                                        <input type="text" class="form-control" id="address" name="address" required="">
                                                         <div class="invalid-feedback"> Please enter your shipping address. </div>
                                                     </div>
 

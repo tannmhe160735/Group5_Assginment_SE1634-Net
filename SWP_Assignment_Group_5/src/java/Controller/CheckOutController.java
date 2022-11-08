@@ -4,8 +4,10 @@
  */
 package Controller;
 
+import DAO.OrderDAO;
 import DAO.VoucherDAO;
 import Entity.Cart;
+import Entity.Order;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -95,7 +97,12 @@ public class CheckOutController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
+
+    
     }
 
     /**

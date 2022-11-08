@@ -46,7 +46,7 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="shop?typePage=all&&page=1&&cond=0">Shop</a></li>
                 </ul>
 
-                <a href="carts.jsp">
+                <a href="carts">
                     <button class="btn btn-outline-light" type="submit">
                         <i class="bi-cart-fill me-1"></i>
                         Cart

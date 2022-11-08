@@ -53,6 +53,7 @@ public class LoginController extends HttpServlet {
             request.setAttribute("account", acc);
             HttpSession session = request.getSession();
             session.setAttribute("acc", acc);
+            session.setAttribute("acc_id", acc.getAcc_id());
             if(acc==null){
                 request.setAttribute("msg", "Invalid email or password ! ");
                 RequestDispatcher rd = request.getRequestDispatcher("login.jsp");

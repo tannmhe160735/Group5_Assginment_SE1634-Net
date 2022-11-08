@@ -4,7 +4,9 @@
  */
 package Controller;
 
+import DAO.CartDAO;
 import DAO.VoucherDAO;
+import Entity.Account;
 import Entity.Cart;
 import Entity.Product_size;
 import java.io.IOException;
@@ -42,16 +44,15 @@ public class CartController extends HttpServlet {
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession();
-            Map<Integer, Cart> carts = (Map<Integer, Cart>) session.getAttribute("carts");
-            if (carts == null) {
-                carts = new LinkedHashMap<>();
-            }
-            double totalMoney = 0;
-            for (Map.Entry<Integer, Cart> entry : carts.entrySet()) {
-                Integer productId = entry.getKey();
-                Cart cart = entry.getValue();
+            CartDAO dao = new CartDAO();
+            int acc_id = (int) session.getAttribute("acc_id");
+            List<Cart> carts = dao.GetCartByUser(acc_id);
+            float totalMoney = 0;
+            for (Cart item:carts) {
+                
+                
 //                cart.getProduct().setPrice(Float.parseFloat(String.format("%.02f", cart.getProduct().getPrice())));
-                totalMoney += cart.getQuantity() * cart.getProduct().getPrice();
+                totalMoney += item.getQuantity() * item.getProduct().getPrice();
             }
             String voucher_code = request.getParameter("voucher_code");
             VoucherDAO vch = new VoucherDAO();

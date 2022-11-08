@@ -29,6 +29,7 @@ public class HomeController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         if (session.getAttribute("acc") == null) {
+            session.setAttribute("acc_id", 0);
             session.setAttribute("log", "login.jsp");
             session.setAttribute("value_log", "Login");
         } else {

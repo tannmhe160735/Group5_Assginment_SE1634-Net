@@ -24,6 +24,7 @@ public class OrderDetail {
     private int ord_id;
     private Product product;
     private int quantity;
+    private int size;
 
 
     

@@ -89,7 +89,7 @@
                                                             <h6 class="mb-0">$${c.product.price*c.quantity}</h6>
                                                         </div>
                                                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                            <a href="delete-cart?productId=${c.product.product_id}"><i class="fas fa-times"></i></a>
+                                                            <a href="delete-cart?productId=${c.product.product_id}&&size=${c.size}"><i class="fas fa-times"></i></a>
                                                         </div>
                                                     </div>
                                                 </form>

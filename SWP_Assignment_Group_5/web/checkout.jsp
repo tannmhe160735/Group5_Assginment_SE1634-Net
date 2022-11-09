@@ -117,7 +117,9 @@
                                                 <h5 class="text-uppercase btn-outline-danger">Total price</h5>
                                                 <h5 class="text-uppercase btn-outline-danger">$${paymentMoney}</h5>
                                             </div>
-                                            <input type="submit" value="Confirm" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark">
+                                            <input type="submit" value="Confirm" class="btn btn-dark btn-block btn-lg"
+                                               data-mdb-ripple-color="dark">
+
                                             </form>
                                         </div>
                                     </div>

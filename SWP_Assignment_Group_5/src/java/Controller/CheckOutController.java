@@ -71,7 +71,8 @@ public class CheckOutController extends HttpServlet {
             request.setAttribute("voucher_msg", voucher_msg);
             request.setAttribute("paymentMoney", paymentMoney);
             request.setAttribute("totalMoney", totalMoney);
-            request.setAttribute("carts", carts);      
+            request.setAttribute("carts", carts);
+            
             
             request.getRequestDispatcher("checkout.jsp").forward(request, response);
 

@@ -20,7 +20,6 @@ import java.util.logging.Logger;
  * @author Admin
  */
 public class OrderDAO {
-
     Connection conn = DB.Binh_DBContext.CreateConnection();
 
     public List<Order> GetAllOrder() {
@@ -54,22 +53,17 @@ public class OrderDAO {
                             .product(prod_dao.getProductById(rsOrders.getInt("product_id")))
                             .quantity(rsOrders.getInt("quantity"))
                             .size(rsOrders.getInt("size"))
-                            .build());
-                }
-                float total_price = 0;
-                arder.setListOrders(orders);
-                for (OrderDetail order1 : orders) {
-                     total_price+=order1.getProduct().getPrice()*order1.getQuantity();
-                 } 
-                 order.setTotal_price(total_price);
-                list.add(order);
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return list;
+                            .build());                 
+                 }
+                 order.setListOrders(orders);
+                 list.add(order);            
+             }           
+         } catch (SQLException ex) {
+             ex.printStackTrace();
+         }                  
+         return list;
     }
-
+  
     public void ChangeStatus(int status, int id) {
         String sql = "UPDATE [dbo].[order] SET [status] = ? WHERE order_id=?";
         try {
@@ -105,7 +99,7 @@ public class OrderDAO {
             ptmt.setDate(7, order.getDate_created());
             ptmt.setFloat(8, order.getTotalPrice());
             ptmt.executeUpdate();
-
+            
         } catch (Exception e) {
         }
     }

@@ -12,6 +12,7 @@ import java.sql.Date;
  */
 public class Post {
     private int id;
+    private int product_id;
     private String post_title;
     private String content1;
     private String content2;
@@ -21,13 +22,38 @@ public class Post {
     public Post() {
     }
 
-    public Post(int id, String post_title, String content1,String content2, String image_path, Date post_date) {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setPost_title(String post_title) {
+        this.post_title = post_title;
+    }
+
+    public void setContent1(String content1) {
+        this.content1 = content1;
+    }
+
+    public void setContent2(String content2) {
+        this.content2 = content2;
+    }
+
+    public void setImage_path(String image_path) {
+        this.image_path = image_path;
+    }
+
+    public void setPost_date(Date post_date) {
+        this.post_date = post_date;
+    }
+
+    public Post(int id, int product_id,String post_title, String content1,String content2, String image_path, Date post_date) {
         this.id = id;
         this.post_title = post_title;
         this.content1 = content1;
         this.content2 = content2;
         this.image_path = image_path;
         this.post_date = post_date;
+        this.product_id=product_id;
     }
 
     public int getId() {
@@ -51,6 +77,14 @@ public class Post {
 
     public Date getPost_date() {
         return post_date;
+    }
+
+    public int getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(int product_id) {
+        this.product_id = product_id;
     }
 
     @Override

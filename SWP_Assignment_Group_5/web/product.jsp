@@ -104,6 +104,7 @@
                                                 <th>Created_Date</th>
                                                 <th>Edit</th>
                                                 <th>Delete</th>
+                                                <th>AddSize</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -148,6 +149,10 @@
                                                     <button type="button" data-toggle="modal" data-target="#modal${p.product_id}">
                                                         <i class="material-icons" title="Delete">&#xE872;</i>
                                                     </button>                                                                                                                                                                                      
+                                                </td>
+                                                <td>
+                                                    <a href="action_pro?pro_id=${p.product_id}&action=add_size" style="color: black;" ><i class="material-icons"
+                                                                                                    data-toggle="tooltip" title="AddSize">&#x2b;</i></a>
                                                 </td>
                                                 <td>
                                                     <div id="modal${p.product_id}" class="modal fade">

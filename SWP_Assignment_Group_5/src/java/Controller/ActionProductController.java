@@ -7,6 +7,7 @@ package Controller;
 import static Controller.ActionAccountController.CheckAdmin;
 import DAO.CategoryDAO;
 import DAO.ProductDAO;
+import DAO.ProductSizeDAO;
 import Entity.Account;
 import Entity.Category;
 import Entity.Product;
@@ -72,6 +73,13 @@ public class ActionProductController extends HttpServlet {
             return;
         } else {
             String action = request.getParameter("action");
+            if (action.equals("add_size")) {
+                int pro_id = Integer.parseInt(request.getParameter("pro_id"));
+                ProductDAO dao = new ProductDAO();
+                Product product = dao.getProductById(pro_id);
+                request.setAttribute("product", product);
+                request.getRequestDispatcher("editProduct_Size.jsp").forward(request, response);
+            }
             if (action.equals("edit")) {
                 int pro_id = Integer.parseInt(request.getParameter("pro_id"));
                 ProductDAO dao = new ProductDAO();
@@ -118,6 +126,15 @@ public class ActionProductController extends HttpServlet {
             List<Product> listProducts = dao.getAllProducts();
             request.setAttribute("listProducts", listProducts);
             request.getRequestDispatcher("product.jsp").forward(request, response);
+        }
+        if (action.equals("add_size")) {
+            String pro_id = request.getParameter("pro_id");
+            String size = request.getParameter("size");
+            String quantity = request.getParameter("quantity");          
+            ProductSizeDAO dao = new ProductSizeDAO();
+            dao.AddProductSize(pro_id, size, quantity);
+            request.setAttribute("msg", "new size has been added");
+            request.getRequestDispatcher("editProduct_Size.jsp").forward(request, response);
         }
         if (action.equals("delete")) {
             int pro_id = Integer.parseInt(request.getParameter("pro_id"));

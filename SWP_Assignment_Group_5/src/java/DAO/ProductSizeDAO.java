@@ -96,6 +96,26 @@ public class ProductSizeDAO {
         return 0;
     }
 
+    public void AddProductSize(String product_id, String size, String quantity) {
+        String sql = "INSERT INTO [product_size]\n"
+                + "           ([product_id]\n"
+                + "           ,[size]\n"
+                + "           ,[quantity])\n"
+                + "     VALUES\n"
+                + "           (?\n"
+                + "           ,?\n"
+                + "           ,?)";
+        try {
+            PreparedStatement ptmt = connection.prepareStatement(sql);
+            ptmt.setString(1, product_id);
+            ptmt.setString(2, size);
+            ptmt.setString(3, quantity);
+            ptmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     public static void main(String[] args) {
         ProductSizeDAO dao = new ProductSizeDAO();
 

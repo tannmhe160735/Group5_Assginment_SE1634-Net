@@ -37,9 +37,9 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="home">Home</a></li>
-                    <c:if test="${sessionScope.acc.role_id eq 1}">
+                        <c:if test="${sessionScope.acc.role_id eq 1}">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="admin.jsp">Dashboard</a></li>
-                    </c:if>
+                        </c:if>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -137,75 +137,74 @@
                     </c:forEach>
                 </div>
 
-                    </section>
-                    <!-- Team-->
-                    <section class="page-section " id="team" style="background-color: #181A1B">
-                        <div class="container">
-                            <div class="text-center text-white">
-                                <h2 class="section-heading text-uppercase">Amazing Team</h2>
-                                <h3 class="section-subheading text-muted">Trùm đường dây buôn bán giày fake.</h3>
-                            </div>
-                            <div class="row text-white" >
-                                <div class="col-lg-4">
-                                    <div class="team-member">
-                                        <img class="mx-auto rounded-circle" src="img/team/1.jpg" alt="..." />
-                                        <h4>Parveen Anand</h4>
-                                        <p class="text-muted">Lead Designer</p>
-                                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="team-member">
-                                        <img class="mx-auto rounded-circle" src="img/team/2.jpg" alt="..." />
-                                        <h4>Diana Petersen</h4>
-                                        <p class="text-muted">Lead Marketer</p>
-                                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="team-member">
-                                        <img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="..." />
-                                        <h4>Larry Parker</h4>
-                                        <p class="text-muted">Lead Developer</p>
-                                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="team-member">
-                                        <img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="..." />
-                                        <h4>Larry Parker</h4>
-                                        <p class="text-muted">Lead Developer</p>
-                                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="team-member">
-                                        <img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="..." />
-                                        <h4>Larry Parker</h4>
-                                        <p class="text-muted">Lead Developer</p>
-                                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                                    </div>
-                                </div>
-                            </div>
+        </section>
+        <!-- Team-->
+        <section class="page-section bg-dark" id="team">
+            <div class="container">
+                <div class="text-center text-white">
+                    <h2 class="section-heading text-uppercase">Amazing Team</h2>
+                </div>
+                <div class="row text-white">
+                    <div class="col-lg-4">
+                        <div class="team-member ">
+                            <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="..." />
+                            <h4>Nguyễn Minh Tân</h4>
+                            <p class="text-muted">Member</p>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
                         </div>
-                    </section>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="..." />
+                            <h4>Trịnh Duy Bình</h4>
+                            <p class="text-muted">Leader</p>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
+                            <h4>Tông Sĩ Nhật</h4>
+                            <p class="text-muted">Member</p>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/team/4.jpg" alt="..." />
+                            <h4>Nguyễn Quang Linh</h4>
+                            <p class="text-muted">Member</p>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/team/5.jpg" alt="..." />
+                            <h4>Nguyễn Bá Quân</h4>
+                            <p class="text-muted">Member</p>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <!-- Footer-->
-                    <jsp:include page ="footer.jsp"></jsp:include>
-                    <!-- Bootstrap core JS-->
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-                    <!-- Core theme JS-->
-                    <script src="js/scripts.js"></script>
-                    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-                    <!-- * *                               SB Forms JS                               * *-->
-                    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-                    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-                    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-                    </body>
-                    </html>
+        <!-- Footer-->
+        <jsp:include page ="footer.jsp"></jsp:include>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
 

@@ -10,7 +10,7 @@
                 <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
               </g>
             </svg>
-            <span class="brand-name text-truncate">Tùy Store</span>
+            <span class="brand-name text-truncate">Tï¿½y Store</span>
           </a>
         </div>
         <!-- begin sidebar scrollbar -->
@@ -34,10 +34,10 @@
               <ul class="collapse " id="app" data-parent="#sidebar-menu">
                 <div class="sub-menu">
                   <li class="">
-                    <a class="sidenav-item-link" href="post.jsp">
+                    <a class="sidenav-item-link" href="ListOfPostPaginaged">
                       <span class="nav-text">Post</span>
                     </a>
-                    <a class="sidenav-item-link" href="feedback.jsp">
+                      <a class="sidenav-item-link" href="ListOfFeedbackOnEachProduct">
                       <span class="nav-text">Feedback</span>
                     </a>
                     <a class="sidenav-item-link" href="listVoucher?page=1">

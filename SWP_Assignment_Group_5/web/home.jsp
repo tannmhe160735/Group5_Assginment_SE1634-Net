@@ -44,6 +44,7 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="profile">Welcome ${sessionScope.acc.acc_name}</a></li>
                     </c:if>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="shop?typePage=all&&page=1&&cond=0">Shop</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="ListOfPostPaginaged">Post</a></li>
                 </ul>
 
                 <a href="carts.jsp">
@@ -63,7 +64,6 @@
         <div class="container">
             <div class="masthead-subheading">Welcome ${sessionScope.acc.acc_name} To Tùy Store!</div>
             <div class="masthead-heading text-uppercase">Giày gì cũng bán</div>
-            
         </div>
     </header>
     <body id="page-top">

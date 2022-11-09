@@ -29,33 +29,43 @@
         </style>
     </head>
     <body>
-        <table class="a">
-            <tr>
-            <h1>Edit Feedback:</h1>
-        </tr>
-        <tr>
-        <p style="margin-top: 1px;margin-bottom: 1px;">
-            Customer name: minhhuyen123<br>
-            Star rate: 2 stars<br>
-            Product: Giày adidas 2 <br></p>
-        <a href="" style="margin-top: 1px;margin-bottom: 1px;">View product detail </a><br>
-        <form action="action">
-            <p style="margin-top: 1px;margin-bottom: 1px;"><label for="comment">Comment:</label></p>
-            <textarea id="comment" name="comment" rows="4" cols="70">Shop đóng hàng gửi hàng chậm, 1 tháng mới tới nơi</textarea>
-            <input type="submit" value="Submit" hidden="">
-        </form>
-    </p>
-</tr>
-<tr>
-<table class="b">
-    <tr>
-        <td> </td>
-        <td> </td>
-        <td><a href="quanlyfeedback.jsp?tenGiay=adidat2" ><button style="background-color: dodgerblue;">CANCEL</button></a></td>
-        <td><a href="quanlyfeedback.jsp?tenGiay=adidat2" ><button style="background-color: dodgerblue;"> DONE </button></a></td>
-    </tr>
-</table>
-</tr>
-</table>
-</body>
+        <%@include file="sidebar.jsp" %>
+        <div class="main">
+            <table class="a">
+                <tr>
+                <h1>Edit Feedback:</h1>
+                </tr>
+                <tr>
+                <p style="margin-top: 1px;margin-bottom: 1px;">
+                    Customer name: ${requestScope.thisAccount.acc_name}<br>
+                    Star rate: ${requestScope.star} stars<br>
+                    Product: ${requestScope.thisProduct.title} <br></p>
+                <a href="" style="margin-top: 1px;margin-bottom: 1px;">View product detail </a><br>
+                <td>
+                    <form method="post" action="EditFeedback">
+                        <p style="margin-top: 1px;margin-bottom: 1px;"><label for="comment">Comment:</label></p>
+                        <textarea id="comment" name="comment" rows="4" cols="70">${requestScope.thisFeedback.feedbackContent}</textarea>
+                        <input type="text" id="id" name ="id" value="${requestScope.thisFeedback.feedbackID}" hidden >
+                        <input type="submit" value="Submit" id="sumitDone" hidden>
+                    </form>
+                </td>
+                </tr>
+                <tr>
+                <table class="b">
+                    <tr>
+                        <td> </td>
+                        <td> </td>
+                        <td><a href="ListOfFeedbackOnEachProduct" ><button style="background-color: dodgerblue;">CANCEL</button></a></td>
+                        <td><button style="background-color: dodgerblue;" onclick="submitButtonClick()"> DONE </button></td>
+                    </tr>
+                </table>
+                </tr>
+            </table>
+        </div>
+        <script>
+            function submitButtonClick() {
+                document.getElementById("sumitDone").click();
+            }
+        </script>
+    </body>
 </html>

@@ -88,6 +88,22 @@
         <servlet-name>CartController</servlet-name>
         <servlet-class>Controller.CartController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditFeedback</servlet-name>
+        <servlet-class>Controller.Staff.EditFeedback</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditPost</servlet-name>
+        <servlet-class>Controller.Staff.EditPost</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HidePost</servlet-name>
+        <servlet-class>Controller.Staff.HidePost</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListOfFeedbackOnEachProduct</servlet-name>
+        <servlet-class>Controller.Staff.ListOfFeedbackOnEachProduct</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -171,6 +187,22 @@
     <servlet-mapping>
         <servlet-name>CartController</servlet-name>
         <url-pattern>/carts</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditFeedback</servlet-name>
+        <url-pattern>/EditFeedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditPost</servlet-name>
+        <url-pattern>/EditPost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HidePost</servlet-name>
+        <url-pattern>/HidePost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListOfFeedbackOnEachProduct</servlet-name>
+        <url-pattern>/ListOfFeedbackOnEachProduct</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

@@ -4,10 +4,8 @@
  */
 package Controller.Staff;
 
-import DB.Nhat_PostDBContext;
+import DB.Nhat_FeedbackDBContext;
 import DB.Nhat_ProductDBContext;
-import Entity.Post;
-import Entity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -17,9 +15,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author: Tong Sy Nhat description: communicate with viewDetailPost.jsp
+ * @author Thinkpad
  */
-public class ViewDetailPost extends HttpServlet {
+public class ListOfFeedbackOnEachProduct extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +36,10 @@ public class ViewDetailPost extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ViewDetailPost</title>");
+            out.println("<title>Servlet ListOfFeedbackOnEachProduct</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ViewDetailPost at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ListOfFeedbackOnEachProduct at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,41 +57,34 @@ public class ViewDetailPost extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String raw_post_id = (String) request.getParameter("post_id");
-        System.out.println(raw_post_id);
-        // verification
-        int post_id = verificationPostID(raw_post_id);
-        //get post from DBContext to send
-        Nhat_PostDBContext pdbc = new Nhat_PostDBContext();
-        Post thisPost = pdbc.getAPostByID(post_id);
-        //get product to send
+        //take product_id
+        int product_id = 2;
+        try {
+            product_id = Integer.parseInt(request.getParameter("product_id"));
+        } catch (Exception e) {
+            System.out.println("khong nhan dc product_id hoac khong parse ra int duoc");
+        }
+        //return output listAllFeedbackStarAndContentByProductID (important)
+        Nhat_FeedbackDBContext nfdbc = new Nhat_FeedbackDBContext();
+        request.setAttribute("listAllFeedbackStarAndContentByProductID", nfdbc.listAllFeedbackStarAndContentByProductID(product_id));
+        //return output listAllIdAndTitleOfProduct
         Nhat_ProductDBContext npdbc = new Nhat_ProductDBContext();
-        Product thisProduct = npdbc.getIdAndTitleAndPriceAndImgOfProduct(thisPost.getProduct_id());
-        //return output a post
-        if (thisPost != null) {
-            request.setAttribute("thisPost", thisPost);
-        }
-        //return output a product
-        if (thisPost != null && thisProduct != null) {
-            request.setAttribute("thisProduct", thisProduct);
-        }
-
-        request.getRequestDispatcher("view/viewDetailPost.jsp").forward(request, response);
+        request.setAttribute("listAllIdAndTitleOfProduct", npdbc.listAllIdAndTitleOfProduct());
+        request.getRequestDispatcher("view/listOfFeedback.jsp").forward(request, response);
     }
 
-
-/**
- * Handles the HTTP <code>POST</code> method.
- *
- * @param request servlet request
- * @param response servlet response
- * @throws ServletException if a servlet-specific error occurs
- * @throws IOException if an I/O error occurs
- */
-@Override
-protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        processRequest(request, response);
     }
 
     /**
@@ -102,12 +93,8 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
      * @return a String containing servlet description
      */
     @Override
-public String getServletInfo() {
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private int verificationPostID(String raw_post_id) {
-        return Integer.parseInt(raw_post_id);
-    }
 
 }

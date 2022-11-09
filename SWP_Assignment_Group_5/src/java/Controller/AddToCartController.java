@@ -44,20 +44,18 @@ public class AddToCartController extends HttpServlet {
             int quantity = Integer.parseInt(request.getParameter("quantity"));
             int size = Integer.parseInt(request.getParameter("size"));          
             int productId = Integer.parseInt(request.getParameter("productId"));
-            CartDAO dao = new CartDAO();
             HttpSession session = request.getSession();
-          
             Account acc = (Account) session.getAttribute("acc");
             if(acc == null){
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 return;
             }else{
+                CartDAO dao = new CartDAO();
         
             dao.AddToCart((int) session.getAttribute("acc_id"), productId, size, quantity);
             }
             
-            int cartSize = dao.getCartSizeByUserId(acc.getAcc_id());
-            session.setAttribute("cartSize", cartSize);
+            //save cart into session
             
             String urlHistory = (String) session.getAttribute("urlHistory");
             if (urlHistory == null) {

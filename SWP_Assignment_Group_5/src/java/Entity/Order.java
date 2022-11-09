@@ -5,7 +5,6 @@
  */
 package Entity;
 
-import java.sql.Date;
 import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,7 +22,6 @@ import lombok.ToString;
 
 public class Order {
     private int ord_id;
-    private String name;
     private String address;
     private String phone;
     private String email;
@@ -31,8 +29,7 @@ public class Order {
     private String payment;
     private float total_price;
     private int status;
-    private Date date_created;
-    private float totalPrice;
+    private String date_created;
     List<OrderDetail> listOrders;
 
     

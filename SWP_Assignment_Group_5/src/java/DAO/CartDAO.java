@@ -112,6 +112,34 @@ public class CartDAO {
                     ex.printStackTrace();
                 }
     }
+    
+     public void clearCart(int acc_id) {
+        String sql = "DELETE FROM [dbo].[cart]\n"
+                + "      WHERE user_id = ?";
+        try {
+            PreparedStatement ptmt = connection.prepareStatement(sql);
+            ptmt.setInt(1, acc_id);
+            ptmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public int getCartSizeByUserId(int acc_id) {
+        String sql = "SELECT count([cart_id])\n"
+                + "  FROM [dbo].[cart] where user_id = ?";
+        try {
+            PreparedStatement ptmt = connection.prepareStatement(sql);
+            ptmt.setInt(1, acc_id);
+            ResultSet rs = ptmt.executeQuery();
+            while (rs.next()) {                
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return 0;
+    }
 
     public static void main(String[] args) {
         CartDAO dao = new CartDAO();

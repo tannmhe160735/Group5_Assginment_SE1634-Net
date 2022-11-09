@@ -5,8 +5,6 @@
 
 package Controller;
 
-import DAO.CartDAO;
-import Entity.Cart;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -14,17 +12,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  *
  * @author DELL
  */
-@WebServlet(name="DeleteCartController", urlPatterns={"/delete-cart"})
-public class DeleteCartController extends HttpServlet {
+@WebServlet(name="ThanksController", urlPatterns={"/thanks"})
+public class ThanksController extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -36,18 +30,10 @@ public class DeleteCartController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            int productId = Integer.parseInt(request.getParameter("productId"));
-        int size = Integer.parseInt(request.getParameter("size"));
-        HttpSession session = request.getSession();
-        int user_id = (int) session.getAttribute("acc_id");
-        CartDAO dao = new CartDAO();
-        dao.DeleteCart(user_id, productId, size);
-            int cartSize = dao.getCartSizeByUserId(user_id);
-        session.setAttribute("cartSize", cartSize);
-        response.sendRedirect("carts");
-      
+            request.getRequestDispatcher("thanks.jsp").forward(request, response);
+        }
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

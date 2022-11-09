@@ -30,9 +30,8 @@
             <!-- Navigation-->
 
             <!-- Section-->
-            <section on class="py-5" style="background-color: #181A1B">            
+            <section on class="py-5" style="background-color: #181A1B">
                 <div class="container px-4 px-lg-5 my-5 text-light">
-                
                     <div class="row">
                         <div class="col-md-3 mb-5 ">
                             <h3>Danh Mục</h3>

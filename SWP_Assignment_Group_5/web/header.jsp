@@ -18,12 +18,13 @@
                     </c:if>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="shop?typePage=all&&page=1&&cond=0">Shop</a></li>
                 </ul>
+
                 <a href="carts">
                     <button class="btn btn-outline-light" type="submit">
                         <i class="bi-cart-fill me-1"></i>
-                        Cart 
-                        <span class="badge bg-dark text-white ms-1 rounded-pill">${sessionScope.cartSize}</span>                      
-                    </button>                
+                        Cart
+                        <span class="badge bg-dark text-white ms-1 rounded-pill">${sessionScope.carts.size()}</span>
+                    </button>
                 </a>
                 <a href="${sessionScope.log}"><button class="btn btn-outline-primary ms-lg-2">${sessionScope.value_log}  </button></a>
 

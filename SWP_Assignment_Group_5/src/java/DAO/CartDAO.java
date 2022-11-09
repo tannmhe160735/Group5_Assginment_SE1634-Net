@@ -91,26 +91,26 @@ public class CartDAO {
             PreparedStatement ptmt = connection.prepareStatement(sql);
             ptmt.setInt(1, user_id);
             ptmt.setInt(2, prod_id);
-            ptmt.setInt(3, size);
+            ptmt.setInt(3,size);
             ptmt.executeUpdate();
 
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
-
-    public void UpdateQuantity(int user_id, int product_id, int size, int quantity) {
+    
+    public void UpdateQuantity(int user_id, int product_id, int size, int quantity ){
         String sql = "update cart set quantity = ? where product_id = ? and [user_id] = ? and size = ?";
-        try {
-            PreparedStatement ptmt = connection.prepareStatement(sql);
-            ptmt.setInt(1, quantity);
-            ptmt.setInt(2, product_id);
-            ptmt.setInt(3, user_id);
-            ptmt.setInt(4, size);
-            ptmt.executeUpdate();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+                try {
+                    PreparedStatement ptmt = connection.prepareStatement(sql);
+                    ptmt.setInt(1, quantity);
+                    ptmt.setInt(2, product_id);
+                    ptmt.setInt(3, user_id);
+                    ptmt.setInt(4, size);
+                    ptmt.executeUpdate();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
     }
 
     public static void main(String[] args) {
@@ -121,33 +121,5 @@ public class CartDAO {
         }
         dao.DeleteCart(3, 2, 41);
 
-    }
-
-    public void clearCart(int acc_id) {
-        String sql = "DELETE FROM [dbo].[cart]\n"
-                + "      WHERE user_id = ?";
-        try {
-            PreparedStatement ptmt = connection.prepareStatement(sql);
-            ptmt.setInt(1, acc_id);
-            ptmt.executeUpdate();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public int getCartSizeByUserId(int acc_id) {
-        String sql = "SELECT count([cart_id])\n"
-                + "  FROM [dbo].[cart] where user_id = ?";
-        try {
-            PreparedStatement ptmt = connection.prepareStatement(sql);
-            ptmt.setInt(1, acc_id);
-            ResultSet rs = ptmt.executeQuery();
-            while (rs.next()) {                
-                return rs.getInt(1);
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return 0;
     }
 }

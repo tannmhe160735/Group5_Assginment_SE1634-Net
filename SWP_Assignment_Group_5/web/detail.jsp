@@ -44,11 +44,11 @@
                                 <input type="hidden" name="productId" value="${requestScope.product.product_id}"/>
                                 <select class="btn btn-outline-light" name="size">
                                     <c:forEach items="${listSizes}" var="s">
-                                        <option style="color: black" value="${s.size}">${s.size}</option>
+                                        <option value="${s.size}">${s.size}</option>
                                     </c:forEach>
                                 </select>
-                                <input name="quantity" type="num" class="btn btn-outline-light" value="1" style="max-width: 3rem; border-radius: 4px; color: white; background-color: transparent"/></br>
-                                <input style="margin: 20px" type="submit" class="btn btn-outline-light flex-shrink-0 mx-0" value="Add to cart"/>
+                                <input name="quantity" type="num" value="1" style="max-width: 3rem"/></br>
+                                <input type="submit" class="btn btn-outline-light flex-shrink-0 mx-0" value="Add to cart"/>
                             </form>                                                      
                         </div>
                     </div>

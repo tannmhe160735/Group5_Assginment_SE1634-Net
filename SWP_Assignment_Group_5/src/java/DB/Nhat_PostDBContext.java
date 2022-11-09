@@ -25,7 +25,7 @@ public class Nhat_PostDBContext extends Nhat_DBContext<Post> {
             PreparedStatement prstm = connection.prepareStatement(sql);
             ResultSet rs = prstm.executeQuery();
             while (rs.next()) {
-                Post a = new Post(rs.getInt("ID"), rs.getString("post_title"), rs.getString("content1"), rs.getString("content2"), rs.getString("img"), rs.getDate("post_date"));
+                Post a = new Post(rs.getInt("ID"), 1, rs.getString("post_title"), rs.getString("content1"), rs.getString("content2"), rs.getString("img"), rs.getDate("post_date"));
                 listOfPost.add(a);
             }
             return listOfPost;
@@ -45,7 +45,7 @@ public class Nhat_PostDBContext extends Nhat_DBContext<Post> {
             prstm.setInt(1, noPage);
             ResultSet rs = prstm.executeQuery();
             while (rs.next()) {
-                Post a = new Post(rs.getInt("post_id"), rs.getString("post_title"), rs.getString("content1"),"", rs.getString("img"), rs.getDate("post_date"));
+                Post a = new Post(rs.getInt("post_id"), 1, rs.getString("post_title"), rs.getString("content1"), "", rs.getString("img"), rs.getDate("post_date"));
                 listOfPost.add(a);
             }
             return listOfPost;
@@ -62,7 +62,7 @@ public class Nhat_PostDBContext extends Nhat_DBContext<Post> {
             prstm.setInt(1, post_id);
             ResultSet rs = prstm.executeQuery();
             if (rs.next()) {
-                Post a = new Post(rs.getInt("post_id"), rs.getString("post_title"), rs.getString("content1"), rs.getString("content2"), rs.getString("img"), rs.getDate("post_date"));
+                Post a = new Post(rs.getInt("post_id"), rs.getInt("product_id"), rs.getString("post_title"), rs.getString("content1"), rs.getString("content2"), rs.getString("img"), rs.getDate("post_date"));
                 return a;
             }
             return null;
@@ -71,6 +71,7 @@ public class Nhat_PostDBContext extends Nhat_DBContext<Post> {
         }
         return null;
     }
+
     public int getTotalNumberOfPost() {
         try {
             String sql = "select count(post.post_id) as count from post ";
@@ -84,4 +85,98 @@ public class Nhat_PostDBContext extends Nhat_DBContext<Post> {
         }
         return 0;
     }
+
+    public boolean addThisPost(Post thisPost) {
+        try {
+            String sql = "INSERT INTO [dbo].[post]\n"
+                    + "           ([product_id]\n"
+                    + "           ,[post_title]\n"
+                    + "           ,[content1]\n"
+                    + "           ,[content2]\n"
+                    + "           ,[img]\n"
+                    + "           ,[post_date])\n"
+                    + "     VALUES\n"
+                    + "           (?\n"
+                    + "           ,?\n"
+                    + "           ,?\n"
+                    + "           ,?\n"
+                    + "           ,?\n"
+                    + "           ,?)";
+            PreparedStatement prstm = connection.prepareStatement(sql);
+            prstm.setInt(1, thisPost.getProduct_id());
+            prstm.setString(2, thisPost.getPost_title());
+            prstm.setString(3, thisPost.getContent1());
+            prstm.setString(4, thisPost.getContent2());
+            prstm.setString(5, thisPost.getImage_path());
+            prstm.setDate(6, thisPost.getPost_date());
+            prstm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Nhat_PostDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
+    }
+
+    public boolean editThisPostExceptIMGpath(Post thisPost) {
+        try {
+            String sql = "UPDATE [dbo].[post]\n"
+                    + "   SET [product_id] = ?\n"
+                    + "      ,[post_title] = ?\n"
+                    + "      ,[content1] =? \n"
+                    + "      ,[content2] = ?\n"
+                    + "      ,[post_date] = ?\n"
+                    + " WHERE [post].post_id=?";
+            PreparedStatement prstm = connection.prepareStatement(sql);
+            prstm.setInt(1, thisPost.getProduct_id());
+            prstm.setString(2, thisPost.getPost_title());
+            prstm.setString(3, thisPost.getContent1());
+            prstm.setString(4, thisPost.getContent2());
+            prstm.setDate(5, thisPost.getPost_date());
+            prstm.setInt(6, thisPost.getId());
+            prstm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Nhat_PostDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
+    }
+
+    public boolean editThisPost(Post thisPost) {
+        try {
+            String sql = "UPDATE [dbo].[post]\n"
+                    + "   SET [product_id] = ?\n"
+                    + "      ,[post_title] =? \n"
+                    + "      ,[content1] =? \n"
+                    + "      ,[content2] =? \n"
+                    + "      ,[img] =? \n"
+                    + "      ,[post_date] =? \n"
+                    + " WHERE [post].post_id=?";
+            PreparedStatement prstm = connection.prepareStatement(sql);
+            prstm.setInt(1, thisPost.getProduct_id());
+            prstm.setString(2, thisPost.getPost_title());
+            prstm.setString(3, thisPost.getContent1());
+            prstm.setString(4, thisPost.getContent2());
+            prstm.setString(5, thisPost.getImage_path());
+            prstm.setDate(6, thisPost.getPost_date());
+            prstm.setInt(7, thisPost.getId());
+            prstm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Nhat_PostDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
+    }
+
+    public boolean hidePost(Post thisPost) {
+        try {
+            String sql = "UPDATE [dbo].[post]\n"
+                    + "   SET [post_title] =? \n"
+                    + " WHERE [post].post_id=?";
+            PreparedStatement prstm = connection.prepareStatement(sql);
+            prstm.setString(1, "[HIDDEN]"+thisPost.getPost_title());
+            prstm.setInt(2, thisPost.getId());
+            prstm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Nhat_PostDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
+    }
+
 }

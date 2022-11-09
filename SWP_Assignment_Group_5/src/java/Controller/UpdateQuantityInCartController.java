@@ -53,7 +53,6 @@ public class UpdateQuantityInCartController extends HttpServlet {
             
             //save cart into session
             
-        
         response.sendRedirect("carts");
         }catch(Exception e){
             e.printStackTrace();

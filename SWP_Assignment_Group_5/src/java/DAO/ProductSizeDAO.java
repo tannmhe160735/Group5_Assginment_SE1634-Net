@@ -42,11 +42,63 @@ public class ProductSizeDAO {
         } catch (SQLException e) {
         }
         return list;
-
     }
-    public static void main(String[] args){ 
-            ProductSizeDAO dao = new ProductSizeDAO();
-        System.out.println(dao.getSizeByProductId(2));
+
+    public int subtractSizeQuantity(int sub_quantity, int size_id) {
+
+        String sql = "UPDATE [dbo].[product_size]\n"
+                + "   SET \n"
+                + "      [quantity] = quantity - ?\n"
+                + " WHERE size_id = ?";
+        int currentQuantity = getQuantityBySizeId(size_id);
+        if (currentQuantity < sub_quantity) {
+            return 0;
+        }
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, sub_quantity);
+            ps.setInt(2, size_id);
+            return ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+
+    public int getQuantityBySizeId(int size_id) {
+        String sql = "SELECT [quantity]\n"
+                + "  FROM [dbo].[product_size]\n"
+                + "  where size_id = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, size_id);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
+    public int getQuantityBySizeIdAndProductId(int size, int product_id) {
+        String sql = "SELECT [quantity]\n"
+                + "  FROM [dbo].[product_size]\n"
+                + "  where size = ? and product_id = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, size);
+            ps.setInt(2, product_id);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
+    public static void main(String[] args) {
+        ProductSizeDAO dao = new ProductSizeDAO();
+
+        System.out.println(dao.getQuantityBySizeIdAndProductId(40, 5));
     }
 }
-

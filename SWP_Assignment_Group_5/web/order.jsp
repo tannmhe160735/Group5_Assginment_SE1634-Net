@@ -116,13 +116,15 @@
                                                 <div class="p-3">
                                                     <h3 class="fw-bold mt-6">Summary</h3>
                                                     <hr class="my-4">
-                                                    <p class="">User Name: ${listO.acc.acc_name}</p>
+                                                    <p class="">User Name: ${listO.name}</p>
                                                     <hr class="my-2"/>
                                                     <p class="">Address: ${listO.address}</p>
                                                     <hr class="my-2"/>
-                                                    <p class="">Phone: 0${listO.phone}</p>
+                                                    <p class="">Phone: ${listO.phone}</p>
                                                     <hr class="my-2"/>
                                                     <p class="">Email: ${listO.email}</p>
+                                                    <hr class="my-2"/>
+                                                    <p class="">Voucher: ${listO.voucher_code}</p>
                                                     <hr class="my-2"/>
                                                      <p class="">Total Price: ${listO.total_price}</p>
                                                     <hr class="my-2"/>

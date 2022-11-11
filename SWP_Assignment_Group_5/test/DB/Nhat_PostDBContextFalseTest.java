@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author Thinkpad
  */
-public class Nhat_PostDBContextTest {
+public class Nhat_PostDBContextFalseTest {
     
-    public Nhat_PostDBContextTest() {
+    public Nhat_PostDBContextFalseTest() {
     }
     
     @BeforeClass
@@ -47,19 +47,19 @@ public class Nhat_PostDBContextTest {
      * Test of getAPostByID method, of class Nhat_PostDBContext.
      */
     @Test
-    public void testGetAPostByID() {
+    public void testFalseGetAPostByID() {
         System.out.println("getAPostByID");
-        int post_id = 3;
+        int post_id = 10;
         Nhat_PostDBContext instance = new Nhat_PostDBContext();
         Post expResult = new Post(3,28, "test title", "test content 1", "test content 2", "adu/vi.img", new Date(2001 -1900, 10-1, 07));
         Post result = instance.getAPostByID(post_id);
-        assertEquals(expResult.getId(), result.getId());
-        assertEquals(expResult.getProduct_id(), result.getProduct_id());
-        assertEquals(expResult.getPost_title(), result.getPost_title());
-        assertEquals(expResult.getPost_date(), result.getPost_date());
-        assertEquals(expResult.getImage_path(), result.getImage_path());
-        assertEquals(expResult.getContent1(), result.getContent1());
-        assertEquals(expResult.getContent2(), result.getContent2());
+        assertNotEquals(expResult.getId(), result.getId());
+        assertNotEquals(expResult.getProduct_id(), result.getProduct_id());
+        assertNotEquals(expResult.getPost_title(), result.getPost_title());
+        assertNotEquals(expResult.getPost_date(), result.getPost_date());
+        assertNotEquals(expResult.getImage_path(), result.getImage_path());
+        assertNotEquals(expResult.getContent1(), result.getContent1());
+        assertNotEquals(expResult.getContent2(), result.getContent2());
         // TODO review the generated test code and remove the default call to fail.
         
     }
@@ -69,31 +69,31 @@ public class Nhat_PostDBContextTest {
      * Test of listAllPostPaginaged method, of class Nhat_PostDBContext.
      */
     @Test
-    public void testListAllPostPaginaged() {
+    public void testFalseListAllPostPaginaged() {
         System.out.println("listAllPostPaginaged");
         int noPage = 2;
         Nhat_PostDBContext instance = new Nhat_PostDBContext();
         ArrayList<Post> result = instance.listAllPostPaginaged(noPage);
-        assertEquals(5, result.size());
+        assertFalse(4== result.size());
     }
 
     /**
      * Test of getTotalNumberOfPost method, of class Nhat_PostDBContext.
      */
     @Test
-    public void testGetTotalNumberOfPost() {
+    public void testFalseGetTotalNumberOfPost() {
         System.out.println("getTotalNumberOfPost");
         Nhat_PostDBContext instance = new Nhat_PostDBContext();
         int expResult = 0;
         int result = instance.getTotalNumberOfPost();
-        assertTrue(result>=25);
+        assertFalse(result<25);
     }
 
     /**
      * Test of addThisPost method, of class Nhat_PostDBContext.
      */
     @Test
-    public void testAddThisPost() {
+    public void testFalseAddThisPost() {
         System.out.println("addThisPost");
         Post thisPost = new Post();
         thisPost.setId(-1);
@@ -109,34 +109,39 @@ public class Nhat_PostDBContextTest {
      * Test of editThisPostExceptIMGpath method, of class Nhat_PostDBContext.
      */
     @Test
-    public void testEditThisPostExceptIMGpath() {
+    public void testFalseEditThisPostExceptIMGpath() {
         System.out.println("editThisPostExceptIMGpath");
-        Post thisPost = new Post(57, 2, "ddd", "ddd", "sss","adu/vi.img", new Date(2001 -1900, 10-1, 07));
+        Post thisPost = new Post(57, 2, "ddd", "ddd", "sss","adu/vi.imgggg", new Date(2001 -1900, 10-1, 07));
         Nhat_PostDBContext instance = new Nhat_PostDBContext();
-        assertTrue(instance.editThisPostExceptIMGpath(thisPost));
+        instance.editThisPostExceptIMGpath(thisPost);
+        Post outPost = instance.getAPostByID(57);
+        assertFalse(("adu/vi.imgggg").equals(outPost.getPost_title()));
     }
 
     /**
      * Test of editThisPost method, of class Nhat_PostDBContext.
      */
     @Test
-    public void testEditThisPost() {
+    public void testFalseEditThisPost() {
         System.out.println("editThisPost");
         Post thisPost = new Post(57, 2, "ddd", "ddd", "sss","adu/vi.img", new Date(2001 -1900, 10-1, 07));
         Nhat_PostDBContext instance = new Nhat_PostDBContext();
-        assertTrue(instance.editThisPost(thisPost));
+        instance.editThisPost(thisPost);
+        Post outPost = instance.getAPostByID(57);
+        assertTrue(("ddd").equals(outPost.getPost_title()));
     }
 
     /**
      * Test of hidePost method, of class Nhat_PostDBContext.
      */
     @Test
-    public void testHidePost() {
+    public void testFalseHidePost() {
         System.out.println("hidePost");
         Post thisPost = new Post(57, 2, "ddd", "ddd", "sss","adu/vi.img", new Date(2001 -1900, 10-1, 07));
         Nhat_PostDBContext instance = new Nhat_PostDBContext();
-        assertTrue(instance.hidePost(thisPost));
-        
+        instance.hidePost(thisPost);
+        Post outPost = instance.getAPostByID(57);
+        assertTrue(("[HIDDEN]ddd").equals(outPost.getPost_title()));
     }
     
 }
